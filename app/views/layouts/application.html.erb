@@ -8,6 +8,29 @@
 </head>
 <body>
 
+<div>
+  <% if current_user.nil? %>
+    <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
+  <% else %>
+    Hi <%= current_user.first_name.capitalize %>
+    <%= link_to "Sign out", destroy_user_session_path %>
+  <% end %>
+</div>
+
+<% if notice %>
+  <p class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= notice %>
+  </p>
+<% end %>
+
+<% if alert %>
+  <p class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= alert %>
+  </p>
+<% end %>
+
 <%= yield %>
 
 </body>
