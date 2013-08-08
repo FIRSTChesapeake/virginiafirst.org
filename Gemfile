@@ -27,6 +27,8 @@ gem 'jquery-rails'
 
 gem 'devise'
 
+gem 'figaro'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -37,7 +39,7 @@ gem 'devise'
 gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
