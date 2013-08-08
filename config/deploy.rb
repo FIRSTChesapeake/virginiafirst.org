@@ -10,6 +10,7 @@ load "config/recipes/nodejs"
 load "config/recipes/rbenv"
 load "config/recipes/app"
 load "config/recipes/check"
+load "config/recipes/rails"
 
 server "198.199.87.210", :web, :app, :db, primary: true
 
@@ -19,6 +20,8 @@ set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 #set :shared_children, shared_children + %w{public/uploads}
+
+set :rails_env, "production"
 
 set :scm, "git"
 set :repository, "ssh://git@bitbucket.org/cattywampus/vafirst.git"
