@@ -4,6 +4,7 @@ describe FirstProgram do
   let(:program) { build :frc_program }
 
   it { expect(subject).to have_many :games }
+  it { expect(subject).to have_many :events }
 
   it { should validate_presence_of :name }
   it { should validate_presence_of :code }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130825203622) do
+ActiveRecord::Schema.define(:version => 20130825220224) do
 
   create_table "auth_providers", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,24 @@ ActiveRecord::Schema.define(:version => 20130825203622) do
 
   add_index "auth_providers", ["provider", "uid"], :name => "index_auth_providers_on_provider_and_uid", :unique => true
   add_index "auth_providers", ["user_id"], :name => "index_auth_providers_on_user_id"
+
+  create_table "events", :force => true do |t|
+    t.integer  "program_id"
+    t.string   "name"
+    t.datetime "starts_at"
+    t.datetime "setup_at"
+    t.datetime "teardown_at"
+    t.string   "venue"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.integer  "participant_limit"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "events", ["program_id"], :name => "index_events_on_program_id"
 
   create_table "first_programs", :force => true do |t|
     t.string   "name"
