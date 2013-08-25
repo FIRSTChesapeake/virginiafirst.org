@@ -39,8 +39,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def password_required?
     super && providers.blank?
+  end
+
+  def to_s
+    "#{id}:#{full_name} <#{email}>"
   end
 
   def update_with_password(params, *options)
