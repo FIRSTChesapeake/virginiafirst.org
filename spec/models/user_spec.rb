@@ -4,6 +4,7 @@ describe User do
   let(:user) { build :user }
 
   it { should have_many :providers }
+  it { should have_one :volunteer_profile }
 
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }

@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jeffp/enumerated_attribute.git
+  revision: 84221b872f7f71152994b212520c833742a263e3
+  specs:
+    enumerated_attribute (0.3.0.beta1)
+      meta_programming (>= 0.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -107,6 +114,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_programming (0.2.2)
     meta_request (0.2.7)
       callsite
       rack-contrib
@@ -249,6 +257,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   database_cleaner
   devise
+  enumerated_attribute!
   factory_girl_rails
   figaro
   guard-rspec

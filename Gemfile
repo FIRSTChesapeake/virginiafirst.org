@@ -29,6 +29,8 @@ gem 'carrierwave'
 
 gem 'devise'
 
+gem 'enumerated_attribute', github: 'jeffp/enumerated_attribute'
+
 gem 'figaro'
 
 gem 'omniauth-openid'
