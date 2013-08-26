@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130825220224) do
+ActiveRecord::Schema.define(:version => 20130826221053) do
 
   create_table "auth_providers", :force => true do |t|
     t.integer  "user_id"
@@ -64,6 +64,40 @@ ActiveRecord::Schema.define(:version => 20130825220224) do
   end
 
   add_index "games", ["program_id"], :name => "index_games_on_program_id"
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "age"
+    t.string   "primary_phone_type"
+    t.string   "primary_phone_number"
+    t.string   "alternate_phone_type"
+    t.string   "alternate_phone_number"
+    t.string   "current_organization"
+    t.string   "current_occupation"
+    t.string   "shirt_size"
+    t.string   "administrative_skill"
+    t.string   "interpersonal_skill"
+    t.string   "mechanical_skill"
+    t.string   "technical_skill"
+    t.text     "special_needs"
+    t.text     "volunteer_experience"
+    t.boolean  "first_alumnus"
+    t.boolean  "virginiafirst_alumnus"
+    t.boolean  "confirmed_age"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

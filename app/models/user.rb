@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :providers, class_name: "AuthProvider"
+  has_one :profile
   has_one :volunteer_profile, class_name: "Volunteer::Profile"
 
   # Setup accessible (or protected) attributes for your model
