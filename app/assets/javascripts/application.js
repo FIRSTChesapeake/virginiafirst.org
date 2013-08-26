@@ -12,5 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-alert
+//= require bootstrap
+//= require bootstrap-datetimepicker
 //= require_tree .
+
+$(document).ready(function() {
+    $(".datetime .controls .input-append").datetimepicker({
+        format:"yyyy-MM-dd hh:mm",
+        pickSeconds:false,
+        maskInput:false
+    });
+});

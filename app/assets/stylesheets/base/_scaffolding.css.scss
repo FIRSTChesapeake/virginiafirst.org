@@ -1,0 +1,33 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.container {
+  background-color: $white;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.frc {
+  background-color: $blueDeep;
+}
+
+.ftc {
+  background-color: $yellowDeep;
+}
+
+.fll {
+  background-color: $redDeep;
+}
+
+.jrfll {
+  background-color: $teal;
+}
+
+.menu-logo {
+  text-align: center;
+}

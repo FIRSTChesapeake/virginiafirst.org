@@ -1,7 +1,21 @@
 Vafirst::Application.routes.draw do
+  get "events/index"
+
+  get "events/new"
+
+  get "events/edit"
+
+  get "events/show"
+
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   get "home/index", as: "home"
+
+  scope module: 'admin', path: 'admin', as: 'admin' do
+    scope path: '(/:program)' do
+      resources :events
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

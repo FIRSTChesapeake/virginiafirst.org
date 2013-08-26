@@ -11,6 +11,10 @@ class FirstProgram < ActiveRecord::Base
   validates_presence_of :code
   validates_uniqueness_of :code
 
+  def to_param
+    code
+  end
+
   def to_s
     name
   end

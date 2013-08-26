@@ -1,0 +1,76 @@
+
+.menu {
+  list-style-type: none;
+  margin: 20px 0;
+
+  .section-header {
+    background-color: $gray;
+    color: $white;
+    display: block;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+
+    @include border-top-radius(4px);
+  }
+  .nav-tabs.nav-stacked > li:first-child > a {
+    @include border-top-radius(0);
+  }
+}
+
+.nav > li > a {
+  background-color: $grayLighter;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+  background-color: transparent;
+}
+
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover,
+.nav-tabs > .active > a:focus {
+  color: #555555;
+  background-color: #bfccda;
+  border: 1px solid #ddd;
+}
+
+.frc {
+  .nav-tabs > .active > a,
+  .nav-tabs > .active > a:hover,
+  .nav-tabs > .active > a:focus {
+    color: $white;
+    background-color: $blueDeep;
+    border: 1px solid #ddd;
+  }
+}
+
+.ftc {
+  .nav-tabs > .active > a,
+  .nav-tabs > .active > a:hover,
+  .nav-tabs > .active > a:focus {
+    color: $white;
+    background-color: $yellowDeep;
+    border: 1px solid #ddd;
+  }
+}
+
+.fll {
+  .nav-tabs > .active > a,
+  .nav-tabs > .active > a:hover,
+  .nav-tabs > .active > a:focus {
+    color: $white;
+    background-color: $redDeep;
+    border: 1px solid #ddd;
+  }
+}
+
+.jrfll {
+  .nav-tabs > .active > a,
+  .nav-tabs > .active > a:hover,
+  .nav-tabs > .active > a:focus {
+    color: $white;
+    background-color: $teal;
+    border: 1px solid #ddd;
+  }
+}

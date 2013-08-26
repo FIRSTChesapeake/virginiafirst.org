@@ -7,8 +7,24 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :name
   validates_presence_of :program
+  validate :address_is_provided
 
   def to_s
     name
+  end
+
+  private
+
+  def address_is_provided
+    required_fields = [:street, :city, :state, :zip]
+    errors.add_on_blank(required_fields)
+
+    missing_fields = errors.keys & required_fields
+    if missing_fields.present?
+      humanize = missing_fields.map { |f| f.to_s.humanize }
+      errors.add(:address, "is missing #{humanize.join(", ")}")
+      false
+    end
+    true
   end
 end

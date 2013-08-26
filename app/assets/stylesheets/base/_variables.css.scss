@@ -1,0 +1,42 @@
+// Grays
+// -------------------------
+$black:                 #000 !default;
+$grayDarker:            #222 !default;
+$grayDark:              #333 !default;
+$gray:                  #555 !default;
+$grayLight:             #999 !default;
+$grayLighter:           #eee !default;
+$white:                 #fff !default;
+
+
+// Accent colors
+// -------------------------
+$blue:                  #049cdb !default;
+$blueDark:              #0064cd !default;
+$green:                 #46a546 !default;
+$red:                   #9d261d !default;
+$yellow:                #ffc40d !default;
+$orange:                #f89406 !default;
+$pink:                  #c3325f !default;
+$purple:                #7a43b6 !default;
+
+// FIRST colors
+// -------------------------
+$blueDeep:              #003974 !default;
+$redDeep:               #c41425 !default;
+$teal:                  #239e98 !default;
+$yellowDeep:            #e6b222 !default;
+
+// FIRST Complementary colors
+// -------------------------
+$blueGray:              #bfccda !default;
+
+// Scaffolding
+// -------------------------
+$bodyBackground:        $blueGray !default;
+$textColor:             $grayDarker !default;
+
+// Navbar
+// -------------------------
+//$navbarLinkColorHover:            $blueGray !default;
+$navbarLinkBackgroundHover:       $blueGray !default;
