@@ -1,11 +1,5 @@
 Vafirst::Application.routes.draw do
-  get "events/index"
-
-  get "events/new"
-
-  get "events/edit"
-
-  get "events/show"
+  resource :account, controller: "accounts", only: [:show, :edit, :update, :destroy], path_names: {edit: "settings"}
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 

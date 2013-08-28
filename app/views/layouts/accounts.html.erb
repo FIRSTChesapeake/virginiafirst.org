@@ -1,0 +1,24 @@
+<% content_for :content do %>
+  <div class="row">
+    <div class="span3">
+      <div class="menu-logo">
+        <%= image_tag "VirginiaFIRST_logo.png", alt: "VirginiaFIRST", width: "150px" %>
+      </div>
+      <ul class="menu">
+        <li class="section">
+          <span class="section-header"><%= current_user.email %></span>
+          <ul class="nav nav-tabs nav-stacked">
+            <li class="<%= active_class?("accounts") %>">
+              <%= link_to "Account Settings", edit_account_path %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="span9">
+      <%= yield %>
+    </div>
+  </div>
+<% end -%>
+
+<%= render file: 'layouts/application' %>

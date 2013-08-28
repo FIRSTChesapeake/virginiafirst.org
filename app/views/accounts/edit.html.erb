@@ -1,0 +1,16 @@
+<h1>Edit Account</h1>
+
+<%= simple_form_for @user, url: account_path, html: {class: "form-horizontal"} do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :email, :required => true, :autofocus => true %>
+  <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+  <%= f.input :password_confirmation, required: true %>
+  <% if f.object.encrypted_password.present? %>
+    <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update Account" %>
+  </div>
+<% end %>
