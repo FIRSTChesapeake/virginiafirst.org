@@ -8,7 +8,7 @@ describe Accounts::ProfilesController do
     context "signed in" do
       before(:each) do
         sign_in user
-        get 'edit'
+        get :edit
       end
 
       it { expect(response).to be_success }
@@ -33,7 +33,7 @@ describe Accounts::ProfilesController do
         let(:invalid_attributes) { {} }
         before(:each) { post :create, { profile: invalid_attributes } }
 
-        it { expect(response).to render_template :edit }
+        it { expect(response).to render_template :profile }
       end
     end
   end
@@ -53,7 +53,7 @@ describe Accounts::ProfilesController do
         let(:invalid_attributes) { { first_name: "" } }
         before(:each) { put :update, { profile: invalid_attributes } }
 
-        it { expect(response).to render_template :edit }
+        it { expect(response).to render_template :profile }
       end
     end
   end

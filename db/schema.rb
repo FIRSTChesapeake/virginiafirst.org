@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130903154456) do
+ActiveRecord::Schema.define(:version => 20130903192046) do
 
   create_table "auth_providers", :force => true do |t|
     t.integer  "user_id"
@@ -98,6 +98,13 @@ ActiveRecord::Schema.define(:version => 20130903154456) do
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
+  create_table "profiles_skills", :id => false, :force => true do |t|
+    t.integer "profile_id"
+    t.integer "skill_id"
+  end
+
+  add_index "profiles_skills", ["profile_id", "skill_id"], :name => "index_profiles_skills_on_profile_id_and_skill_id"
 
   create_table "skills", :force => true do |t|
     t.string   "name"

@@ -41,6 +41,38 @@
   background-color: $white;
 }
 
+// NAV LIST
+// --------
+
+.nav-list {
+  > li {
+    margin-bottom: -1px;
+
+    > a {
+      padding-top: 8px;
+      padding-bottom: 8px;
+      border: 1px solid #ddd;
+
+      &.nav-list-bottom {
+        @include border-bottom-radius(4px);
+      }
+    }
+  }
+
+  > .active {
+    > a, > a:hover, > a:focus {
+      background-color: $white;
+      border-left: 7px solid $blueGray;
+      color: #555;
+      padding-left: 8px;
+    }
+  }
+
+  .nav-list {
+    margin-top: -1px;
+  }
+}
+
 .frc {
   .nav-tabs > .active > a,
   .nav-tabs > .active > a:hover,
