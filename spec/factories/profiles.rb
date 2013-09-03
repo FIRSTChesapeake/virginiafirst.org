@@ -2,31 +2,25 @@
 
 FactoryGirl.define do
   factory :profile do
-    user_id 1
-    first_name "MyString"
-    last_name "MyString"
-    email "MyString"
-    street "MyString"
-    city "MyString"
-    state "MyString"
-    zip "MyString"
-    latitude 1.5
-    longitude 1.5
-    age "MyString"
-    primary_phone_type "MyString"
-    primary_phone_number "MyString"
-    alternate_phone_type "MyString"
-    alternate_phone_number "MyString"
-    current_organization "MyString"
-    current_occupation "MyString"
-    shirt_size "MyString"
-    administrative_skill "MyString"
-    interpersonal_skill "MyString"
-    mechanical_skill "MyString"
-    technical_skill "MyString"
-    special_needs "MyText"
-    volunteer_experience "MyText"
-    first_alumnus false
-    virginiafirst_alumnus false
+    first_name "Calvin"
+    last_name "Jones"
+    email "calvinjones@test.com"
+    street "5739 Fairview Way"
+    city "Raleigh"
+    state "NC"
+    zip "27511"
+    age "13-18"
+    primary_phone_type "mobile"
+    primary_phone_number "5551234567"
+    current_organization "Acme Corp"
+    current_occupation "Project Manager"
+    shirt_size :small
+    administrative_skill :medium
+    interpersonal_skill :low
+    mechanical_skill :high
+    technical_skill :medium
+    first_alumnus true
+    virginiafirst_alumnus true
+    user
   end
 end

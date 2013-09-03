@@ -2,3 +2,11 @@
 .controls-row {
   margin-bottom: 10px;
 }
+
+.controls-row-last {
+  margin-bottom: 0;
+}
+
+.control-group.error .no-error {
+  @include formFieldState;
+}

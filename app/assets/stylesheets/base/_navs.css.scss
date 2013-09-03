@@ -18,6 +18,13 @@
   }
 }
 
+.nav-tabs.nav-stacked > .active {
+  > a, > a:hover, > a:focus {
+    border-left: 5px solid $blueGray;
+    padding-left: 7px;
+  }
+}
+
 .nav > li > a {
   background-color: $grayLighter;
 }
@@ -31,8 +38,7 @@
 .nav-tabs > .active > a:hover,
 .nav-tabs > .active > a:focus {
   color: #555555;
-  background-color: #bfccda;
-  border: 1px solid #ddd;
+  background-color: $white;
 }
 
 .frc {
