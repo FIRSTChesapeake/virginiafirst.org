@@ -8,6 +8,8 @@
 </head>
 <body class="<%= @program.code if @program.present? %> <%= controller_name %>">
 
+<div id="wrapper">
+
 <div class="container">
 
 <div>
@@ -35,6 +37,7 @@
 
 <%= content_for?(:content) ? yield(:content) : yield %>
 
+</div>
 </div>
 </body>
 </html>
