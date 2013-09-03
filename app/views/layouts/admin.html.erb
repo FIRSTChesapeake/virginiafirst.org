@@ -14,6 +14,9 @@
             <li class="<%= active_class?("events") %>">
               <%= link_to "Events", admin_events_path(@program) %>
             </li>
+            <li class="<%= active_class?("skills") %>">
+              <%= link_to "Background Skills", admin_skills_path %>
+            </li>
           </ul>
         </li>
       </ul>

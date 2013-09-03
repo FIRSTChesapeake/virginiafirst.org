@@ -1,0 +1,32 @@
+<%= link_to "New Skill", new_admin_skill_path, class: "pull-right btn btn-primary" %>
+
+<h1>Background Skills</h1>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th class="optional">Administrative?</th>
+    <th class="optional">Mechanical?</th>
+    <th class="optional">Technical?</th>
+    <th class="action"></th>
+    <th class="action"></th>
+  </tr>
+  <% @skills.each do |skill| %>
+    <tr>
+      <td><%= skill.name %></td>
+      <td class="optional"><%= yes_no skill.is_administrative? %></td>
+      <td class="optional"><%= yes_no skill.is_mechanical? %></td>
+      <td class="optional"><%= yes_no skill.is_technical? %></td>
+      <td class="action">
+        <%= link_to [:edit, :admin, skill], class: "btn btn-success btn-small" do %>
+          <i class="icon-pencil icon-white"></i> Edit
+        <% end %>
+      </td>
+      <td class="action">
+        <%= link_to [:admin, skill], method: :delete, confirm: "Are you sure?", class: "btn btn-danger btn-small" do %>
+          <i class="icon-trash icon-white"></i> Delete
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

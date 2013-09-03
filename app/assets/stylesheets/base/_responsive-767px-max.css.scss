@@ -2,10 +2,22 @@
   #wrapper {
     width: auto;
   }
+
+  .table {
+    th.optional, td.optional {
+      display: none;
+    }
+  }
 }
 
 @media (max-width: 480px) {
   #wrapper {
     width: auto;
+  }
+
+  .table {
+    th.optional, td.optional {
+      display: none;
+    }
   }
 }

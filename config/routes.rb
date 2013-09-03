@@ -15,6 +15,8 @@ Vafirst::Application.routes.draw do
     scope path: '(/:program)' do
       resources :events
     end
+
+    resources :skills
   end
 
   # The priority is based upon order of creation:

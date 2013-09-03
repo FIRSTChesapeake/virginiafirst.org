@@ -40,3 +40,32 @@ programs = [
 programs.each do |program|
   FirstProgram.create program
 end
+
+skills = [
+    { name: "Mechanical Engineering/Design", is_mechanical: true, is_technical: true },
+    { name: "Electrical Engineering/Design", is_technical: true },
+    { name: "CAD (Autodesk Inventor, PTC ProEngineer and Creo", is_mechanical: true, is_technical: true },
+    { name: "Control Systems and Software (LabView, Java, C++)", is_technical: true },
+    { name: "Machining/Milling/Welding", is_mechanical: true },
+    { name: "Electrical Layout and Wiring", is_technical: true },
+    { name: "Pneumatics Layout and Wiring", is_mechanical: true, is_technical: true },
+    { name: "Assembly and Testing", is_mechanical: true, is_technical: true },
+    { name: "Administration", is_administrative: true },
+    { name: "Project Management", is_administrative: true },
+    { name: "PR/Marketing", is_administrative: true },
+    { name: "Long-Range Planning", is_administrative: true },
+    { name: "Finance", is_administrative: true },
+    { name: "Human Resources and Volunteer Management", is_administrative: true },
+    { name: "Travel and Logistics Coordination", is_administrative: true },
+    { name: "Documentation and Record-keeping", is_administrative: true },
+    { name: "Web Site Development", is_technical: true },
+    { name: "Programming", is_technical: true }
+]
+
+skills.each do |attributes|
+  Skill.find_or_create_by_name attributes[:name] do |skill|
+    skill.is_administrative = attributes[:is_administrative]
+    skill.is_mechanical = attributes[:is_mechanical]
+    skill.is_technical = attributes[:is_technical]
+  end
+end

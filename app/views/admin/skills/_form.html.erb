@@ -1,0 +1,18 @@
+<%= simple_form_for skill, url: url, html: { class: "form-horizontal" } do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :name, required: true, autofocus: true %>
+  <%= f.input :is_administrative, label: false do %>
+    <%= f.input_field :is_administrative, inline_label: "Is Administrative?" %>
+  <% end %>
+  <%= f.input :is_mechanical, label: false do %>
+    <%= f.input_field :is_mechanical, inline_label: "Is Mechanical?" %>
+  <% end %>
+  <%= f.input :is_technical, label: false do %>
+    <%= f.input_field :is_technical, inline_label: "Is Technical?" %>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn-primary" %>
+  </div>
+<% end %>

@@ -2,4 +2,10 @@
   #wrapper {
     @include grid-core-span($gridColumns, $gridColumnWidth768, $gridGutterWidth768);
   }
+
+  .table {
+    th.optional, td.optional {
+      display: none;
+    }
+  }
 }
