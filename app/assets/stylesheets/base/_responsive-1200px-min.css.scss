@@ -1,0 +1,5 @@
+@media (min-width: 1200px) {
+  #wrapper {
+    @include grid-core-span($gridColumns, $gridColumnWidth1200, $gridGutterWidth1200);
+  }
+}
