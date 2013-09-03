@@ -32,3 +32,6 @@
 
 # Ignore file uploads
 /public/uploads
+
+# Ignore Operating system temp files
+.DS_Store
