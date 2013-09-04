@@ -3,7 +3,14 @@
 <%= simple_form_for @profile, url: background_profile_path, html: { class: "form-horizontal" } do |f| %>
   <%= f.error_notification %>
 
-  <%= f.association :skills, as: :check_boxes, collection: Skill.order(:name) %>
+  <%= f.association :skills, as: :check_boxes, collection: Skill.order(:name), hint: "Check all that apply" %>
+
+  <%= f.input :strengths, label: "Which of these skills describe you?", hint: "Check all that apply" do %>
+    <%= f.input_field :is_administrative, inline_label: "Administrative" %>
+    <%= f.input_field :is_interpersonal, inline_label: "Interpersonal" %>
+    <%= f.input_field :is_mechanical, inline_label: "Mechanical" %>
+    <%= f.input_field :is_technical, inline_label: "Technical" %>
+  <% end %>
 
   <div class="form-actions">
     <%= f.button :submit %>

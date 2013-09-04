@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130904150903) do
+ActiveRecord::Schema.define(:version => 20130904200100) do
 
   create_table "auth_providers", :force => true do |t|
     t.integer  "user_id"
@@ -84,17 +84,13 @@ ActiveRecord::Schema.define(:version => 20130904150903) do
     t.string   "current_organization"
     t.string   "current_occupation"
     t.string   "shirt_size"
-    t.string   "administrative_skill"
-    t.string   "interpersonal_skill"
-    t.string   "mechanical_skill"
-    t.string   "technical_skill"
     t.text     "special_needs"
     t.text     "volunteer_experience"
     t.boolean  "first_alumnus"
     t.boolean  "virginiafirst_alumnus"
     t.boolean  "confirmed_age"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.boolean  "has_frc_experience"
     t.string   "frc_team_number"
     t.boolean  "has_ftc_experience"
@@ -106,6 +102,10 @@ ActiveRecord::Schema.define(:version => 20130904150903) do
     t.boolean  "is_mentor"
     t.boolean  "is_sponsor"
     t.text     "first_experience"
+    t.boolean  "is_administrative",      :default => false
+    t.boolean  "is_interpersonal",       :default => false
+    t.boolean  "is_mechanical",          :default => false
+    t.boolean  "is_technical",           :default => false
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
