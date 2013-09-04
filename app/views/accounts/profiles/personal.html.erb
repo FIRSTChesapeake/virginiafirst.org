@@ -24,14 +24,20 @@
   <%= f.input :primary_phone, required: true do %>
     <div class="controls-row controls-row-last">
       <%= f.input_field :primary_phone_type, as: :enum_select, class: "input-small" %>
-      <%= f.input_field :primary_phone_number, placeholder: "(555) 123-9876", class: "input-medium" %>
+      <%= f.input_field :primary_phone_number,
+                        placeholder: "(555) 123-9876",
+                        value: display_phone(f.object.primary_phone_number),
+                        class: "input-medium" %>
     </div>
   <% end %>
 
   <%= f.input :alternate_phone do %>
     <div class="controls-row controls-row-last">
       <%= f.input_field :alternate_phone_type, as: :enum_select, class: "input-small" %>
-      <%= f.input_field :alternate_phone_number, placeholder: "(555) 123-9876", class: "input-medium" %>
+      <%= f.input_field :alternate_phone_number,
+                        placeholder: "(555) 123-9876",
+                        value: display_phone(f.object.alternate_phone_number),
+                        class: "input-medium" %>
     </div>
   <% end %>
 

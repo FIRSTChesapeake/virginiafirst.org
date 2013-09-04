@@ -3,6 +3,11 @@ module ApplicationHelper
     controller_name == name ? "active" : ""
   end
 
+  def display_phone(number)
+    has_area_code = number.length > 7
+    number_to_phone(number, area_code: has_area_code)
+  end
+
   def us_states
     [
         ['Alabama', 'AL'],
