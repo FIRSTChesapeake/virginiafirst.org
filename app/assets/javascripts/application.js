@@ -22,4 +22,11 @@ $(document).ready(function() {
         pickSeconds:false,
         maskInput:false
     });
+
+    $(".time .controls .input-append").datetimepicker({
+        pickDate: false,
+        pickSeconds: false,
+        pick12HourFormat: true,
+        format: "HH:mm PP"
+    });
 });

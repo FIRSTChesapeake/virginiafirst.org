@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+
+  time:
+    formats:
+      time12hr: "%I:%M %p"

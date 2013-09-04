@@ -16,6 +16,7 @@ Vafirst::Application.routes.draw do
       resources :events
     end
 
+    resources :roles
     resources :skills
   end
 
