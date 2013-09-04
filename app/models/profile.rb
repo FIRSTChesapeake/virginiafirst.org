@@ -18,13 +18,17 @@ class Profile < ActiveRecord::Base
   attr_accessible :has_fll_experience, :has_jrfll_experience
 
   enum_attr :age, %w(13-18 19-24 25-34 35-44 45-54 55+)
-  enum_attr :shirt_size, %w(small medium large xl 2xl 3xl)
   enum_attr :administrative_skill, %w(low medium high)
   enum_attr :interpersonal_skill, %w(low medium high)
   enum_attr :mechanical_skill, %w(low medium high)
   enum_attr :technical_skill, %w(low medium high)
   enum_attr :primary_phone_type, %w(home mobile work other)
   enum_attr :alternate_phone_type, %w(home mobile work other)
+  enum_attr :shirt_size, %w(small medium large xl xxl xxxl) do
+    label :xl => "XL"
+    label :xxl => "2XL"
+    label :xxxl => "3XL"
+  end
 
   validates_presence_of :email
   validate :requires_full_name
