@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130904200100) do
+ActiveRecord::Schema.define(:version => 20130904203122) do
 
   create_table "auth_providers", :force => true do |t|
     t.integer  "user_id"
@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(:version => 20130904200100) do
     t.boolean  "is_interpersonal",       :default => false
     t.boolean  "is_mechanical",          :default => false
     t.boolean  "is_technical",           :default => false
+    t.boolean  "has_other_skill",        :default => false
+    t.string   "other_skill"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"

@@ -15,10 +15,6 @@ FactoryGirl.define do
     current_organization "Acme Corp"
     current_occupation "Project Manager"
     shirt_size :small
-    administrative_skill :medium
-    interpersonal_skill :low
-    mechanical_skill :high
-    technical_skill :medium
     first_alumnus true
     virginiafirst_alumnus true
     user
