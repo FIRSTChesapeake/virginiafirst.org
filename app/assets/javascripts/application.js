@@ -17,16 +17,17 @@
 //= require_tree .
 
 $(document).ready(function() {
-    $(".datetime .controls .input-append").datetimepicker({
-        format:"yyyy-MM-dd hh:mm",
-        pickSeconds:false,
-        maskInput:false
+    $(".datetimepicker").datetimepicker({
+        pickSeconds:false
     });
 
-    $(".time .controls .input-append").datetimepicker({
+    $(".datepicker").datetimepicker({
+        pickSeconds:false
+    });
+
+    $(".timepicker").datetimepicker({
         pickDate: false,
         pickSeconds: false,
-        pick12HourFormat: true,
-        format: "HH:mm PP"
+        pick12HourFormat: true
     });
 });

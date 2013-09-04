@@ -6,20 +6,9 @@
   <%= f.association :reports_to, collection: Role.key_positions.order(:title), input_html: {class: "input-medium"} %>
   <%= f.input :description, input_html: { rows: 3, class: "span5" } %>
 
-  <%= f.input :default_checkin_at, wrapper: :append do %>
-    <%= f.input_field :default_checkin_at, as: :string, class: "input-small" %>
-    <span class="add-on"><i data-time-icon="icon-time"></i></span>
-  <% end %>
-
-  <%= f.input :default_starts_at, wrapper: :append do %>
-    <%= f.input_field :default_starts_at, as: :string, class: "input-small" %>
-    <span class="add-on"><i data-time-icon="icon-time"></i></span>
-  <% end %>
-
-  <%= f.input :default_ends_at, wrapper: :append do %>
-    <%= f.input_field :default_ends_at, as: :string, class: "input-small" %>
-    <span class="add-on"><i data-time-icon="icon-time"></i></span>
-  <% end %>
+  <%= f.input :default_checkin_at, as: :time_picker, placeholder: "HH:mm PP", input_html: { class: "input-small" } %>
+  <%= f.input :default_starts_at, as: :time_picker, placeholder: "HH:mm PP", input_html: { class: "input-small" } %>
+  <%= f.input :default_ends_at, as: :time_picker, placeholder: "HH:mm PP", input_html: { class: "input-small" } %>
 
   <%= f.input :default_number_needed, input_html: { class: "input-mini" } %>
 

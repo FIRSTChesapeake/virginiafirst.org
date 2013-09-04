@@ -1,18 +1,13 @@
 <%= simple_form_for event, url: url, html: { class: "form-horizontal" } do |f| %>
-  <% if @program.nil? %>
+  <% unless @program.nil? %>
     <%= f.input :program_id, as: :hidden, input_html: {value: @program.id} %>
   <% end %>
   <%= f.input :name %>
-  <%= f.input :starts_at, wrapper: :append do %>
-    <%= f.input_field :starts_at, as: :string, class: "input-medium" %>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-    </span>
-  <% end %>
+  <%= f.input :starts_at, as: :datetime_picker, placeholder: "dd/mm/yyyy hh:mm pp", input_html: { class: "input-medium" } %>
   <%= f.input :venue %>
-  <%= f.input :address do %>
+  <%= f.input :address, required: true do %>
     <div class="controls-row">
-      <%= f.input_field :street, placeholder: "Street", class: "span4" %>
+      <%= f.input_field :street, placeholder: "Street", class: "span5" %>
     </div>
     <div class="controls-row">
       <%= f.input_field :city, placeholder: "City", class: "span2" %>
@@ -23,20 +18,9 @@
 
   <fieldset>
     <legend>Logistics</legend>
-    <%= f.input :participant_limit, input_html: {class: "span1"} %>
-    <%= f.input :setup_at, wrapper: :append do %>
-      <%= f.input_field :setup_at, as: :string, class: "input-medium" %>
-      <span class="add-on">
-        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-      </span>
-    <% end %>
-    <%= f.input :teardown_at, wrapper: :append do %>
-      <%= f.input_field :teardown_at, as: :string, class: "input-medium" %>
-      <span class="add-on">
-        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-      </span>
-    <% end %>
-
+    <%= f.input :participant_limit, input_html: {class: "input-mini"} %>
+    <%= f.input :setup_at, as: :datetime_picker, placeholder: "dd/mm/yyyy hh:mm pp", input_html: { class: "input-medium" } %>
+    <%= f.input :teardown_at, as: :datetime_picker, placeholder: "dd/mm/yyyy hh:mm pp", input_html: { class: "input-medium" } %>
   </fieldset>
 
   <div class="form-actions">

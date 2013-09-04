@@ -6,4 +6,13 @@ en:
 
   time:
     formats:
-      time12hr: "%I:%M %p"
+      time12hr: '%I:%M %p'
+
+  datepicker:
+    dformat: '%d/%m/%Y'
+    pformat: 'dd/MM/yyyy'
+    weekstart: 0
+  timepicker:
+    dformat: '%I:%M %p'
+    pformat: 'HH:mm PP'
+
