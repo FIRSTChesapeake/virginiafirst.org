@@ -60,6 +60,10 @@ module ApplicationHelper
     ]
   end
 
+  def virginia_first
+    "Virginia<strong><em>FIRST</em></strong>".html_safe
+  end
+
   def yes_no(value)
     value ? "Yes" : "No"
   end

@@ -1,6 +1,7 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :skills
+  has_and_belongs_to_many :preferred_roles, class_name: "Role"
 
   attr_accessible :first_name, :last_name, :email, :age, :shirt_size
   attr_accessible :city, :state, :street, :zip
@@ -10,7 +11,7 @@ class Profile < ActiveRecord::Base
   attr_accessible :administrative_skill, :interpersonal_skill, :mechanical_skill, :technical_skill
   attr_accessible :special_needs, :volunteer_experience
   attr_accessible :first_alumnus, :virginiafirst_alumnus
-  attr_accessible :skill_ids
+  attr_accessible :preferred_role_ids, :skill_ids
 
   enum_attr :age, %w(13-18 19-24 25-34 35-44 45-54 55+)
   enum_attr :shirt_size, %w(small medium large xl 2xl 3xl)

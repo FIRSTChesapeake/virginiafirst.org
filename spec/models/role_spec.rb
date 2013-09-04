@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Role do
   it { should belong_to :reports_to }
+  it { should have_and_belong_to_many :preferred_by }
   it { should have_many :supporting_roles }
 
   it { should validate_presence_of :title }

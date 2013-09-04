@@ -1,0 +1,12 @@
+
+.footnotes {
+  font-size: 0.85em;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0.85em;
+  text-indent: -0.85em;
+
+  .first:before {
+    content: "\02020";
+  }
+}

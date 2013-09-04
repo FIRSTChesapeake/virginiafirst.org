@@ -5,4 +5,11 @@ module Accounts::ProfilesHelper
   rescue
     # ignored
   end
+
+  def display_preferred_role(role)
+    buffer = ActiveSupport::SafeBuffer.new
+    buffer << role.title
+    buffer << content_tag(:sup, "&dagger;".html_safe)
+    buffer
+  end
 end

@@ -51,6 +51,8 @@ class Accounts::ProfilesController < ApplicationController
         :profile
       when "background"
         :background_profile
+      when "volunteer"
+        :volunteer_profile
       else
         :profile
     end

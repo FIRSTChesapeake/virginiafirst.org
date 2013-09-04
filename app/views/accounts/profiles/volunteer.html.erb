@@ -1,0 +1,37 @@
+<h1>Volunteer Preferences</h1>
+
+<p>
+  <%= virginia_first %> events we need people with technical and non-technical backgrounds.
+  There really is a job for everyone! By indicating which positions you
+  would be interested in, our volunteer coordinators will be able to better
+  match you up with a job you'll enjoy. If you would like to become more
+  involved <%= virginia_first %>, look for our key
+  positions<sup>&dagger;</sup>.
+</p>
+
+<%= simple_form_for @profile, url: volunteer_profile_path, html: { id: "edit_volunteer_profile", class: "form-horizontal" } do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.association :preferred_roles,
+                    as: :check_boxes,
+                    collection: Role.order(:title),
+                    label_method: lambda { |role| display_preferred_role(role) } %>
+  <%= f.input :footnotes, label: false do %>
+    <ul class="footnotes">
+      <li class="first">
+        This is a key volunteer position that requires responsibilities outside
+        of the event such as training, logistics and other supporting tasks.
+        Interested individuals will have to be approved by <%= virginia_first %>
+        staff before being assigned this role.
+      </li>
+    </ul>
+  <% end %>
+
+  <%= f.input :volunteer_experience,
+              label: "Other experience or comments",
+              input_html: {rows: 4, class: "span5"} %>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn-primary" %>
+  </div>
+<% end %>
