@@ -1,0 +1,44 @@
+<h1><em>FIRST</em> Experience</h1>
+
+<%= simple_form_for @profile, url: experience_profile_path, html: {id: "edit_experience_profile", class: "form-horizontal"} do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :involvement, label: "How are you involved with FIRST?" do %>
+    <div>
+      <%= f.input_field :student_or_parent, as: :radio_buttons, collection: [['Student', 'student'], ['Parent', 'parent'], ['Neither', '']], item_wrapper_class: "inline" %>
+    </div>
+    <div>
+      <%= f.input_field :is_mentor, inline_label: "Mentor/Coach" %>
+    </div>
+    <div>
+      <%= f.input_field :is_sponsor, inline_label: "Sponsor" %>
+    </div>
+  <% end %>
+
+  <%= f.input :program_participation, label: "What FIRST programs have you participated in?" do %>
+    <div class="inline-team">
+      <%= f.input_field :has_frc_experience, inline_label: "FRC" %>
+      <div class="team-input">
+        Which team did you support or participate in?
+        <%= f.input_field :frc_team_number, class: "input-mini", placeholder: "Team #" %>
+      </div>
+    </div>
+    <div class="inline-team">
+      <%= f.input_field :has_ftc_experience, inline_label: "FTC" %>
+      <div class="team-input">
+        Which team did you support or participate in?
+        <%= f.input_field :ftc_team_number, class: "input-mini", placeholder: "Team #" %>
+      </div>
+    </div>
+    <div class="inline-team">
+      <%= f.input_field :has_fll_experience, inline_label: "FLL" %>
+    </div>
+    <div class="inline-team">
+      <%= f.input_field :has_jrfll_experience, inline_label: "Jr. FLL" %>
+    </div>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn-primary" %>
+  </div>
+<% end %>

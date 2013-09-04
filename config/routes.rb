@@ -5,6 +5,7 @@ Vafirst::Application.routes.draw do
     resource :profile, controller: "accounts/profiles", path: "personal", only: [:edit, :create, :update]
     resource :background, controller: "accounts/profiles", only: [:edit, :create, :update], as: "background_profile"
     resource :volunteer, controller: "accounts/profiles", only: [:show, :edit, :update], as: "volunteer_profile"
+    resource :experience, controller: "accounts/profiles", only: [:edit, :update], as: "experience_profile"
   end
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}

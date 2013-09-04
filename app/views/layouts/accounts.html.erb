@@ -18,6 +18,11 @@
             <li class="<%= active_profile_section?("background") %>">
               <%= link_to "Background Skills", edit_background_profile_path %>
             </li>
+            <li class="<%= active_profile_section?("experience") %>">
+              <%= link_to edit_experience_profile_path do %>
+                <strong><em>FIRST</em></strong> Experience
+              <% end %>
+            </li>
             <li class="<%= active_profile_section?("volunteer") %>">
               <%= link_to "Volunteer Preferences", edit_volunteer_profile_path %>
             </li>

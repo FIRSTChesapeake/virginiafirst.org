@@ -12,6 +12,10 @@ class Profile < ActiveRecord::Base
   attr_accessible :special_needs, :volunteer_experience
   attr_accessible :first_alumnus, :virginiafirst_alumnus
   attr_accessible :preferred_role_ids, :skill_ids
+  attr_accessible :student_or_parent, :is_mentor, :is_sponsor
+  attr_accessible :has_frc_experience, :frc_team_number
+  attr_accessible :has_ftc_experience, :ftc_team_number
+  attr_accessible :has_fll_experience, :has_jrfll_experience
 
   enum_attr :age, %w(13-18 19-24 25-34 35-44 45-54 55+)
   enum_attr :shirt_size, %w(small medium large xl 2xl 3xl)
@@ -33,6 +37,30 @@ class Profile < ActiveRecord::Base
   end
 
   before_validation :clean_up_phone_numbers
+
+  def student_or_parent
+    if is_student? then
+      "student"
+    elsif is_parent?
+      "parent"
+    else
+      nil
+    end
+  end
+
+  def student_or_parent=(which)
+    case which
+      when "student"
+        self.is_student = true
+        self.is_parent = false
+      when "parent"
+        self.is_parent = true
+        self.is_student = false
+      else
+        self.is_student = false
+        self.is_parent = false
+    end
+  end
 
   private
 

@@ -53,6 +53,8 @@ class Accounts::ProfilesController < ApplicationController
         :background_profile
       when "volunteer"
         :volunteer_profile
+      when "experience"
+        :experience_profile
       else
         :profile
     end
