@@ -5,13 +5,19 @@
 
   <%= f.input :involvement, label: "How are you involved with FIRST?" do %>
     <div>
-      <%= f.input_field :student_or_parent, as: :radio_buttons, collection: [['Student', 'student'], ['Parent', 'parent'], ['Neither', '']], item_wrapper_class: "inline" %>
+      <%= f.input_field :is_student, inline_label: "Student" %>
+    </div>
+    <div>
+      <%= f.input_field :is_parent, inline_label: "Parent" %>
     </div>
     <div>
       <%= f.input_field :is_mentor, inline_label: "Mentor/Coach" %>
     </div>
     <div>
       <%= f.input_field :is_sponsor, inline_label: "Sponsor" %>
+    </div>
+    <div>
+      <%= f.input_field :is_volunteer, inline_label: "Volunteer" %>
     </div>
   <% end %>
 
