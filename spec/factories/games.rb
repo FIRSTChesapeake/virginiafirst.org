@@ -8,7 +8,7 @@ FactoryGirl.define do
     season 2013
     starts_at "2013-01-07 08:00:00"
     ends_at "2014-04-29 16:00:00"
-    logo { fixture_file_upload Rails.root.join(*%w[spec fixtures images UltimateAscent.jpg]) }
+    #logo { fixture_file_upload Rails.root.join(*%w[spec fixtures images UltimateAscent.jpg]) }
     association :program, factory: :frc_program
   end
 
@@ -17,7 +17,7 @@ FactoryGirl.define do
     Season 2013
     starts_at "2012-09-07 08:00:00"
     ends_at "2013-04-29 16:00:00"
-    logo { fixture_file_upload Rails.root.join(*%w[spec fixtures images ring-it-up-web_600x560.png]) }
+    #logo { fixture_file_upload Rails.root.join(*%w[spec fixtures images ring-it-up-web_600x560.png]) }
     association :program, factory: :ftc_program
   end
 end
