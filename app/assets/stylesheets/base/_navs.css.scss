@@ -77,9 +77,7 @@
   .nav-tabs > .active > a,
   .nav-tabs > .active > a:hover,
   .nav-tabs > .active > a:focus {
-    color: $white;
-    background-color: $blueDeep;
-    border: 1px solid #ddd;
+    border-left: 7px solid $blueDeep;
   }
 }
 
@@ -87,9 +85,7 @@
   .nav-tabs > .active > a,
   .nav-tabs > .active > a:hover,
   .nav-tabs > .active > a:focus {
-    color: $white;
-    background-color: $yellowDeep;
-    border: 1px solid #ddd;
+    border-left: 7px solid $yellowDeep;
   }
 }
 
@@ -97,9 +93,7 @@
   .nav-tabs > .active > a,
   .nav-tabs > .active > a:hover,
   .nav-tabs > .active > a:focus {
-    color: $white;
-    background-color: $redDeep;
-    border: 1px solid #ddd;
+    border-left: 7px solid $redDeep;
   }
 }
 
@@ -107,8 +101,6 @@
   .nav-tabs > .active > a,
   .nav-tabs > .active > a:hover,
   .nav-tabs > .active > a:focus {
-    color: $white;
-    background-color: $teal;
-    border: 1px solid #ddd;
+    border-left: 7px solid $teal;
   }
 }

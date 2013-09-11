@@ -1,0 +1,22 @@
+<%= simple_form_for game, url: url, html: {class: "form-horizontal"} do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :name, autofocus: true %>
+  <%= f.input :season, input_html: {class: "input-mini"}%>
+  <fieldset>
+    <legend>Logo</legend>
+
+    <% if game.logo.blank? %>
+      <%= f.input :logo, as: :file, lable: false %>
+    <% else %>
+      <%= f.input :current_logo, label: "Current logo:" do %>
+        <%= image_tag game.logo %>
+      <% end %>
+      <%= f.input :logo, as: :file, label: "New logo:" %>
+    <% end %>
+  </fieldset>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

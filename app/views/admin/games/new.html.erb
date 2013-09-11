@@ -1,2 +1,3 @@
-<h1>Admin::Games#new</h1>
-<p>Find me in app/views/admin/games/new.html.erb</p>
+<h2>New Game</h2>
+
+<%= render "form", game: @game, url: admin_games_path(@program) %>

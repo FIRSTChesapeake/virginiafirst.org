@@ -1,2 +1,8 @@
-<h1>Admin::Games#show</h1>
-<p>Find me in app/views/admin/games/show.html.erb</p>
+<h3 class="center"><%= @game.season %></h3>
+<p>
+  <%= image_tag @game.logo %>
+</p>
+
+<h3>Events</h3>
+
+<%= render "admin/events/events_table", events: @game.events %>

@@ -1,2 +1,33 @@
-<h1>Admin::Games#index</h1>
-<p>Find me in app/views/admin/games/index.html.erb</p>
+<%= link_to "New Game", new_admin_game_path(@program), class: "btn pull-right" %>
+
+<h1>Games</h1>
+
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Season</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @games.each do |game| %>
+    <tr>
+      <td></td>
+      <td>
+        <%= link_to game.name, admin_game_path(@program, game) %>
+      </td>
+      <td><%= game.season %></td>
+      <td class="action">
+        <%= link_to edit_admin_game_path(@program, game), class: "btn btn-small btn-success" do %>
+          <i class="icon-pencil icon-white"></i> Edit
+        <% end %>
+      </td>
+      <td>
+        <%= link_to admin_game_path(@program, game), method: :delete, confirm: "Are you sure?", class: "btn btn-small btn-danger" do %>
+          <i class="icon-trash icon-white"></i> Delete
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  belongs_to :game
   belongs_to :program, class_name: "FirstProgram"
 
   attr_accessible :name, :participant_limit, :program_id

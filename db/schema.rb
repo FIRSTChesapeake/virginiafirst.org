@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905024514) do
+ActiveRecord::Schema.define(:version => 20130911174544) do
 
   create_table "auth_providers", :force => true do |t|
     t.integer  "user_id"
@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(:version => 20130905024514) do
     t.integer  "participant_limit"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "game_id"
   end
 
+  add_index "events", ["game_id"], :name => "index_events_on_game_id"
   add_index "events", ["program_id"], :name => "index_events_on_program_id"
 
   create_table "first_programs", :force => true do |t|

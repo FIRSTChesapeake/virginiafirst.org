@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Game do
   it { expect(subject).to belong_to :program }
+  it { expect(subject).to have_many :events }
 
   it { should validate_presence_of :name }
   it { should validate_presence_of :program }

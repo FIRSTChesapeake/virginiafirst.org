@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Event do
+  it { expect(subject).to belong_to :game }
   it { expect(subject).to belong_to :program }
 
   it { expect(subject).to validate_presence_of :name }

@@ -1,5 +1,6 @@
 class Game < ActiveRecord::Base
   belongs_to :program, class_name: "FirstProgram"
+  has_many :events
 
   attr_accessible :ends_at, :logo, :name, :program_id, :season, :starts_at
 
