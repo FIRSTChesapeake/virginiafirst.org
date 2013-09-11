@@ -3,6 +3,8 @@ class Game < ActiveRecord::Base
 
   attr_accessible :ends_at, :logo, :name, :program_id, :season, :starts_at
 
+  mount_uploader :logo, LogoUploader
+
   validates_presence_of :name
   validates_presence_of :program
   validates_presence_of :season
