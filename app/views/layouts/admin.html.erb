@@ -9,7 +9,7 @@
           <span class="section-header">Administration</span>
           <ul class="nav nav-tabs nav-stacked">
             <li class="<%= active_class?("games") %>">
-              <%= link_to "Games", "#" %>
+              <%= link_to "Games", admin_games_path(@program) %>
             </li>
             <li class="<%= active_class?("events") %>">
               <%= link_to "Events", admin_events_path(@program) %>

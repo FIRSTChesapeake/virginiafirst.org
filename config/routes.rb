@@ -15,6 +15,7 @@ Vafirst::Application.routes.draw do
   scope module: 'admin', path: 'admin', as: 'admin' do
     scope path: '(/:program)' do
       resources :events
+      resources :games
     end
 
     resources :roles
