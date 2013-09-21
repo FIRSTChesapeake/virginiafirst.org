@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130911174544) do
+ActiveRecord::Schema.define(:version => 20130918210649) do
 
   create_table "auth_providers", :force => true do |t|
     t.integer  "user_id"
@@ -191,5 +191,17 @@ ActiveRecord::Schema.define(:version => 20130911174544) do
   end
 
   add_index "volunteer_profiles", ["user_id"], :name => "index_volunteer_profiles_on_user_id"
+
+  create_table "volunteer_registrations", :force => true do |t|
+    t.integer  "profile_id"
+    t.integer  "event_id"
+    t.boolean  "will_setup"
+    t.boolean  "will_teardown"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "volunteer_registrations", ["event_id"], :name => "index_volunteer_registrations_on_event_id"
+  add_index "volunteer_registrations", ["profile_id"], :name => "index_volunteer_registrations_on_profile_id"
 
 end

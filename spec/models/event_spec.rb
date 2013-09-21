@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Event do
   it { expect(subject).to belong_to :game }
   it { expect(subject).to belong_to :program }
+  it { expect(subject).to have_many :volunteer_registrations }
+  it { expect(subject).to have_many :volunteer_profiles }
 
   it { expect(subject).to validate_presence_of :name }
   it { expect(subject).to validate_presence_of :program }

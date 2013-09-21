@@ -1,6 +1,8 @@
 class Event < ActiveRecord::Base
   belongs_to :game
   belongs_to :program, class_name: "FirstProgram"
+  has_many :volunteer_registrations, class_name: Volunteer::Registration
+  has_many :volunteer_profiles, through: :volunteer_registrations
 
   attr_accessible :name, :participant_limit, :program_id
   attr_accessible :setup_at, :starts_at, :teardown_at

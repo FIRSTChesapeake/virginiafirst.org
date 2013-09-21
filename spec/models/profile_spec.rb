@@ -3,9 +3,11 @@ require 'spec_helper'
 describe Profile do
   let(:profile) { build :profile }
 
-  it { should belong_to :user }
-  it { should have_and_belong_to_many :skills }
-  it { should have_and_belong_to_many :preferred_roles }
+  it { expect(subject).to belong_to :user }
+  it { expect(subject).to have_and_belong_to_many :skills }
+  it { expect(subject).to have_and_belong_to_many :preferred_roles }
+  it { expect(subject).to have_many :volunteer_events }
+  it { expect(subject).to have_many :volunteer_registrations }
 
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }

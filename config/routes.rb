@@ -1,4 +1,8 @@
 Vafirst::Application.routes.draw do
+  get "registrations/new"
+
+  get "registrations/profile"
+
   resource :account, controller: "accounts", only: [:show, :edit, :update, :destroy], path_names: {edit: "settings"}
 
   scope path: 'account' do
