@@ -1,0 +1,37 @@
+<h1>Volunteer Registration</h1>
+
+<%= simple_form_for @profile,
+                    url: registration_path,
+                    method: :put,
+                    html: { class: "form-horizontal", id: "volunteer_registration_form" } do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset>
+    <legend>Upcoming Events</legend>
+
+    <% @programs.each do |program| %>
+      <%= f.input program.name, label: image_tag(program.flag.thumb.url), wrapper_class: "#{program.code}" do %>
+        <%= hidden_field_tag "profile[volunteer_event_ids][]", nil %>
+        <% program.upcoming_events.each do |event| %>
+          <div class="event">
+            <%= label_tag dom_id(event), class: "checkbox inline title" do %>
+              <%= check_box_tag "profile[volunteer_event_ids][]",
+                                event.id,
+                                @profile.volunteer_event_ids.include?(event.id),
+                                id: dom_id(event) %>
+              <%= event.name %>
+            <% end %>
+            <span class="date pull-right">
+              <%= l event.starts_at, format: :date %>
+            </span>
+            <%= print_address(event) %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Save Volunteer Registration" %>
+    </div>
+  </fieldset>
+<% end %>

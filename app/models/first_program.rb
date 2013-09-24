@@ -18,4 +18,14 @@ class FirstProgram < ActiveRecord::Base
   def to_s
     name
   end
+
+  def upcoming_events
+    events.where("starts_at >= ?", Time.now)
+  end
+
+  def self.with_upcoming_events
+    includes(:events).
+        where("events.id is not null and starts_at >= ?", Time.now).
+        order("events.starts_at ASC")
+  end
 end

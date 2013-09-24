@@ -1,0 +1,47 @@
+// Place all the styles related to the volunteer::registrations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap/mixins";
+@import "base/variables";
+
+.registrations {
+  .event {
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    margin: 0 0 10px;
+
+    @include border-radius(5px);
+
+    .title {
+      font-size: 18px;
+    }
+
+    .date {
+      font-size: 16px;
+      padding-top: 5px;
+    }
+
+    address {
+      margin-bottom: 5px;
+    }
+  }
+
+  .frc {
+    background-color: transparent;
+
+    .event.selected {
+      border: 1px solid $blueDeep;
+      background-color: $blueLight;
+    }
+  }
+
+  .ftc {
+    background-color: transparent;
+
+    .event.selected {
+      border: 1px solid $yellowDeep;
+      background-color: $yellowLight;
+    }
+  }
+}

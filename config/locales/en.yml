@@ -6,6 +6,8 @@ en:
 
   time:
     formats:
+      default: '%a %b %-d, %y @ %I:%M %p'
+      date: '%A %b %-d, %Y'
       time12hr: '%I:%M %p'
 
   datepicker:

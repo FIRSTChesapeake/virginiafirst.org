@@ -46,6 +46,7 @@ gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'rmagick'
 
 # To use debugger
 # gem 'debugger'

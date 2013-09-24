@@ -3,7 +3,7 @@ class Profile < ActiveRecord::Base
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :preferred_roles, class_name: "Role"
   has_many :volunteer_registrations, class_name: Volunteer::Registration
-  has_many :volunteer_events, through: :volunteer_registrations
+  has_many :volunteer_events, through: :volunteer_registrations, source: :event
 
   attr_accessible :first_name, :last_name, :email, :age, :shirt_size
   attr_accessible :city, :state, :street, :zip
@@ -19,6 +19,7 @@ class Profile < ActiveRecord::Base
   attr_accessible :has_frc_experience, :frc_team_number
   attr_accessible :has_ftc_experience, :ftc_team_number
   attr_accessible :has_fll_experience, :has_jrfll_experience
+  attr_accessible :volunteer_event_ids
 
   enum_attr :age, %w(13-18 19-24 25-34 35-44 45-54 55+)
   enum_attr :primary_phone_type, %w(home mobile work other)

@@ -1,7 +1,17 @@
 Vafirst::Application.routes.draw do
-  get "registrations/new"
 
-  get "registrations/profile"
+  scope module: 'volunteer' do
+    scope path: '(/:program)' do
+      resource :registrations, path: 'register', as: 'registration', only: [:show, :update] do
+        member do
+          get :confirm
+          get :profile
+        end
+      end
+    end
+  end
+  get '/:program/register/new', to: redirect('/%{program}/register')
+  get '/register/new', to: redirect('/register')
 
   resource :account, controller: "accounts", only: [:show, :edit, :update, :destroy], path_names: {edit: "settings"}
 

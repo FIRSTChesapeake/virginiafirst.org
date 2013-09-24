@@ -27,6 +27,9 @@ $redDeep:               #c41425 !default;
 $teal:                  #239e98 !default;
 $yellowDeep:            #e6b222 !default;
 
+$blueLight:             lighten($blueDeep, 75%);
+$yellowLight:           lighten($yellowDeep, 40%);
+
 // FIRST Complementary colors
 // -------------------------
 $blueGray:              #bfccda !default;

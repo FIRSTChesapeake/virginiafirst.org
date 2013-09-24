@@ -186,6 +186,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rmagick (2.13.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -271,6 +272,7 @@ DEPENDENCIES
   rb-fchange
   rb-fsevent
   rb-inotify (~> 0.8.8)
+  rmagick
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers
