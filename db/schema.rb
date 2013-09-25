@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130918210649) do
+ActiveRecord::Schema.define(:version => 20130925012700) do
 
   create_table "auth_providers", :force => true do |t|
     t.integer  "user_id"
@@ -172,25 +172,6 @@ ActiveRecord::Schema.define(:version => 20130918210649) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "volunteer_profiles", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "age"
-    t.string   "occupation"
-    t.string   "organization"
-    t.string   "technical_skill"
-    t.string   "administrative_skill"
-    t.string   "interpersonal_skill"
-    t.string   "mechanical_skill"
-    t.text     "first_experience"
-    t.text     "volunteer_experience"
-    t.boolean  "confirmed_age"
-    t.string   "shirt_size"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-  end
-
-  add_index "volunteer_profiles", ["user_id"], :name => "index_volunteer_profiles_on_user_id"
 
   create_table "volunteer_registrations", :force => true do |t|
     t.integer  "profile_id"
