@@ -1,7 +1,7 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :skills
-  has_and_belongs_to_many :preferred_roles, class_name: "Role"
+  has_and_belongs_to_many :preferred_roles, class_name: Volunteer::Role
   has_many :volunteer_registrations, class_name: Volunteer::Registration
   has_many :volunteer_events, through: :volunteer_registrations, source: :event
 

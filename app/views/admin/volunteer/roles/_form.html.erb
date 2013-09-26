@@ -3,7 +3,7 @@
 
   <%= f.input :title, required: true, autofocus: true %>
   <%= f.input :key_position, label: false, inline_label: "Key Position?" %>
-  <%= f.association :reports_to, collection: Role.key_positions.order(:title), input_html: {class: "input-medium"} %>
+  <%= f.association :reports_to, collection: Volunteer::Role.key_positions.order(:title), input_html: {class: "input-medium"} %>
   <%= f.input :description, input_html: { rows: 3, class: "span5" } %>
 
   <%= f.input :default_checkin_at, as: :time_picker, placeholder: "HH:mm PP", input_html: { class: "input-small" } %>

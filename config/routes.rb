@@ -32,8 +32,11 @@ Vafirst::Application.routes.draw do
       resources :games
     end
 
-    resources :roles
     resources :skills
+
+    scope module: 'volunteer', path: 'volunteer', as: 'volunteer' do
+      resources :roles
+    end
   end
 
   # The priority is based upon order of creation:

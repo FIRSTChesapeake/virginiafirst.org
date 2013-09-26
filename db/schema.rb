@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130925012700) do
+ActiveRecord::Schema.define(:version => 20130925162942) do
 
   create_table "auth_providers", :force => true do |t|
     t.integer  "user_id"
@@ -129,21 +129,6 @@ ActiveRecord::Schema.define(:version => 20130925012700) do
 
   add_index "profiles_skills", ["profile_id", "skill_id"], :name => "index_profiles_skills_on_profile_id_and_skill_id"
 
-  create_table "roles", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.time     "default_checkin_at"
-    t.time     "default_starts_at"
-    t.time     "default_ends_at"
-    t.integer  "default_number_needed"
-    t.boolean  "key_position"
-    t.integer  "reports_to_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-  end
-
-  add_index "roles", ["reports_to_id"], :name => "index_roles_on_reports_to_id"
-
   create_table "skills", :force => true do |t|
     t.string   "name"
     t.boolean  "is_technical"
@@ -184,5 +169,20 @@ ActiveRecord::Schema.define(:version => 20130925012700) do
 
   add_index "volunteer_registrations", ["event_id"], :name => "index_volunteer_registrations_on_event_id"
   add_index "volunteer_registrations", ["profile_id"], :name => "index_volunteer_registrations_on_profile_id"
+
+  create_table "volunteer_roles", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.time     "default_checkin_at"
+    t.time     "default_starts_at"
+    t.time     "default_ends_at"
+    t.integer  "default_number_needed"
+    t.boolean  "key_position"
+    t.integer  "reports_to_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "volunteer_roles", ["reports_to_id"], :name => "index_roles_on_reports_to_id"
 
 end
