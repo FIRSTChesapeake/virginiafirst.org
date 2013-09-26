@@ -1,5 +1,7 @@
-class CreateRoles < ActiveRecord::Migration
+class CreateVolunteerRoles < ActiveRecord::Migration
   def change
+    # This will get renamed to volunteer_roles later in
+    # migration version 20130925162942
     create_table :roles do |t|
       t.string :title
       t.text :description

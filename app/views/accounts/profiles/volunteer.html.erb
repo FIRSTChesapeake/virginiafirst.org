@@ -14,7 +14,7 @@
 
   <%= f.association :preferred_roles,
                     as: :check_boxes,
-                    collection: Role.order(:title),
+                    collection: Volunteer::Role.order(:title),
                     label_method: lambda { |role| display_preferred_role(role) } %>
   <%= f.input :footnotes, label: false do %>
     <ul class="footnotes">
