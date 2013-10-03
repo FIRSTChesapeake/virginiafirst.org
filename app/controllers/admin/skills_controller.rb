@@ -1,5 +1,6 @@
-class Admin::SkillsController < AdminController
+class Admin::SkillsController < Admin::BaseController
   before_filter :authenticate_user!
+  authorize_resource
 
   def index
     @skills = Skill.order(:name)

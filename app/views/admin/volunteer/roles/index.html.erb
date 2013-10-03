@@ -22,16 +22,20 @@
       </td>
       <td class="optional"><%= role.reports_to %></td>
 
-      <td class="action">
-        <%= link_to [:edit, :admin, role], class: "btn btn-small btn-success" do %>
-          <i class="icon-pencil icon-white"></i> Edit
-        <% end %>
-      </td>
-      <td class="action">
-        <%= link_to [:admin, role], method: :delete, confirm: "Are you sure?", class: "btn btn-danger btn-small" do %>
-          <i class="icon-trash icon-white"></i> Delete
-        <% end %>
-      </td>
+      <% if can? :edit, role %>
+        <td class="action">
+          <%= link_to [:edit, :admin, role], class: "btn btn-small btn-success" do %>
+            <i class="icon-pencil icon-white"></i> Edit
+          <% end %>
+        </td>
+      <% end %>
+      <% if can? :delete, role %>
+        <td class="action">
+          <%= link_to [:admin, role], method: :delete, confirm: "Are you sure?", class: "btn btn-danger btn-small" do %>
+            <i class="icon-trash icon-white"></i> Delete
+          <% end %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

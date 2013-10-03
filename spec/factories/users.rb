@@ -7,5 +7,9 @@ FactoryGirl.define do
     sequence(:email) { |n| "jdoe#{n}@test.com" }
     password "p@ssw0rd"
     password_confirmation { password }
+
+    factory :admin do
+      roles { [Role[:admin]] }
+    end
   end
 end

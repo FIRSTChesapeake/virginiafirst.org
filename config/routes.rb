@@ -26,6 +26,7 @@ Vafirst::Application.routes.draw do
 
   get "home/index", as: "home"
 
+  get '/admin', to: redirect('/admin/events')
   scope module: 'admin', path: 'admin', as: 'admin' do
     scope path: '(/:program)' do
       resources :events

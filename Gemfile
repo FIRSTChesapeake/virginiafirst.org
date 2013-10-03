@@ -23,6 +23,8 @@ group :assets do
   gem 'bootstrap-sass'
 end
 
+gem 'cancan'
+
 gem 'jquery-rails'
 
 gem 'carrierwave'

@@ -1,5 +1,7 @@
-class Admin::EventsController < AdminController
+class Admin::EventsController < Admin::BaseController
+  before_filter :authenticate_user!
   before_filter :load_event, only: [:edit, :update, :show, :destroy]
+  authorize_resource
 
   def index
     if @program.present?

@@ -24,7 +24,7 @@ describe Admin::Volunteer::RolesController do
   end
 
   context "signed in" do
-    let(:user) { create :user }
+    let(:user) { create :admin }
     before(:each) { sign_in user }
 
     describe "GET 'index'" do
@@ -100,12 +100,12 @@ describe Admin::Volunteer::RolesController do
 
     describe "PUT 'update'" do
       context "with valid parameters" do
-        let(:valid_attributes) { { title: "New Role Title" } }
+        let(:valid_attributes) { { title: :new_role } }
         before(:each) { put :update, { id: role.to_param, volunteer_role: valid_attributes } }
 
         it { expect(response).to redirect_to admin_volunteer_roles_path }
         it { expect(assigns(:role)).to eq role }
-        it { expect(assigns(:role).title).to eq "New Role Title" }
+        it { expect(assigns(:role).title).to eq "new_role" }
         it { expect(assigns(:role).changed?).to be_false }
       end
 

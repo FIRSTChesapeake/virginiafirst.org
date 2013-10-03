@@ -8,18 +8,26 @@
         <li class="section">
           <span class="section-header">Administration</span>
           <ul class="nav nav-tabs nav-stacked">
-            <li class="<%= active_class?("games") %>">
-              <%= link_to "Games", admin_games_path(@program) %>
-            </li>
-            <li class="<%= active_class?("events") %>">
-              <%= link_to "Events", admin_events_path(@program) %>
-            </li>
-            <li class="<%= active_class?("roles") %>">
-              <%= link_to "Roles", admin_volunteer_roles_path %>
-            </li>
-            <li class="<%= active_class?("skills") %>">
-              <%= link_to "Background Skills", admin_skills_path %>
-            </li>
+            <% if can? :read, Game %>
+              <li class="<%= active_class?("games") %>">
+                <%= link_to "Games", admin_games_path(@program) %>
+              </li>
+            <% end %>
+            <% if can? :read, Event %>
+              <li class="<%= active_class?("events") %>">
+                <%= link_to "Events", admin_events_path(@program) %>
+              </li>
+            <% end %>
+            <% if can? :read, Role %>
+              <li class="<%= active_class?("roles") %>">
+                <%= link_to "Roles", admin_volunteer_roles_path %>
+              </li>
+            <% end %>
+            <% if can? :read, Skill %>
+              <li class="<%= active_class?("skills") %>">
+                <%= link_to "Background Skills", admin_skills_path %>
+              </li>
+            <% end %>
           </ul>
         </li>
       </ul>

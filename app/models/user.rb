@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :providers, class_name: "AuthProvider"
   has_one :profile
+  has_many :assignments
+  has_many :roles, through: :assignments
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name
@@ -41,8 +43,21 @@ class User < ActiveRecord::Base
     end
   end
 
+  def add_role(title)
+    if title.is_a? ::Role
+      Assignment.create! user: self, role: title
+    else
+      roles << ::Role[title] unless has_role?(title)
+    end
+  end
+
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def has_role?(title)
+    title = Role.format_title(title)
+    !!roles.where(title: title).first
   end
 
   def password_required?

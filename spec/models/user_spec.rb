@@ -5,6 +5,7 @@ describe User do
 
   it { should have_many :providers }
   it { should have_one :profile }
+  it { expect(subject).to have_many :roles }
 
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }
@@ -50,4 +51,11 @@ describe User do
   end
 
   it { expect(user.to_s).to eq(":#{user.first_name} #{user.last_name} <#{user.email}>") }
+
+  it "has an admin role" do
+    role = create :admin_role
+    user = create :user
+    user.add_role(role)
+    expect(user.has_role?(:admin)).to be_true
+  end
 end

@@ -17,16 +17,20 @@
       <td class="optional"><%= yes_no skill.is_administrative? %></td>
       <td class="optional"><%= yes_no skill.is_mechanical? %></td>
       <td class="optional"><%= yes_no skill.is_technical? %></td>
-      <td class="action">
-        <%= link_to [:edit, :admin, skill], class: "btn btn-success btn-small" do %>
-          <i class="icon-pencil icon-white"></i> Edit
-        <% end %>
-      </td>
-      <td class="action">
-        <%= link_to [:admin, skill], method: :delete, confirm: "Are you sure?", class: "btn btn-danger btn-small" do %>
-          <i class="icon-trash icon-white"></i> Delete
-        <% end %>
-      </td>
+      <% if can? :edit, skill %>
+        <td class="action">
+          <%= link_to [:edit, :admin, skill], class: "btn btn-success btn-small" do %>
+            <i class="icon-pencil icon-white"></i> Edit
+          <% end %>
+        </td>
+      <% end %>
+      <% if can? :delete, skill %>
+        <td class="action">
+          <%= link_to [:admin, skill], method: :delete, confirm: "Are you sure?", class: "btn btn-danger btn-small" do %>
+            <i class="icon-trash icon-white"></i> Delete
+          <% end %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

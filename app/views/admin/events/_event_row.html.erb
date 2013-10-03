@@ -2,15 +2,19 @@
   <td><%= link_to event.name, admin_event_path(@program, event) %></td>
   <td><%= event.starts_at %></td>
   <td>
-    <%= link_to edit_admin_event_path(@program, event),
-                class: "btn btn-small btn-primary" do %>
-      <i class="icon-pencil icon-white"></i> Edit
+    <% if can? :edit, event %>
+      <%= link_to edit_admin_event_path(@program, event),
+                  class: "btn btn-small btn-primary" do %>
+        <i class="icon-pencil icon-white"></i> Edit
+      <% end %>
     <% end %>
-    <%= link_to admin_event_path(@program, event),
-                method: :delete,
-                confirm: "Are you sure?",
-                class: "btn btn-small btn-danger" do %>
-      <i class="icon-trash icon-white"></i> Delete
+    <% if can? :delete, event %>
+      <%= link_to admin_event_path(@program, event),
+                  method: :delete,
+                  confirm: "Are you sure?",
+                  class: "btn btn-small btn-danger" do %>
+        <i class="icon-trash icon-white"></i> Delete
+      <% end %>
     <% end %>
   </td>
 </tr>

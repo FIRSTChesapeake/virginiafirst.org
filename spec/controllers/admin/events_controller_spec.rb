@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe Admin::EventsController do
   let!(:event) { create :event }
+  let(:user) { create :admin }
+
+  before(:each) { sign_in user }
 
   describe "GET 'index'" do
     before(:each) do

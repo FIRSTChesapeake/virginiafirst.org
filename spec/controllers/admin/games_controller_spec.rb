@@ -23,7 +23,7 @@ describe Admin::GamesController do
   end
 
   context "signed in" do
-    let(:user) { create :user }
+    let(:user) { create :admin }
     let!(:game) { create :game }
     before(:each) { sign_in user }
 

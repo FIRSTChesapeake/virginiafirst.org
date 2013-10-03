@@ -1,21 +1,18 @@
-class Admin::GamesController < AdminController
+class Admin::GamesController < Admin::BaseController
   before_filter :authenticate_user!
   before_filter :load_game, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
-    @games = Game.all
   end
 
   def show
   end
 
   def new
-    @game = Game.new
   end
 
   def create
-    @game = Game.new params[:game]
-
     if params[:program].present?
       @program = FirstProgram.find_by_code params[:program]
       @game.program = @program

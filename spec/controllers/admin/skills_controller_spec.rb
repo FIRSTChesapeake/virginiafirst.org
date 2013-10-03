@@ -23,7 +23,7 @@ describe Admin::SkillsController do
   end
 
   context "signed in" do
-    let(:user) { create :user }
+    let(:user) { create :admin }
     let!(:skill) { create :skill }
     before(:each) { sign_in user }
 
