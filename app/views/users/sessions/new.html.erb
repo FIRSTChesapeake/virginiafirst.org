@@ -1,17 +1,50 @@
+
+
 <h2>Sign in</h2>
 
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+<div class="row">
+  <div class="span7">
+    <p>
+      If you already have an account with Google, you can sign in using the
+      button to the right. Otherwise, if you created an account with us, enter
+      your email and password to continue.
+    </p>
+    <p>
+      Don't have a Google account or never registered with our site before? You
+      can <%= link_to "sign up", new_registration_path(resource_name) %> for a
+      new account to get started.
+    </p>
+    <p>
+      <h4>Why create an account?</h4>
+      Creating a <%= virginia_first %> account lets you keep track of your
+      volunteer preferences and commitments. It's easier than ever to update your
+      information or volunteer to more events without having to resubmit the same
+      forms over again.
+    </p>
   </div>
+  <div class="offset1 span4">
+    <div class="well">
+      <%= link_to "/users/auth/open_id?openid_url=https://www.google.com/accounts/o8/id" do %>
+        <%= image_tag "Red-signin_Long_base_44dp.png",
+                      mouseover: "Red-signin_Long_hover_44dp.png",
+                      alt: "Sign in with Google" %>
+      <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
+      <h4 class="center">Or</h4>
+      <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, :required => false, :autofocus => true %>
+          <%= f.input :password, :required => false %>
+          <%= f.input :remember_me, :as => :boolean, label: false, inline_label: true if devise_mapping.rememberable? %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Sign in" %>
+        </div>
+      <% end %>
+
+      <%= render "users/shared/links" %>
+
+    </div>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
-
-<%= link_to "Sign in with google", "/users/auth/open_id?openid_url=https://www.google.com/accounts/o8/id" %>
+</div>
