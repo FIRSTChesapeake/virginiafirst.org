@@ -1,5 +1,5 @@
 @media (min-width: 768px) and (max-width: 979px) {
-  #wrapper {
+  #wrapper, #footer {
     @include grid-core-span($gridColumns, $gridColumnWidth768, $gridGutterWidth768);
   }
 

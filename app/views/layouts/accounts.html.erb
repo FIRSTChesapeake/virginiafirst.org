@@ -1,9 +1,6 @@
 <% content_for :content do %>
   <div class="row">
     <div class="span3">
-      <div class="menu-logo">
-        <%= image_tag "VirginiaFIRST_logo.png", alt: "VirginiaFIRST", width: "150px" %>
-      </div>
       <ul class="nav nav-list">
         <li class="<%= active_class?("accounts")%>">
           <%= link_to "Account Settings", edit_account_path %>
@@ -20,7 +17,7 @@
             </li>
             <li class="<%= active_profile_section?("experience") %>">
               <%= link_to edit_experience_profile_path do %>
-                <strong><em>FIRST</em></strong> Experience
+                <%= first %> Experience
               <% end %>
             </li>
             <li class="<%= active_profile_section?("volunteer") %>">

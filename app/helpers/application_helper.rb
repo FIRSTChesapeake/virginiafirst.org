@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def display_phone(number)
-    has_area_code = number.length > 7
+    has_area_code = number.present? ? number.length > 7 : false
     number_to_phone(number, area_code: has_area_code)
   end
 
@@ -63,6 +63,10 @@ module ApplicationHelper
         ['Wisconsin', 'WI'],
         ['Wyoming', 'WY']
     ]
+  end
+
+  def first
+    "<strong><em>FIRST</em></strong>".html_safe
   end
 
   def virginia_first

@@ -2,7 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  copyright: "Copyright © %{year} %{site_name}. All rights reserved."
 
   time:
     formats:

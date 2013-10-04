@@ -61,5 +61,8 @@ module Vafirst
 
     # Speed up asset compilation by not loading the whole rails environment
     config.assets.initialize_on_precompile = false
+
+    # Add the fonts path
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   end
 end

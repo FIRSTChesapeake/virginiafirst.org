@@ -6,8 +6,73 @@ body {
   height: 100%;
 }
 
+.copyright {
+  color: #888;
+  font-size: 85%;
+}
+
+#footer {
+  background-color: $white;
+  border-top: 1px solid #eee;
+  margin: 20px auto 0;
+  padding: 20px;
+  @include grid-core-span($gridColumns, $gridColumnWidth, $gridGutterWidth);
+
+  .tag {
+    margin-top: 40px;
+    text-align: center;
+
+    img {
+      height: 10px;
+    }
+  }
+
+  .usfirst-logo {
+    float: right;
+    width: 128px;
+  }
+
+  .vafirst-logo {
+    float: left;
+    width: 128px;
+  }
+}
+
+#footer-push {
+  height: 191px;
+}
+
 #header {
-  padding: 10px 0;
+  padding: 30px 0 15px;
+  position: relative;
+
+  .nav-top {
+    float: right;
+  }
+}
+
+.header-actions {
+  float: right;
+
+  .btn {
+    margin-left: 10px;
+  }
+}
+
+#logo {
+  float: left;
+  margin-left: 64px;
+}
+
+#logo_cogs {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 64px;
+}
+
+#logo_text {
+  width: 200px;
 }
 
 #wrapper {
@@ -16,6 +81,7 @@ body {
   height: 100%;
   min-height: 100%;
   margin: 0 auto;
+  margin-bottom: -191px;
   padding: 0 20px;
 
   @include grid-core-span($gridColumns, $gridColumnWidth, $gridGutterWidth);

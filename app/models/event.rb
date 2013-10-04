@@ -4,6 +4,8 @@ class Event < ActiveRecord::Base
   has_many :volunteer_registrations, class_name: Volunteer::Registration
   has_many :volunteer_profiles, through: :volunteer_registrations
 
+  scope :upcoming, -> { where("starts_at > ?", Date.today).order("starts_at ASC") }
+
   attr_accessible :name, :participant_limit, :program_id
   attr_accessible :setup_at, :starts_at, :teardown_at
   attr_accessible :city, :state, :street, :venue, :zip
@@ -15,6 +17,7 @@ class Event < ActiveRecord::Base
   def to_s
     name
   end
+
 
   private
 

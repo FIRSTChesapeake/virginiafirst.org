@@ -13,15 +13,28 @@
 <div class="container">
 
 <div id="header">
-  <%= image_tag "VirginiaFIRST_cogs.png", alt: "VirginiaFIRST", size: "64x64" %>
-  <%= image_tag "VirginiaFIRST_text.png", alt: "VirginiaFIRST", width: "200" %>
-  <% if current_user.nil? %>
-    <%= link_to "Sign in", new_user_session_path, class: "btn btn-success pull-right" %>
-  <% else %>
-    Hi <%= current_user.first_name.capitalize %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% unless current_user %>
+    <div class="header-actions">
+      <%= link_to "Sign up", new_registration_path(User), class: "btn btn-success" %>
+      <%= link_to "Sign in", new_user_session_path, class: "btn" %>
+    </div>
   <% end %>
+  <div id="logo">
+    <%= image_tag "VirginiaFIRST_cogs.png", alt: "VirginiaFIRST", id: "logo_cogs" %>
+    <%= image_tag "VirginiaFIRST_text.png", alt: "VirginiaFIRST", id: "logo_text" %>
+  </div>
+  <ul class="nav nav-top">
+    <li> <%= link_to "Events", "#" %> </li>
+    <li> <%= link_to "Mentor", "#" %> </li>
+    <li> <%= link_to "FAQ", "#" %> </li>
+    <% if current_user %>
+      <li> <%= link_to "My Account", account_path %> </li>
+      <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> </li>
+    <% end %>
+  </ul>
+  <div class="clearfix"></div>
 </div>
+
 
 <% if notice %>
   <p class="alert alert-success">
@@ -40,6 +53,24 @@
 <%= content_for?(:content) ? yield(:content) : yield %>
 
 </div>
+  <div id="footer-push"></div>
+</div>
+<div id="footer">
+  <%= link_to "http://www.virginiafirst.org" do %>
+    <%= image_tag "VirginiaFIRST_logo.png", alt: "VirginiaFIRST", class: "vafirst-logo" %>
+  <% end %>
+
+  <%= link_to "http://www.usfirst.org" do %>
+    <%= image_tag "FIRSTvert_RGB.jpg", alt: "FIRST", class: "usfirst-logo" %>
+  <% end %>
+
+  <div class="tag">
+    <p class="copyright">
+      <%= t('copyright', year: Time.now.year, site_name: virginia_first).html_safe %>
+    </p>
+    <%= image_tag "TAG_RGB.jpg", alt: "For Inspiration and Recognition of Science and Technology" %>
+  </div>
+  <div class="clearfix"></div>
 </div>
 </body>
 </html>
