@@ -1,2 +1,8 @@
-<h1>Volunteer::Registrations#profile</h1>
-<p>Find me in app/views/volunteer/registrations/profile.html.erb</p>
+<h1>Complete your Profile</h1>
+
+<p>
+  In order to volunteer at an event, we need some basic information about you. This helps us better communicate with you
+  leading up to the event.
+</p>
+
+<%= render "accounts/profiles/personal_form", profile: @profile, url: registration_path(@program) %>

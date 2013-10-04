@@ -2,7 +2,7 @@ Vafirst::Application.routes.draw do
 
   scope module: 'volunteer' do
     scope path: '(/:program)' do
-      resource :registrations, path: 'register', as: 'registration', only: [:show, :update] do
+      resource :registrations, path: 'register', as: 'registration', only: [:create, :show, :update] do
         member do
           get :confirm
           get :profile

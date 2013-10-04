@@ -9,6 +9,10 @@ class Volunteer::RegistrationsController < ApplicationController
     else
       @programs = FirstProgram.with_upcoming_events
     end
+
+    unless @profile
+      redirect_to profile_registration_path(@program), alert: "Your profile is missing"
+    end
   end
 
   def update
@@ -24,6 +28,20 @@ class Volunteer::RegistrationsController < ApplicationController
   end
 
   def profile
+    @profile = Profile.new
+  end
+
+  def create
+    @profile = Profile.new params[:profile]
+    @profile.user = current_user
+
+    respond_to do |format|
+      if @profile.save
+        format.html { redirect_to registration_path(@program), notice: "Personal profile successfully created." }
+      else
+        format.html { render :profile }
+      end
+    end
   end
 
   def confirm
