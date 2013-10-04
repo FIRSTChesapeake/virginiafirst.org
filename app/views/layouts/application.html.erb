@@ -12,9 +12,11 @@
 
 <div class="container">
 
-<div>
+<div id="header">
+  <%= image_tag "VirginiaFIRST_cogs.png", alt: "VirginiaFIRST", size: "64x64" %>
+  <%= image_tag "VirginiaFIRST_text.png", alt: "VirginiaFIRST", width: "200" %>
   <% if current_user.nil? %>
-    <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
+    <%= link_to "Sign in", new_user_session_path, class: "btn btn-success pull-right" %>
   <% else %>
     Hi <%= current_user.first_name.capitalize %>
     <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
