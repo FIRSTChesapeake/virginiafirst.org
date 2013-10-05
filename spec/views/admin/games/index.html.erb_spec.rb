@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe 'admin/games/index.html.erb' do
-  before(:each) do
-    @ability = Object.new
-    @ability.extend(CanCan::Ability)
-    controller.stub(:current_ability) { @ability }
+  extend_abilities
 
+  before(:each) do
     assign(:games, [
         stub_model(Game, :name => "Stack Attack"),
         stub_model(Game, :name => "Rebound Rumble")

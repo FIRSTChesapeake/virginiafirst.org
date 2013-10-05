@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe 'admin/volunteer/roles/index.html.erb' do
-  before(:each) do
-    @ability = Object.new
-    @ability.extend(CanCan::Ability)
-    controller.stub(:current_ability) { @ability }
+  extend_abilities
 
+  before(:each) do
     assign(:roles, [
         stub_model(Volunteer::Role, attributes_for(:volunteer_role, title: "FTA")),
         stub_model(Volunteer::Role, attributes_for(:volunteer_role, title: "Judge"))

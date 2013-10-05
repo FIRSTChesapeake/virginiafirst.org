@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe 'admin/skills/index.html.erb' do
-  before(:each) do
-    #@ability = Object.new
-    #@ability.extend(CanCan::Ability)
-    #controller.stub(:current_ability) { @ability }
+  extend_abilities
 
+  before(:each) do
     assign(:skills, [
         stub_model(Skill, :name => "CNC Operator"),
         stub_model(Skill, :name => "Accounting")

@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe 'admin/events/index.html.erb' do
-  before(:each) do
-    @ability = Object.new
-    @ability.extend(CanCan::Ability)
-    controller.stub(:current_ability) { @ability }
+  extend_abilities
 
+  before(:each) do
     assign(:events, [
         stub_model(Event, :name => "An Event"),
         stub_model(Event, :name => "Some Game")

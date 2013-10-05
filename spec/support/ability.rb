@@ -1,12 +1,14 @@
 
 module AbilityMacros
-  before(:each) do
-    @ability = Object.new
-    @ability.extend(CanCan::Ability)
-    controller.stub(:current_ability) { @ability }
+  def extend_abilities
+    before(:each) do
+      @ability = Object.new
+      @ability.extend(CanCan::Ability)
+      controller.stub(:current_ability) { @ability }
+    end
   end
 end
 
 RSpec.configure do |config|
-  config.include AbilityMacros, type: :view
+  config.extend AbilityMacros, type: :view
 end
