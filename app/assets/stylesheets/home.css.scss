@@ -2,13 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.home {
-  h2, h3 {
-    text-align: center;
-  }
+@import "base/variables";
 
+.home {
   .section {
     //margin: 20px 0;
     padding: 15px 0;
+  }
+
+  .fll-border {
+    border-right: 5px solid $redDeep;
+  }
+
+  .frc-border {
+    border-right: 5px solid $blueDeep;
+  }
+
+  .ftc-border {
+    border-right: 5px solid $yellowDeep;
+  }
+
+  .jrfll-border {
+    border-right: 5px solid $teal;
   }
 }

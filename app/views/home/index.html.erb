@@ -1,8 +1,8 @@
 <h1>Become a Volunteer!</h1>
-<p class="lead">There are numerous way for you to join the fun</p>
 
 <div class="row">
   <div class="span8">
+    <p class="lead">There are numerous way for you to join the fun</p>
     <p>
       <%= virginia_first %> relies on the help of volunteers to support all of our
       programs, assist at our events and competitions, and plan for our future. From
@@ -17,14 +17,19 @@
     </p>
   </div>
 
-  <div class="span4">
+  <div class="offset1 span3">
     <% event = @upcoming_events.first %>
 
     <% if event %>
-      <h3>Next event</h3>
-      <p>
-        <span class="event-title"><%= event.name %></span>
-      </p>
+      <h2>Next event</h2>
+      <div class="<%= event.program.code %>-border">
+        <h3><%= event.name %></h3>
+        <p>
+          <%= event.program.name %><br>
+          <%= l event.starts_at, format: :date %><br>
+          <%= display_location event %>
+        </p>
+      </div>
     <% else %>
       <p class="lead"> There are no upcoming events. Check back later. </p>
 
@@ -40,7 +45,7 @@
 
 <div class="row section">
   <div class="span4">
-    <h2>Support<br>an event</h2>
+    <h2 class="center">Support<br>an event</h2>
   </div>
   <div class="span8">
     <p>
@@ -73,7 +78,7 @@
     </p>
   </div>
   <div class="offset4">
-    <h2>Mentor<br>a team</h2>
+    <h2 class="center">Mentor<br>a team</h2>
   </div>
 </div>
 
