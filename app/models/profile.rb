@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
   has_many :volunteer_registrations, class_name: Volunteer::Registration
   has_many :volunteer_events, through: :volunteer_registrations, source: :event
 
-  attr_accessible :first_name, :last_name, :email, :age, :shirt_size
+  attr_accessible :first_name, :last_name, :age, :shirt_size
   attr_accessible :city, :state, :street, :zip
   attr_accessible :primary_phone_type, :primary_phone_number
   attr_accessible :alternate_phone_type, :alternate_phone_number
@@ -30,7 +30,6 @@ class Profile < ActiveRecord::Base
     label :xxxl => "3XL"
   end
 
-  validates_presence_of :email
   validate :requires_full_name
   validate :requires_address
   validate :requires_primary_phone

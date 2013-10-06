@@ -4,7 +4,6 @@ FactoryGirl.define do
   factory :profile do
     first_name "Calvin"
     last_name "Jones"
-    email "calvinjones@test.com"
     street "5739 Fairview Way"
     city "Raleigh"
     state "NC"
