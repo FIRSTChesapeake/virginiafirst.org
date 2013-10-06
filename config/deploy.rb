@@ -15,19 +15,19 @@ load "config/recipes/rails"
 server "198.199.87.210", :web, :app, :db, primary: true
 
 set :user, "deployer"
-set :application, "vafirst"
+set :application, "virginiafirst"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
-#set :shared_children, shared_children + %w{public/uploads}
+set :shared_children, shared_children + %w{public/uploads}
 
 set :rails_env, "production"
 
 set :scm, "git"
-set :repository, "ssh://git@bitbucket.org/cattywampus/vafirst.git"
+set :repository, "ssh://git@bitbucket.org/cattywampus/virginiafirst.git"
 set :branch, "master"
 
-set :host_name, "virginiafirst.cattywamp.us"
+set :host_name, "volunteer.virginiafirst.org"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true

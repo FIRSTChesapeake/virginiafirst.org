@@ -4,8 +4,16 @@ upstream unicorn_<%= application %> {
 
 server {
   listen 80;
+  listen 443 ssl;
   server_name <%= host_name %>;
   root <%= current_path %>/public;
+
+  ssl_certificate             /etc/nginx/ssl/volunteer.virginiafirst.org.crt;
+  ssl_certificate_key         /etc/nginx/ssl/volunteer.virginiafirst.org.key;
+  ssl_session_timeout         5m;
+  ssl_protocols               SSLv2 SSLv3 TLSv1;
+  ssl_ciphers                 HIGH:!aNULL:!MD5;
+  ssl_prefer_server_ciphers   on;
 
   location ^~ /assets/ {
     gzip_static on;
@@ -17,6 +25,7 @@ server {
   location @unicorn {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header Host $http_host;
+    proxy_set_header X-Forwarded-Proto $scheme;
     proxy_redirect off;
     proxy_pass http://unicorn_<%= application %>;
   }
