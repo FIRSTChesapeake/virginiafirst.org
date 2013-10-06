@@ -12,4 +12,5 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   alias_method :open_id, :all
+  alias_method :google_oauth2, :all
 end

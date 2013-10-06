@@ -35,6 +35,7 @@ gem 'enumerated_attribute', github: 'jeffp/enumerated_attribute'
 
 gem 'figaro'
 
+gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'
 
 # To use ActiveModel has_secure_password

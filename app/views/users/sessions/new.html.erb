@@ -25,7 +25,7 @@
   </div>
   <div class="offset1 span4">
     <div class="well">
-      <%= link_to "/users/auth/open_id?openid_url=https://www.google.com/accounts/o8/id" do %>
+      <%= link_to user_omniauth_authorize_path(:google_oauth2, origin: session[:return_to]) do %>
         <%= image_tag "Red-signin_Long_base_44dp.png",
                       mouseover: "Red-signin_Long_hover_44dp.png",
                       alt: "Sign in with Google" %>
