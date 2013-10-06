@@ -12,7 +12,7 @@ load "config/recipes/app"
 load "config/recipes/check"
 load "config/recipes/rails"
 
-server "198.199.87.210", :web, :app, :db, primary: true
+server "198.199.87.183", :web, :app, :db, primary: true
 
 set :user, "deployer"
 set :application, "virginiafirst"
