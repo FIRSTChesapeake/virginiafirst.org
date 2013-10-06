@@ -11,7 +11,7 @@ class Volunteer::RegistrationsController < ApplicationController
     end
 
     unless @profile
-      redirect_to profile_registration_path(@program), alert: "Your profile is missing"
+      redirect_to profile_volunteer_registration_path(@program), alert: "Your profile is missing"
     end
   end
 
@@ -20,7 +20,7 @@ class Volunteer::RegistrationsController < ApplicationController
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        format.html { redirect_to confirm_registration_path }
+        format.html { redirect_to confirm_volunteer_registration_path }
       else
         format.html { render :show }
       end
@@ -37,7 +37,7 @@ class Volunteer::RegistrationsController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to registration_path(@program), notice: "Personal profile successfully created." }
+        format.html { redirect_to volunteer_registration_path(@program), notice: "Personal profile successfully created." }
       else
         format.html { render :profile }
       end
