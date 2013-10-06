@@ -45,6 +45,8 @@ class Volunteer::RegistrationsController < ApplicationController
   end
 
   def confirm
+    @profile = current_user.profile
+    @events = @profile.volunteer_events
   end
 
   private

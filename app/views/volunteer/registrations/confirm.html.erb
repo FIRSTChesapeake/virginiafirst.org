@@ -1,1 +1,33 @@
-<h1>Volunteer Registration Complete!</h1>
+<h1>Volunteer Registration Successful!</h1>
+
+<p>
+  Thank you for signing up to volunteer to support <%= virginia_first %>. In a
+  few moments you'll receive an email confirming the
+  <%= pluralize @volunteer_events.count, 'event' %> you selected.
+</p>
+
+<p>
+  During the weeks leading up to the
+  <%= pluralize @volunteer_events.count, 'event' %> a volunteer coordinator
+  will contact you with the details about your assignment. To help the
+  coordinator ensure you get a task that you'll enjoy, please take a moment
+  to update your background skills and volunteer preferences.
+</p>
+
+<p>
+  <%= link_to "Background skills", edit_backgound_profile_path(@program) %><br>
+  <%= link_to "Volunteer preferences", edit_volunteer_profile_path(@program) %>
+</p>
+
+<p>
+  We understand that plans change. You can always come back and sign in to add
+  or remove events in your volunteer preferences.
+</p>
+
+<p>
+  Thank you again fo ryour support,<br>
+  <br>
+  Carol Edelman<br>
+  Director of Programs and Outreach<br>
+  <%= virginia_first %>
+</p>
