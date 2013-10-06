@@ -7,8 +7,6 @@ describe User do
   it { should have_one :profile }
   it { expect(subject).to have_many :roles }
 
-  it { should validate_presence_of :first_name }
-  it { should validate_presence_of :last_name }
   it { should validate_presence_of :email }
   it { should validate_uniqueness_of :email }
 
@@ -32,13 +30,11 @@ describe User do
     end
 
     it "creates a new user" do
-      attributes = attributes_for :user, first_name: "Walter", last_name: "White"
+      attributes = attributes_for :user
       OmniAuth.config.add_mock :test, { uid: generate_uid(:test), info: attributes }
       user = User.from_omniauth(OmniAuth.config.mock_auth[:test])
 
       expect(user).to be_an_instance_of(User)
-      expect(user.first_name).to eq("Walter")
-      expect(user.last_name).to eq("White")
     end
 
     it "builds a new user with invalid parameters" do
@@ -50,7 +46,7 @@ describe User do
     end
   end
 
-  it { expect(user.to_s).to eq(":#{user.first_name} #{user.last_name} <#{user.email}>") }
+  it { expect(user.to_s).to eq(":#{user.email}") }
 
   it "has an admin role" do
     role = create :admin_role

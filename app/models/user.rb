@@ -11,17 +11,11 @@ class User < ActiveRecord::Base
   has_many :roles, through: :assignments
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name
   attr_accessible :email, :password, :password_confirmation, :current_password
   attr_accessible :remember_me
 
-  validates_presence_of :first_name
-  validates_presence_of :last_name
-
   def self.create_from_omniauth(auth)
     create do |user|
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
       user.email = auth.info.email
       user.providers.build auth.slice(:provider, :uid)
     end
@@ -51,10 +45,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def full_name
-    "#{first_name} #{last_name}"
-  end
-
   def has_role?(title)
     title = Role.format_title(title)
     !!roles.where(title: title).first
@@ -65,7 +55,7 @@ class User < ActiveRecord::Base
   end
 
   def to_s
-    "#{id}:#{full_name} <#{email}>"
+    "#{id}:#{email}"
   end
 
   def update_with_password(params, *options)
