@@ -20,7 +20,7 @@ class FirstProgram < ActiveRecord::Base
   end
 
   def upcoming_events
-    events.where("starts_at >= ?", Time.now)
+    events.where("starts_at >= ?", Time.now).order("events.starts_at ASC")
   end
 
   def self.with_upcoming_events
