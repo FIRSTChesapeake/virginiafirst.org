@@ -2,6 +2,7 @@
   <% unless @program.nil? %>
     <%= f.input :program_id, as: :hidden, input_html: {value: @program.id} %>
   <% end %>
+  <%= f.association :program unless @program %>
   <%= f.input :name %>
   <%= f.input :starts_at, as: :datetime_picker, placeholder: "dd/mm/yyyy hh:mm pp", input_html: { class: "input-medium" } %>
   <%= f.input :venue %>
