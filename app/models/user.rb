@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, and :timeoutable
-  devise :database_authenticatable, :registerable, :omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable
+  # :token_authenticatable, :lockable, and :timeoutable
+  devise :confirmable, :database_authenticatable, :registerable,
+         :omniauthable, :recoverable, :rememberable, :trackable,
+         :validatable
 
   has_many :providers, class_name: "AuthProvider"
   has_one :profile
@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     else
       super
     end
+  end
+
+  def active_for_authentication?
+    true
   end
 
   def add_role(title)

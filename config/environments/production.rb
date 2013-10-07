@@ -51,6 +51,18 @@ Vafirst::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
+  # Set the action mailer host name for urls
+  config.action_mailer.default_url_options = {host: 'volunteer.virginiafirst.org'}
+
+  # Set the action mailer host name for assets
+  config.asset_host = 'https://volunteer.virginiafirst.org'
+
+  # Enable the action mailer
+  config.action_mailer.perform_deliveries = true
+
+  # Configure the action mailer for SMTP
+  config.action_mailer.delivery_method = :sendmail
+
   # Enable threaded mode
   # config.threadsafe!
 

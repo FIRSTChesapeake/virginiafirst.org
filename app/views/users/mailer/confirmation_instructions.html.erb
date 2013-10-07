@@ -1,5 +1,41 @@
-<p>Welcome <%= @email %>!</p>
+<p style="text-align: center;">
+  <%= image_tag "VirginiaFIRST_logo.png", style: "width: 100px;" %>
+</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Welcome!</p>
+
+<p>
+  Thank you for signing up at for an account with
+  <%= link_to 'http://virginiafirst.org' do %>
+    Virginia<span style="font-weight: bold; font-style: italic;">FIRST</span>.org
+  <% end %>. Your
+  Virginia<span style="font-weight: bold; font-style: italic;">FIRST</span>
+  account enables you to easily manage your volunteer preferences and events.
+</p>
+
+<p>
+  In order to make sure you can receive updates and announcements from
+  Virginia<span style="font-weight: bold; font-style: italic;">FIRST</span> we
+  need you to confirm your email address. You can confirm your account email
+  through the link below:
+</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+<p>
+  If you received this email in error, please notify me to have your email
+  remove from our system.
+</p>
+
+<p>
+  Thank you,<br>
+  <br>
+  Carol Edelman<br>
+  <%= mail_to 'cedelman@virginiafirst.org', 'Carol Edelman' %>
+  Director of Programs and Outreach
+  Virginia<span style="font-weight: bold; font-style: italic;">FIRST</span>
+</p>
+
+<p style="text-align: center">
+  <%= image_tag "TAG_RGB.jpg", style: "width: 450px;" %>
+</p>

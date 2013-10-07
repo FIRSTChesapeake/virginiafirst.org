@@ -14,10 +14,31 @@ Vafirst::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Set the action mailer host name for urls
-  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  config.action_mailer.default_url_options = {host: 'localhost:3000'}
+
+  # Set the action mailer host name for assets
+  config.asset_host = 'http://localhost:3000'
+
+  # Enable the action mailer
+  config.action_mailer.perform_deliveries = true
+
+  # Configure the action mailer for SMTP
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:                ENV['MAILER_SMTP_SERVER'],
+      port:                   ENV['MAILER_SMTP_PORT'].try(:to_i) || 587,
+      domain:                 ENV['MAILER_SMTP_DOMAIN'],
+      user_name:              ENV['MAILER_SMTP_USERNAME'],
+      password:               ENV['MAILER_SMTP_PASSWORD'],
+      authentication:         ENV['MAILER_SMTP_AUTHENTICATION'] || 'plain',
+      enable_starttls_auto:   true
+  }
+
+  # Intercept all outgoing action mailer deliveries
+  config.action_mailer.register_interceptor DevelopmentMailInterceptor
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

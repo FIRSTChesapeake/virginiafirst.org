@@ -2,3 +2,12 @@
 #
 # GOOGLE_CLIENT_ID: yourgoogleclientid
 # GOOGLE_CLIENT_SECRET: yourgooglesecret
+
+#development:
+#  MAILER_INTERCEPTOR: user@virginiafirst.org
+#  MAILER_SMTP_SERVER: smtp.gmail.com
+#  MAILER_SMTP_PORT: 587
+#  MAILER_SMTP_DOMAIN: virginiafirst.org
+#  MAILER_SMTP_USERNAME: user@virginiafirst.org
+#  MAILER_SMTP_PASSWORD: y0urP@ssw0rd
+
