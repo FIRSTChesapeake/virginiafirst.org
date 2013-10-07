@@ -1,0 +1,49 @@
+<p>Hi <%= @profile.first_name %>,</p>
+
+<p>
+  Thank you for signing to up to volunteer with
+  Virginia<span style="font-weight: bold; font-style: italic;">FIRST</span>.
+</p>
+
+<p>
+  You've selected to support the following
+  <%= "event".pluralize(@profile.volunteer_events.count) %>:
+</p>
+
+<% @profile.volunteer_events.each do |event| %>
+  <p>
+    <span style="font-weight: bold; font-size: 1.1em;">
+      <%= event.name %>
+    </span><br>
+    <%= print_address event %>
+  </p>
+<% end %>
+
+<p>
+  Don't forget to update your calendar! You'll be contacted by a volunteer
+  coordinator during the weeks leading up to an event who will provide you
+  with more information about your volunteer assignment, along with additional
+  logistic details and training materials if necessary.
+</p>
+
+<p>
+  We understand that plans change and if you can't attend an event you can
+  either let your volunteer coordinator know when they introduce themselves to
+  you. Or you can sign back into the
+  Virginia<span style="font-weight: bold; font-style: italic;">FIRST</span>
+  Volunteer website and update which events you want to attend from the
+  <%= link_to "My Account", account_url %> page.
+</p>
+
+<p>
+  Thank you for your support,<br>
+  <br>
+  <%= mail_to 'cedelman@virginiafirst.org', 'Carol Edelman' %><br>
+  Director of Programs and Outreach<br>
+  Virginia<span style="font-weight: bold; font-style: italic;">FIRST</span>
+</p>
+
+<p style="text-align: center">
+  <%= image_tag "VirginiaFIRST_logo.png", style: "width: 150px;" %>
+  <%= image_tag "TAG_RGB.jpg", style: "width: 450px;" %>
+</p>

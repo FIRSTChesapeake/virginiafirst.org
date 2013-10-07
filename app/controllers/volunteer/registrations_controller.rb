@@ -17,9 +17,10 @@ class Volunteer::RegistrationsController < ApplicationController
 
   def update
     @profile = current_user.profile
+    @service = VolunteerRegistrationService.new(@profile)
 
     respond_to do |format|
-      if @profile.update_attributes(params[:profile])
+      if @service.register_and_notify(params[:profile])
         format.html { redirect_to confirm_volunteer_registration_path }
       else
         if @program.present?

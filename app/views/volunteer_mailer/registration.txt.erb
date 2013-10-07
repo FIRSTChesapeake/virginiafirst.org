@@ -1,0 +1,31 @@
+Hi <%= @profile.first_name %>,
+
+Thank you for signing to up to volunteer with
+VirginiaFIRST. You've selected to support the following
+<%= "event".pluralize(@profile.volunteer_events.count) %>:
+
+<% @profile.volunteer_events.each do |event| %>
+  <%= event.name %>
+  <%= event.venue %>
+  <%= event.street %>
+  <%= "#{event.city}, #{event.state} #{event.zip}" %>
+
+<% end %>
+Don't forget to update your calendar! You'll be contacted by a volunteer
+coordinator during the weeks leading up to an event who will provide you
+with more information about your volunteer assignment, along with additional
+logistic details and training materials if necessary.
+
+We understand that plans change and if you can't attend an event you can
+either let your volunteer coordinator know when they introduce themselves to
+you. Or you can sign back into the VirginiaFIRST Volunteer website and update
+which events you want to attend from your account page.
+
+<%= account_url %>
+
+Thank you for your support,
+
+Carol Edelman
+cedelman@virginiafirst.org
+Director of Programs and Outreach
+VirginiaFIRST
