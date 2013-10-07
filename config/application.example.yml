@@ -5,9 +5,12 @@
 
 #development:
 #  MAILER_INTERCEPTOR: user@virginiafirst.org
+#  MAILER_DELIVERY_METOHD: smtp
 #  MAILER_SMTP_SERVER: smtp.gmail.com
 #  MAILER_SMTP_PORT: 587
 #  MAILER_SMTP_DOMAIN: virginiafirst.org
 #  MAILER_SMTP_USERNAME: user@virginiafirst.org
 #  MAILER_SMTP_PASSWORD: y0urP@ssw0rd
 
+#production:
+#  MAILER_DELIVERY_METHOD: sendmail

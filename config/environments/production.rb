@@ -60,9 +60,6 @@ Vafirst::Application.configure do
   # Enable the action mailer
   config.action_mailer.perform_deliveries = true
 
-  # Configure the action mailer for SMTP
-  config.action_mailer.delivery_method = :sendmail
-
   # Enable threaded mode
   # config.threadsafe!
 
