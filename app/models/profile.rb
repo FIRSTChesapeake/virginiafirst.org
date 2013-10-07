@@ -20,6 +20,11 @@ class Profile < ActiveRecord::Base
   attr_accessible :has_ftc_experience, :ftc_team_number
   attr_accessible :has_fll_experience, :has_jrfll_experience
   attr_accessible :volunteer_event_ids
+  attr_accessible :volunteer_registrations_attributes
+
+  accepts_nested_attributes_for :volunteer_registrations,
+                                allow_destroy: true,
+                                reject_if: proc { |attr| attr['event_id'].blank? }
 
   enum_attr :age, %w(13-18 19-24 25-34 35-44 45-54 55+)
   enum_attr :primary_phone_type, %w(home mobile work other)

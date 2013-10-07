@@ -9,9 +9,9 @@
   <fieldset>
     <legend>Upcoming Events</legend>
 
+    <% index = 0 %>
     <% @programs.each do |program| %>
       <%= f.input program.name, label: image_tag(program.flag.thumb.url), wrapper_class: "#{program.code}" do %>
-        <%= hidden_field_tag "profile[volunteer_event_ids][]", nil %>
         <% program.upcoming_events.each do |event| %>
           <div class="event">
             <div class="event-details pull-right">
@@ -21,16 +21,39 @@
               <br>
               <%= print_address(event) %>
             </div>
-            <%= label_tag dom_id(event), class: "checkbox inline title" do %>
-              <%= check_box_tag "profile[volunteer_event_ids][]",
+
+            <% registration = @profile.volunteer_registrations.find_by_event_id(event.id) || Volunteer::Registration.new %>
+            <%= hidden_field_tag("profile_volunteer_registrations_attributes_#{index}_id",
+                                 registration.id,
+                                 name: "profile[volunteer_registrations_attributes][#{index}][id]") if registration %>
+            <%= label_tag "profile_volunteer_registrations_attributes_#{index}_event_id",
+                          class: "checkbox inline title" do %>
+              <%= check_box_tag "profile[volunteer_registrations_attributes][#{index}][event_id]",
                                 event.id,
                                 @profile.volunteer_event_ids.include?(event.id),
-                                id: dom_id(event) %>
+                                class: "event-checkbox" %>
               <%= event.name %>
+            <% end %>
+            <br>
+            <%= label_tag "profile_volunteer_registrations_attributes_#{index}_will_setup",
+                          class: "checkbox inline" do %>
+              <%= check_box_tag "profile[volunteer_registrations_attributes][#{index}][will_setup]",
+                               "true",
+                               !!registration.try(:will_setup), class: "event-option" %>
+              Available to setup?
+            <% end %>
+            <br>
+            <%= label_tag "profile_volunteer_registrations_attributes_#{index}_will_teardown",
+                          class: "checkbox inline" do %>
+              <%= check_box_tag "profile[volunteer_registrations_attributes][#{index}][will_teardown]",
+                               "true",
+                               !!registration.try(:will_teardown), class: "event-option" %>
+              Available to teardown?
             <% end %>
             <div class="clearfix"></div>
           </div>
         <% end %>
+        <% index += 1 %>
       <% end %>
     <% end %>
 

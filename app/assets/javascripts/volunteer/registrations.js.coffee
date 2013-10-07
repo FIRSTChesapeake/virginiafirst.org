@@ -4,9 +4,20 @@
 
 $ ->
   if $("#volunteer_registration_form").length > 0
-    $("input[name='profile\[volunteer_event_ids\]\[\]']").each (index, value) ->
+    $("input.event-checkbox").each (index, value) ->
       isSelected = $(this).is(":checked")
-      $(this).closest(".event").addClass("selected") if isSelected
+      event = $(this).closest(".event")
+      event.addClass("selected") if isSelected
+      event.find(".event-option").attr('disabled', !isSelected)
+      event.find(".event-option").closest("label").addClass("disabled") if !isSelected
 
-    $("input[name='profile\[volunteer_event_ids\]\[\]']").change ->
-      $(this).closest(".event").toggleClass("selected")
+    $("input.event-checkbox").change ->
+      event = $(this).closest(".event")
+      event.toggleClass("selected")
+      if this.checked
+        event.find(".event-option").removeAttr('disabled')
+        event.find(".event-option").closest("label").removeClass("disabled")
+      else
+        event.find(".event-option").attr("disabled", true)
+        event.find(".event-option").closest("label").addClass("disabled")
+

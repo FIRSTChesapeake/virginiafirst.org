@@ -10,3 +10,8 @@
 .control-group.error .no-error {
   @include formFieldState;
 }
+
+label.disabled {
+  color: $grayLight;
+  cursor: default;
+}
