@@ -1,6 +1,7 @@
 <%= simple_form_for game, url: url, html: {class: "form-horizontal"} do |f| %>
   <%= f.error_notification %>
 
+  <%= f.association :program unless @program %>
   <%= f.input :name, autofocus: true %>
   <%= f.input :season, input_html: {class: "input-mini"}%>
   <fieldset>

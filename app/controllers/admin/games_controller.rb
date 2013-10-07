@@ -13,6 +13,8 @@ class Admin::GamesController < Admin::BaseController
   end
 
   def create
+    @game = Game.new params[:game]
+
     if params[:program].present?
       @program = FirstProgram.find_by_code params[:program]
       @game.program = @program
