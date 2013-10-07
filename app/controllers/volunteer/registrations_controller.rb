@@ -22,6 +22,11 @@ class Volunteer::RegistrationsController < ApplicationController
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to confirm_volunteer_registration_path }
       else
+        if @program.present?
+          @programs = [@program]
+        else
+          @programs = FirstProgram.with_upcoming_events
+        end
         format.html { render :show }
       end
     end

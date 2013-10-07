@@ -14,6 +14,13 @@
         <%= hidden_field_tag "profile[volunteer_event_ids][]", nil %>
         <% program.upcoming_events.each do |event| %>
           <div class="event">
+            <div class="event-details pull-right">
+              <span class="date">
+                <%= l(event.starts_at, format: :date).strip %>
+              </span>
+              <br>
+              <%= print_address(event) %>
+            </div>
             <%= label_tag dom_id(event), class: "checkbox inline title" do %>
               <%= check_box_tag "profile[volunteer_event_ids][]",
                                 event.id,
@@ -21,10 +28,7 @@
                                 id: dom_id(event) %>
               <%= event.name %>
             <% end %>
-            <span class="date pull-right">
-              <%= l event.starts_at, format: :date %>
-            </span>
-            <%= print_address(event) %>
+            <div class="clearfix"></div>
           </div>
         <% end %>
       <% end %>
