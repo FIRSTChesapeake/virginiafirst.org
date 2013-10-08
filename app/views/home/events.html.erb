@@ -19,11 +19,9 @@
                       class: "pull-left",
                       style: "margin-top: 10px" %>
         <div style="margin-left: 110px">
-          <h3>
-            <%= event.name %>
-            <small><%= l event.starts_at, format: :date %></small>
-          </h3>
+          <h3><%= event.name %></h3>
           <p>
+            <strong><%= l event.starts_at, format: :date %></strong><br>
             <%= print_address event %>
           </p>
         </div>
