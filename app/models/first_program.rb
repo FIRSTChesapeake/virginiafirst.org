@@ -28,4 +28,8 @@ class FirstProgram < ActiveRecord::Base
         where("events.id is not null and starts_at >= ?", Time.now).
         order("events.starts_at ASC")
   end
+
+  def self.[](code)
+    find_by_code code
+  end
 end

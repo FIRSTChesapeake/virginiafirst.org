@@ -24,9 +24,9 @@
     <%= image_tag "VirginiaFIRST_text.png", alt: "VirginiaFIRST", id: "logo_text" %>
   </div>
   <ul class="nav nav-top">
-    <li> <%= link_to "Events", "#" %> </li>
-    <li> <%= link_to "Mentor", "#" %> </li>
-    <li> <%= link_to "FAQ", "#" %> </li>
+    <li> <%= link_to "Volunteer", volunteer_home_path %> </li>
+    <li> <%= link_to "Mentor", mentor_home_path %> </li>
+    <li> <%= link_to "FAQ", faq_home_path %> </li>
     <% if current_user %>
       <li> <%= link_to "My Account", account_path %> </li>
       <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %> </li>

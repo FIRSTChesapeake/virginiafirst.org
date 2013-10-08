@@ -24,7 +24,10 @@ Vafirst::Application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
-  get "home/index", as: "home"
+  get 'home/events', as: 'upcoming_events'
+  get 'home/faq', as: 'faq_home'
+  get 'home/mentor', as: 'mentor_home'
+  get 'home/volunteer', as: 'volunteer_home'
 
   get '/admin', to: redirect('/admin/events')
   scope module: 'admin', path: 'admin', as: 'admin' do

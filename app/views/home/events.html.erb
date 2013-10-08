@@ -1,0 +1,38 @@
+<h1>Upcoming events</h1>
+<br>
+<p>
+  Here's the list of upcoming events open for volunteers.
+  If you're looking for the FRC Virginia Regional, you'll need to sign up
+  using <%= first %>'s
+  <%= link_to 'Volunteer Information & Matching System',
+              'https://my.usfirst.org/vims/' %>
+  in order to volunteer.
+</p>
+
+<div class="row">
+  <div class="span6">
+    <% @upcoming_events.each do |event| %>
+      <div>
+        <%= image_tag event.program.flag,
+                      alt: event.program.name,
+                      width: "100px",
+                      class: "pull-left",
+                      style: "margin-top: 10px" %>
+        <div style="margin-left: 110px">
+          <h3>
+            <%= event.name %>
+            <small><%= l event.starts_at, format: :date %></small>
+          </h3>
+          <p>
+            <%= print_address event %>
+          </p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="span6">
+    <div id="upcoming_events_map_canvas"></div>
+  </div>
+</div>

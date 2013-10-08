@@ -1,0 +1,57 @@
+<h1>Become a Volunteer!</h1>
+<p class="lead">There are numerous way for you to join the fun</p>
+
+<p>
+  <%= virginia_first %> relies on the help of volunteers to support all of our
+  programs, assist at our events and competitions, and plan for our future. From
+  administrative help and writers to field attendants and media relations, our
+  volunteers have a broad spectrum of talents. <%= virginia_first %>'s programs,
+  operations, and competitions don't happen without hundreds of people just like
+  you.
+</p>
+
+<p>
+  <%= first %> is dedicated to promoting safety, and security for participants,
+  volunteers, and staff who attend <%= first %> events. The procedures we have
+  established protect you as a volunteer and <%= first %> as an organization.
+</p>
+
+<p>
+  Check out our list of <%= link_to 'upcoming events', upcoming_events_path %>
+  or <%= link_to 'register to volunteer', volunteer_registration_path %> today.
+</p>
+
+<h3>Requirements</h3>
+
+<ul>
+  <li>
+    Event volunteers must be at least 13 years of age, however, some
+    restrictions apply.
+  </li>
+  <li>
+    Under 18 years of age, parent/guardian permission is required.
+  </li>
+</ul>
+
+<h3>Volunteer Roles</h3>
+
+<p>Here is a quick glane at a few of the roles that are needed for our events. </p>
+
+<dl>
+  <% @roles.each do |role| %>
+    <dt><%= role.title %></dt>
+    <dd><%= role.description %></dd>
+  <% end %>
+</dl>
+
+<p>
+  For a complete listing of volunteer positions and their descriptions, check out these resources:
+</p>
+
+<p>
+  <%= link_to 'FTC Volunteer Roles', 'http://www.usfirst.org/roboticsprograms/ftc/first-tech-challenge-volunteer-opportunities' %>
+</p>
+
+<p>
+  <%= link_to 'FRC Volunteer Roles', 'http://www.usfirst.org/community/volunteers/frc-volunteer-event-positions' %>
+</p>

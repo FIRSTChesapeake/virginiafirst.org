@@ -1,15 +1,11 @@
-<h1>Become a Volunteer!</h1>
 
 <div class="row">
   <div class="span8">
-    <p class="lead">There are numerous way for you to join the fun</p>
-    <p>
-      <%= virginia_first %> relies on the help of volunteers to support all of our
-      programs, assist at our events and competitions, and plan for our future. From
-      administrative help and writers to field attendants and media relations, our
-      volunteers have a broad spectrum of talents. VirginiaFIRST's programs,
-      operations, and competitions don't happen without hundreds of people just like
-      you.
+    <h1>Volunteer Today</h1>
+    <br>
+    <p class="lead">
+      <%= image_tag FirstProgram[:ftc].flag, alt: FirstProgram[:ftc].name, width: '200px', class: 'pull-left' %>
+      Volunteer registration is officially open for the 2013-2014 FTC season!
     </p>
     <br>
     <p class="center">
@@ -45,20 +41,23 @@
 
 <div class="row section">
   <div class="span4">
-    <h2 class="center">Support<br>an event</h2>
+    <h2 class="center">
+      <%= link_to volunteer_home_path do %>
+        Support<br>an event
+      <% end %>
+    </h2>
   </div>
   <div class="span8">
     <p>
-      Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-      suscipit lobortis nisl ut aliquip ex ea commodo consequat. Ut wisi enim ad
-      minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-      ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer
-      adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-      magna aliquam erat volutpat. Stet clita kasd gubergren, no sea takimata
-      sanctus est Lorem ipsum dolor sit amet.
+      <%= virginia_first %> organizes events throughout the state of Virginia
+      to inspire young people, from workshops to competitions. None of which
+      would be successful without the support of our volunteers.
     </p>
     <p>
-      <%= link_to "Learn more", "#" %>
+      Volunteers come from a wide variety of backgrounds
+      and skills. You don't have to be a rocket science to help out.
+      <%= link_to "Learn more", volunteer_home_path %> about our volunteer
+      opportunities
     </p>
   </div>
 </div>
@@ -68,17 +67,22 @@
 <div class="row section">
   <div class="span8">
     <p>
-      Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-      suscipit lobortis nisl ut aliquip ex ea commodo consequat. Ut wisi enim ad
-      minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-      ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer
-      adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-      magna aliquam erat volutpat. Stet clita kasd gubergren, no sea takimata
-      sanctus est Lorem ipsum dolor sit amet.
+      Mentors are the keystone of <%= first %> programs, using technical
+      and non-technical experience to inspire students.
+      <%= link_to "Learn more", mentor_home_path %> about mentoring a
+      <%= first %> team.
+    </p>
+    <p>
+      Looking for mentoring opportunities in Virginia? Sign up today and
+      <%= virginia_first %> will connect you with a team in need.
     </p>
   </div>
-  <div class="offset4">
-    <h2 class="center">Mentor<br>a team</h2>
+  <div class="span4">
+    <h2 class="center">
+      <%= link_to mentor_home_path do %>
+        Mentor<br>a team
+      <% end %>
+    </h2>
   </div>
 </div>
 
