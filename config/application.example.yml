@@ -1,5 +1,6 @@
 # Add application configuration variables here, as shown below.
 #
+# GOOGLE_BROWSER_KEY: yourgooglebrowserkey
 # GOOGLE_CLIENT_ID: yourgoogleclientid
 # GOOGLE_CLIENT_SECRET: yourgooglesecret
 

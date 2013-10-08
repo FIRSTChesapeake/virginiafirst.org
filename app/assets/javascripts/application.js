@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-datetimepicker
+//= require moment.min
 //= require_tree .
 
 $(document).ready(function() {

@@ -34,7 +34,7 @@ gem 'devise'
 gem 'enumerated_attribute', github: 'jeffp/enumerated_attribute'
 
 gem 'figaro'
-
+gem 'geocoder'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'
 

@@ -14,10 +14,18 @@ class Event < ActiveRecord::Base
   validates_presence_of :program
   validate :address_is_provided
 
+  geocoded_by :full_address
+  after_validation :geocode
+
+  def full_address
+    fields = [street, city, state, zip]
+    fields.delete_if { |f| f.blank? }
+    fields.join(", ")
+  end
+
   def to_s
     name
   end
-
 
   private
 
