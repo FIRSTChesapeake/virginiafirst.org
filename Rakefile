@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Vafirst::Application.load_tasks
+VirginiaFIRST::Application.load_tasks

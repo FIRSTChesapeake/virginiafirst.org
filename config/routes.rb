@@ -1,4 +1,4 @@
-Vafirst::Application.routes.draw do
+VirginiaFIRST::Application.routes.draw do
 
   scope module: 'volunteer' do
     scope path: '(/:program)' do
