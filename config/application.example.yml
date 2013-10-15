@@ -4,6 +4,9 @@
 # GOOGLE_CLIENT_ID: yourgoogleclientid
 # GOOGLE_CLIENT_SECRET: yourgooglesecret
 
+# Generate a new secret token using rake secret
+# SECRET_TOKEN: c84bd592aa38b350baea393fe63bf7bf462d4016884fbeaa405bb88783209e0576063fb8c77dfe3d65ec862450cb4aa91bf73867b7632d64eea58b09ffb65943
+
 #development:
 #  MAILER_INTERCEPTOR: user@virginiafirst.org
 #  MAILER_DELIVERY_METOHD: smtp
