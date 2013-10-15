@@ -25,8 +25,8 @@
             </li>
           </ul>
         </li>
-        <li>
-          <%= link_to "Another Item", "#", class: "nav-list-bottom" %>
+        <li class="<%= active_class?("registrations") %>">
+          <%= link_to "My Events", my_events_path, class: "nav-list-bottom" %>
         </li>
       </ul>
     </div>

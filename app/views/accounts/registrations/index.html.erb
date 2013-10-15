@@ -1,0 +1,33 @@
+<h1>My Events</h1>
+
+<p>
+  You can sign up to volunteer at more events <%= link_to "here", volunteer_registration_path %>.
+</p>
+
+<h2>Upcoming events</h2>
+
+<%= rendered = render(partial: 'registration', collection: @registrations, as: :registration) %>
+<% unless rendered %>
+  <p>
+    You haven't registered to volunteer for any events. To sign up, checkout our
+    latest listing of upcoming events on our
+    <%= link_to "volunteer registration", volunteer_registration_path %> page.
+  </p>
+<% end %>
+<h2>Volunteer history</h2>
+
+<p>
+  Have you volunteered with <%= virginia_first %> in the past and are wondering
+  where your events are? We're in the process of moving all of our volunteer
+  records from last year into our new site. Check back soon!
+</p>
+
+<% unless current_user.confirmed? %>
+<p>
+  In the meantime, in order for us to ensure your records get updated we need
+  to verify your identity with the email you registered with in the past.
+  Please verify your email address in your
+  <%= link_to "Account Settings", edit_account_path %> and if necessary, click
+  the <em>Reconfirm my email</em> button.
+</p>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="event-registration">
+  <%= link_to delete_my_event_path(registration),
+              method: :delete,
+              confirm: "Are you sure?",
+              class: "btn btn-danger pull-right" do %>
+    Cancel<br>Registration
+  <% end %>
+  <div class="calendar-icon <%= registration.event.program.code %>">
+    <div class="calendar-title">
+      <%= registration.event.starts_at.strftime('%B') %>
+    </div>
+    <div class="calendar-date">
+      <%= registration.event.starts_at.day %>
+    </div>
+  </div>
+    <span class="title">
+      <%= registration.event.name %>
+    </span>
+  <address>
+    <%= print_address(registration.event) %>
+  </address>
+  <div class="clearfix"></div>
+</div>

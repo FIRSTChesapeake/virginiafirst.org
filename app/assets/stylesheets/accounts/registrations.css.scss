@@ -1,0 +1,44 @@
+// Place all the styles related to the accounts::events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "base/variables";
+
+.registrations {
+  .calendar-icon {
+    background-color: $blueGray;
+    color: $white;
+    float: left;
+    margin-left: -90px;
+    text-align: center;
+    width: 80px;
+
+    .calendar-date {
+      font-size: 2em;
+      font-weight: bold;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    .calendar-title {
+      border-bottom: 1px solid $white;
+    }
+  }
+
+  .calendar-icon.frc {
+    background-color: $blueDeep;
+  }
+
+  .calendar-icon.ftc {
+    background-color: $yellowDeep;
+  }
+
+  .event-registration {
+    margin-left: 100px;
+
+    .title {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 class VolunteerMailer < ActionMailer::Base
-  add_template_helper Volunteer::RegistrationsHelper
+  add_template_helper ApplicationHelper
 
   default from: 'VirginiaFIRST <no-reply@volunteer.virginiafirst.org>'
 
