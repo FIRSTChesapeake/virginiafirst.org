@@ -24,7 +24,7 @@ set :shared_children, shared_children + %w{public/uploads}
 set :rails_env, "production"
 
 set :scm, "git"
-set :repository, "ssh://git@bitbucket.org/cattywampus/virginiafirst.git"
+set :repository, "git@github.com:VirginiaFIRST/virginiafirst.org.git"
 set :branch, "master"
 
 set :host_name, "volunteer.virginiafirst.org"
