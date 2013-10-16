@@ -1,7 +1,7 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def all
-    #raise request.env["omniauth.auth"].to_yaml
     user = User.from_omniauth request.env["omniauth.auth"]
+    session[:return_to] = request.env["omniauth.origin"]
     if user.persisted?
       flash.notice = I18n.t :signed_in, scope: [:devise, :sessions]
       sign_in_and_redirect user

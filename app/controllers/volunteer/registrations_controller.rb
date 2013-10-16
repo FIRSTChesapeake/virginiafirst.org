@@ -11,7 +11,7 @@ class Volunteer::RegistrationsController < ApplicationController
     end
 
     unless @profile
-      redirect_to profile_volunteer_registration_path(@program), alert: "Your profile is missing"
+      redirect_to profile_volunteer_registration_path(@program)
     end
   end
 

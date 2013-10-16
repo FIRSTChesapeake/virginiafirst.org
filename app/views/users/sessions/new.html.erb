@@ -2,11 +2,47 @@
 
 
 <div class="row">
-  <div class="span7">
+  <div class="span4">
+    <ul class="nav nav-tabs">
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+      <li class="active"><%= link_to "Sign In", new_user_session_path %></li>
+    </ul>
+
+    <p>
+      Login using your Google account:
+    </p>
+
+    <div class="center">
+      <%= link_to user_omniauth_authorize_path(:google_oauth2, origin: session[:return_to]) do %>
+        <%= image_tag "Red-signin_Long_base_44dp.png",
+                      mouseover: "Red-signin_Long_hover_44dp.png",
+                      alt: "Sign in with Google" %>
+      <% end %>
+    </div>
+
+    <h4 class="center"> Or </h4>
+
+    <hr>
+    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email, :required => false, :autofocus => true %>
+        <%= f.input :password, :required => false %>
+        <%= f.input :remember_me, :as => :boolean, label: false, inline_label: true if devise_mapping.rememberable? %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign in", class: "btn-primary" %>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
+
+  </div>
+  <div class="offset1 span6">
     <h1>Sign in</h1>
     <p>
       If you already have an account with Google, you can sign in using the
-      button to the right. Otherwise, if you created an account with us, enter
+      button to the left. Otherwise, if you created an account with us, enter
       your email and password to continue.
     </p>
     <p>
@@ -14,38 +50,5 @@
       can <%= link_to "sign up", new_registration_path(resource_name) %> for a
       new account to get started.
     </p>
-    <br>
-    <h2>Why create an account?</h2>
-    <p>
-      Creating a <%= virginia_first %> account lets you keep track of your
-      volunteer preferences and commitments. It's easier than ever to update your
-      information or volunteer to more events without having to resubmit the same
-      forms over again.
-    </p>
-  </div>
-  <div class="offset1 span4">
-    <div class="well">
-      <%= link_to user_omniauth_authorize_path(:google_oauth2, origin: session[:return_to]) do %>
-        <%= image_tag "Red-signin_Long_base_44dp.png",
-                      mouseover: "Red-signin_Long_hover_44dp.png",
-                      alt: "Sign in with Google" %>
-      <% end %>
-
-      <h4 class="center">Or</h4>
-      <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-        <div class="form-inputs">
-          <%= f.input :email, :required => false, :autofocus => true %>
-          <%= f.input :password, :required => false %>
-          <%= f.input :remember_me, :as => :boolean, label: false, inline_label: true if devise_mapping.rememberable? %>
-        </div>
-
-        <div class="form-actions">
-          <%= f.button :submit, "Sign in" %>
-        </div>
-      <% end %>
-
-      <%= render "users/shared/links" %>
-
-    </div>
   </div>
 </div>

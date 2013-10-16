@@ -10,10 +10,8 @@ class ApplicationController < ActionController::Base
       url = session[:return_to]
       session[:return_to] = nil
       url
-    elsif resource.profile
-      super
     else
-      volunteer_registration_path
+      super
     end
   end
 
