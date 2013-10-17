@@ -1,6 +1,7 @@
 <%= f.association :preferred_roles,
                   as: :check_boxes,
                   collection: Volunteer::Role.order(:title),
+                  wrapper_class: "checkbox-grid",
                   label_method: lambda { |role| display_preferred_role(role) } %>
 
 <%= f.input :footnotes, label: false do %>

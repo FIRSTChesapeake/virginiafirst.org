@@ -15,3 +15,11 @@ label.disabled {
   color: $grayLight;
   cursor: default;
 }
+
+.checkbox-grid {
+  .checkbox {
+    display: inline-block;
+    vertical-align: top;
+    width: 210px;
+  }
+}
