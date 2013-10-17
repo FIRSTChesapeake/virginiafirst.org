@@ -1,64 +1,33 @@
-<h1>Volunteer Registration</h1>
+<h1>Volunteer Registration Successful!</h1>
 
-<%= simple_form_for @profile,
-                    url: volunteer_registration_path,
-                    method: :put,
-                    html: { class: "form-horizontal", id: "volunteer_registration_form" } do |f| %>
-  <%= f.error_notification %>
+<p>
+  Thank you for signing up to volunteer to support <%= virginia_first %>. In a
+  few moments you'll receive an email confirming the
+  <%= pluralize @events.count, 'event' %> you selected.
+</p>
 
-  <fieldset>
-    <legend>Upcoming Events</legend>
+<p>
+  During the weeks leading up to the
+  <%= pluralize @events.count, 'event' %> a volunteer coordinator
+  will contact you with the details about your assignment. To help the
+  coordinator ensure you get a task that you'll enjoy, please take a moment
+  to update your background skills and volunteer preferences.
+</p>
 
-    <% index = 0 %>
-    <% @programs.each do |program| %>
-      <%= f.input program.name, label: image_tag(program.flag.thumb.url), wrapper_class: "#{program.code}" do %>
-        <% program.upcoming_events.each do |event| %>
-          <div class="event">
-            <div class="event-details pull-right">
-              <span class="date">
-                <%= l(event.starts_at, format: :date).strip %>
-              </span>
-              <br>
-              <%= print_address(event) %>
-            </div>
+<p>
+  <%= link_to "Background skills", edit_background_profile_path(@program) %><br>
+  <%= link_to "Volunteer preferences", edit_volunteer_profile_path(@program) %>
+</p>
 
-            <% registration = @profile.volunteer_registrations.find_by_event_id(event.id) || Volunteer::Registration.new %>
-            <%= hidden_field_tag("profile_volunteer_registrations_attributes_#{index}_id",
-                                 registration.id,
-                                 name: "profile[volunteer_registrations_attributes][#{index}][id]") if registration %>
-            <%= label_tag "profile_volunteer_registrations_attributes_#{index}_event_id",
-                          class: "checkbox inline title" do %>
-              <%= check_box_tag "profile[volunteer_registrations_attributes][#{index}][event_id]",
-                                event.id,
-                                @profile.volunteer_event_ids.include?(event.id),
-                                class: "event-checkbox" %>
-              <%= event.name %>
-            <% end %>
-            <br>
-            <%= label_tag "profile_volunteer_registrations_attributes_#{index}_will_setup",
-                          class: "checkbox inline" do %>
-              <%= check_box_tag "profile[volunteer_registrations_attributes][#{index}][will_setup]",
-                               "true",
-                               !!registration.try(:will_setup), class: "event-option" %>
-              Available to setup?
-            <% end %>
-            <br>
-            <%= label_tag "profile_volunteer_registrations_attributes_#{index}_will_teardown",
-                          class: "checkbox inline" do %>
-              <%= check_box_tag "profile[volunteer_registrations_attributes][#{index}][will_teardown]",
-                               "true",
-                               !!registration.try(:will_teardown), class: "event-option" %>
-              Available to teardown?
-            <% end %>
-            <div class="clearfix"></div>
-          </div>
-          <% index += 1 %>
-        <% end %>
-      <% end %>
-    <% end %>
+<p>
+  We understand that plans change. You can always come back and sign in to add
+  or remove events in your volunteer preferences.
+</p>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Save Volunteer Registration" %>
-    </div>
-  </fieldset>
-<% end %>
+<p>
+  Thank you again for your support,<br>
+  <br>
+  Carol Edelman<br>
+  Director of Programs and Outreach<br>
+  <%= virginia_first %>
+</p>

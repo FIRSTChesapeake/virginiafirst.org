@@ -1,0 +1,12 @@
+<%= f.input :skills, hint: "Check all that apply" do %>
+  <%= f.input_field :skill_ids, as: :check_boxes, collection: Skill.order(:name), item_wrapper_class: "checkbox-inline" %>
+  <%= f.input_field :has_other_skill, inline_label: "Other" %>
+  <%= f.input_field :other_skill %>
+<% end %>
+
+<%= f.input :strengths, label: "Which of these skills do you enjoy?", hint: "Check all that apply" do %>
+  <%= f.input_field :is_administrative, inline_label: "Administrative" %>
+  <%= f.input_field :is_interpersonal, inline_label: "Interpersonal" %>
+  <%= f.input_field :is_mechanical, inline_label: "Mechanical" %>
+  <%= f.input_field :is_technical, inline_label: "Technical" %>
+<% end %>

@@ -2,62 +2,72 @@ class Volunteer::RegistrationsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :load_program
 
-  def show
-    @profile = current_user.profile
-    if @program.present?
-      @programs = [@program]
-    else
-      @programs = FirstProgram.with_upcoming_events
-    end
+  def new
+    session[:volunteer_params] ||= {}
+    @volunteer_form = VolunteerForm.new current_user
+    @volunteer_form.current_step = session[:volunteer_step]
+  end
 
-    unless @profile
-      redirect_to profile_volunteer_registration_path(@program)
+  def show
+    if current_user.profile
+      @profile = current_user.profile
+      @events = @profile.volunteer_events
+    else
+      redirect_to new_volunteer_registration_path(@program)
     end
   end
 
   def update
     @profile = current_user.profile
-    @service = VolunteerRegistrationService.new(@profile)
+    @service =
 
     respond_to do |format|
-      if @service.register_and_notify(params[:profile])
+      if
         format.html { redirect_to confirm_volunteer_registration_path }
       else
-        if @program.present?
-          @programs = [@program]
-        else
-          @programs = FirstProgram.with_upcoming_events
-        end
         format.html { render :show }
       end
     end
   end
 
-  def profile
-    @profile = Profile.new
-  end
-
   def create
-    @profile = Profile.new params[:profile]
-    @profile.user = current_user
+    session[:volunteer_params].deep_merge!(params[:profile]) if params[:profile]
+    @volunteer_form = VolunteerForm.new current_user
+    @volunteer_form.current_step = session[:volunteer_step]
+    @volunteer_form.assign_attributes session[:volunteer_params]
+
+    saved = false
+
+    if @volunteer_form.valid?
+      if params[:back_button]
+        @volunteer_form.previous_step
+      elsif @volunteer_form.last_step?
+        puts session[:volunteer_params].inspect
+        saved = @volunteer_form.submit if @volunteer_form.all_valid?
+      else
+        @volunteer_form.next_step
+      end
+      session[:volunteer_step] = @volunteer_form.current_step
+    end
 
     respond_to do |format|
-      if @profile.save
+      if saved
+        session[:volunteer_step] = session[:volunteer_params] = nil
         format.html { redirect_to volunteer_registration_path(@program), notice: "Personal profile successfully created." }
       else
-        format.html { render :profile }
+        format.html { render :new }
       end
     end
-  end
-
-  def confirm
-    @profile = current_user.profile
-    @events = @profile.volunteer_events
   end
 
   private
 
   def load_program
     @program = FirstProgram.find_by_code params[:program] if params[:program].present?
+    if @program.present?
+      @programs = [@program]
+    else
+      @programs = FirstProgram.with_upcoming_events
+    end
   end
 end

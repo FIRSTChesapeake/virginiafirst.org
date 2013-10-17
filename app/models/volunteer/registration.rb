@@ -4,6 +4,6 @@ class Volunteer::Registration < ActiveRecord::Base
 
   attr_accessible :event_id, :will_setup, :will_teardown
 
-  validates_presence_of :event_id
-  validates_presence_of :profile_id
+  validates_presence_of :event
+  #validates_presence_of :profile
 end

@@ -1,0 +1,16 @@
+<%= session.inspect %>
+
+<h1>Volunteer Registration</h1>
+
+<%= simple_form_for @volunteer_form,
+                    url: volunteer_registration_path,
+                    html: { class: "form-horizontal", id: "volunteer_registration_form" } do |f| %>
+  <%= f.error_notification %>
+
+  <%= render "#{@volunteer_form.current_step}_step", f: f %>
+
+  <div class="form-actions">
+    <%= f.submit "Back", name: "back_button", class: "btn" unless @volunteer_form.first_step? %>
+    <%= f.button :submit, "Continue", class: "btn-primary" %>
+  </div>
+<% end %>

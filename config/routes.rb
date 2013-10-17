@@ -2,16 +2,9 @@ VirginiaFIRST::Application.routes.draw do
 
   scope module: 'volunteer' do
     scope path: '(/:program)' do
-      resource :registrations, path: 'register', as: 'volunteer_registration', only: [:create, :show, :update] do
-        member do
-          get :confirm
-          get :profile
-        end
-      end
+      resource :registrations, path: 'register', as: 'volunteer_registration', only: [:new, :create, :show]
     end
   end
-  get '/:program/register/new', to: redirect('/%{program}/register')
-  get '/register/new', to: redirect('/register')
 
   resource :account, controller: "accounts", only: [:show, :edit, :update, :destroy], path_names: {edit: "settings"}
 
