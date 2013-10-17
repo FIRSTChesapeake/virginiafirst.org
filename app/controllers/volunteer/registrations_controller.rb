@@ -17,19 +17,6 @@ class Volunteer::RegistrationsController < ApplicationController
     end
   end
 
-  def update
-    @profile = current_user.profile
-    @service =
-
-    respond_to do |format|
-      if
-        format.html { redirect_to confirm_volunteer_registration_path }
-      else
-        format.html { render :show }
-      end
-    end
-  end
-
   def create
     session[:volunteer_params].deep_merge!(params[:profile]) if params[:profile]
     @volunteer_form = VolunteerForm.new current_user
@@ -42,7 +29,6 @@ class Volunteer::RegistrationsController < ApplicationController
       if params[:back_button]
         @volunteer_form.previous_step
       elsif @volunteer_form.last_step?
-        puts session[:volunteer_params].inspect
         saved = @volunteer_form.submit if @volunteer_form.all_valid?
       else
         @volunteer_form.next_step

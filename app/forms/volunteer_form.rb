@@ -23,7 +23,7 @@ class VolunteerForm
   end
 
   def current_step
-    @current_step || steps.first
+    @current_step ||= default_step
   end
 
   def errors
@@ -64,11 +64,7 @@ class VolunteerForm
   end
 
   def steps
-    steps = []
-    steps << 'personal' if profile.new_record?
-    steps << 'preferences' if profile.new_record? || profile.preferred_roles.empty?
-    steps << 'events'
-    steps
+    %w(personal preferences events)
   end
 
   def user
@@ -84,6 +80,16 @@ class VolunteerForm
   end
 
   private
+
+  def default_step
+    if profile.new_record?
+      "personal"
+    elsif profile.preferred_roles.blank?
+      "preferences"
+    else
+      "events"
+    end
+  end
 
   def method_missing(method, *args, &block)
     profile.try(method, *args)
