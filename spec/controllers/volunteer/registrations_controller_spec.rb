@@ -8,18 +8,6 @@ describe Volunteer::RegistrationsController do
       it { expect(response).not_to be_success }
       it { expect(response).to redirect_to new_user_session_path }
     end
-
-    describe 'PUT "update"' do
-      before(:each) { put :update, {} }
-      it { expect(response).not_to be_success }
-      it { expect(response).to redirect_to new_user_session_path }
-    end
-
-    describe 'GET "profile"' do
-      before(:each) { get :profile }
-      it { expect(response).not_to be_success }
-      it { expect(response).to redirect_to new_user_session_path }
-    end
   end
 
   context 'signed in' do
@@ -34,25 +22,12 @@ describe Volunteer::RegistrationsController do
       it { expect(assigns(:profile)).to eq profile }
     end
 
-    describe 'PUT "update"' do
-    end
-
-    describe 'GET "profile"' do
-      before(:each) { get :profile }
-      it { expect(response).to be_success }
-    end
-
     context 'with program parameter' do
       let(:program) { create :frc_program }
       describe 'GET "show"' do
         before(:each) { get :show, { program: program.to_param } }
         it { expect(assigns(:program)).to eq program }
         it { expect(assigns(:programs)).to eq [program] }
-      end
-
-      describe 'GET "profile"' do
-        before(:each) { get :profile, { program: program.to_param } }
-        it { expect(assigns(:program)).to eq program }
       end
     end
   end

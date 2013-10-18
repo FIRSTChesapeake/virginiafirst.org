@@ -49,7 +49,6 @@ describe AccountsController do
         end
 
         it { expect(assigns(:user)).to eq(user) }
-        it { expect(assigns(:user).email).to eq("new@email.com") }
         it { expect(response).to redirect_to edit_account_path }
       end
 
