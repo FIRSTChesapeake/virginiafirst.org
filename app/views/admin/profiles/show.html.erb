@@ -1,0 +1,107 @@
+<h1><%= @profile.full_name %></h1>
+
+<% if @user %>
+  <div class="well pull-right">
+    <h3>User Account</h3>
+    <dl class="dl-horizontal">
+      <dt>Email: </dt>
+      <dd><%= mail_to @user.email %></dd>
+
+      <dt>Email Confirmed? </dt>
+      <dd><%= @user.confirmed_at ? "Yes" : "No" %></dd>
+
+      <dt>Current sign in at: </dt>
+      <dd><%= l @user.current_sign_in_at %></dd>
+
+      <dt>Last sign in at: </dt>
+      <dd><%= l @user.last_sign_in_at %></dd>
+
+      <dt># of sign ins: </dt>
+      <dd><%= @user.sign_in_count %></dd>
+    </dl>
+  </div>
+<% end %>
+
+<p>
+  <%= display_address(@profile) %>
+  <abbr title="Primary phone number">
+    <%= @profile.primary_phone_type_label[0] %>:</abbr>
+  <%= display_phone(@profile.primary_phone_number) %>
+  <br>
+  <% if @profile.alternate_phone_number.present? %>
+    <abbr title="Alternate phone number">
+      <%= @profile.alternate_phone_type_label[0] %>:</abbr>
+    <%= display_phone(@profile.alternate_phone_number) %>
+  <% end %>
+</p>
+
+<dl>
+  <dt>Age: </dt>
+  <dd><%= @profile.age.present? ? @profile.age : content_tag(:em, "Not provided") %></dd>
+  <dt>Shirt Size: </dt>
+  <dd><%= @profile.shirt_size.present? ? @profile.shirt_size : content_tag(:em, "Not provided") %></dd>
+</dl>
+
+<h3>Profession</h3>
+<p>
+  <% if @profile.current_occupation.present? || @profile.current_organization.present? %>
+    <%= @profile.current_occupation %><br>
+    <%= @profile.current_organization%>
+  <% else %>
+    Not Provided
+  <% end %>
+</p>
+
+<h3>Volunteer Preferences</h3>
+<div class="row">
+  <div class="span3">
+    <ul class="unstyled">
+      <% @profile.preferred_roles.each do |role| %>
+        <li><%= role.title %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="span3">
+    <p> <%= @profile.volunteer_experience %> </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span4">
+    <h3><%= first %> Experience</h3>
+    <dl>
+      <dt>Preferred Programs: </dt>
+      <dd>
+        <% if @profile.has_frc_experience? %>
+          <%= first %> Robotics Competition
+          <%= "- Team #{@profile.frc_team_number}" if @profile.frc_team_number.present? %>
+          <br>
+        <% end %>
+        <% if @profile.has_ftc_experience? %>
+          <%= first %> Tech Challenge
+          <%= "- Team #{@profile.ftc_team_number}" if @profile.ftc_team_number.present? %>
+        <% end %>
+        <%= "#{first} Lego League<br>".html_safe if @profile.has_fll_experience? %>
+        <%= "Jr. #{first} Lego League".html_safe if @profile.has_jrfll_experience? %>
+      </dd>
+    </dl>
+    <% if @profile.first_involvement.present? %>
+      <p>Involved as a <%= @profile.first_involvement.join(", ") %></p>
+    <% end %>
+  </div>
+  <div class="span4">
+    <h3>Background</h3>
+    <ul class="unstyled">
+      <% @profile.skills.each do |skill| %>
+        <li><%= skill.name %></li>
+      <% end %>
+      <% if @profile.has_other_skill? %>
+        <li><%= @profile.other_skill %></li>
+      <% end %>
+    </ul>
+    <% if @profile.skill_characteristics.present? %>
+      <p>Prefers tasks that are <%= @profile.skill_characteristics.join(", ") %></p>
+    <% end %>
+  </div>
+</div>

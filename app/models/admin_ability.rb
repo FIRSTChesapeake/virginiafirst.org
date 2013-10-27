@@ -10,6 +10,8 @@ class AdminAbility
         can :read, Game
         can :read, Skill
         can :read, Role
+        can :read, Profile
+        can :read, User
       end
 
       if user.has_role?(:ftc_admin)
@@ -17,6 +19,7 @@ class AdminAbility
         can :manage, Game, program: {code: :ftc}
         can :manage, Role
       end
+
       if user.has_role?(:frc_admin)
         can :manage, Event, program: {code: :frc}
         can :manage, Game, program: {code: :frc}

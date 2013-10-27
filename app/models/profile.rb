@@ -5,6 +5,8 @@ class Profile < ActiveRecord::Base
   has_many :volunteer_registrations, class_name: Volunteer::Registration
   has_many :volunteer_events, through: :volunteer_registrations, source: :event
 
+  scope :sorted, order("lower(last_name) ASC, lower(first_name) ASC")
+
   attr_accessible :first_name, :last_name, :age, :shirt_size
   attr_accessible :city, :state, :street, :zip
   attr_accessible :primary_phone_type, :primary_phone_number
@@ -40,8 +42,31 @@ class Profile < ActiveRecord::Base
   validate :requires_primary_phone
   validate :alternate_phone_is_complete
 
+  def first_involvement
+    involvement = []
+    involvement << "Student" if is_student?
+    involvement << "Parent" if is_parent?
+    involvement << "Mentor" if is_mentor?
+    involvement << "Sponsor" if is_sponsor?
+    involvement << "Volunteer" if is_volunteer?
+    involvement
+  end
+
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"
+  end
+
+  def primary_phone_type_label
+    enums(:primary_phone_type).label(primary_phone_type)
+  end
+
+  def skill_characteristics
+    skills = []
+    skills << :administrative if is_administrative?
+    skills << :interpersonal if is_interpersonal?
+    skills << :mechanical if is_mechanical?
+    skills << :technical if is_technical?
+    skills
   end
 
   before_validation :clean_up_phone_numbers

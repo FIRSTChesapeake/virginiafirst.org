@@ -25,6 +25,11 @@
                 <%= link_to "Background Skills", admin_skills_path %>
               </li>
             <% end %>
+            <% if can? :read, Profile %>
+              <li class="<%= active_class?("profiles") %>">
+                <%= link_to "Profiles", admin_profiles_path %>
+              </li>
+            <% end %>
           </ul>
         </li>
       </ul>

@@ -3,6 +3,23 @@ module ApplicationHelper
     controller_name == name ? "active" : ""
   end
 
+  def display_address(address)
+    buffer = ActiveSupport::SafeBuffer.new
+    content_tag :address do
+      if address.street.present?
+        buffer << address.street
+        buffer << content_tag(:br)
+      end
+      if address.city.present?
+        buffer << address.city
+        buffer << ", "
+      end
+      buffer << "#{address.state} " if address.state.present?
+      buffer << address.zip if address.zip.present?
+      buffer
+    end
+  end
+
   def display_phone(number)
     has_area_code = number.present? ? number.length > 7 : false
     number_to_phone(number, area_code: has_area_code)

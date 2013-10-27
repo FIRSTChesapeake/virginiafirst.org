@@ -1,5 +1,4 @@
 class Admin::Volunteer::RolesController < Admin::BaseController
-  before_filter :authenticate_user!
   authorize_resource
 
   def index

@@ -1,5 +1,4 @@
 class Admin::GamesController < Admin::BaseController
-  before_filter :authenticate_user!
   before_filter :load_game, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 

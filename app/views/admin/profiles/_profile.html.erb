@@ -1,0 +1,4 @@
+<tr>
+  <td><%= link_to profile.full_name, [:admin, profile] %></td>
+  <td><%= mail_to profile.user.email if profile.user %></td>
+</tr>

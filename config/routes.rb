@@ -32,6 +32,7 @@ VirginiaFIRST::Application.routes.draw do
     end
 
     resources :skills
+    resources :profiles, only: [:index, :show]
 
     scope module: 'volunteer', path: 'volunteer', as: 'volunteer' do
       resources :roles
