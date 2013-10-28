@@ -81,6 +81,7 @@
         <% if @profile.has_ftc_experience? %>
           <%= first %> Tech Challenge
           <%= "- Team #{@profile.ftc_team_number}" if @profile.ftc_team_number.present? %>
+          <br>
         <% end %>
         <%= "#{first} Lego League<br>".html_safe if @profile.has_fll_experience? %>
         <%= "Jr. #{first} Lego League".html_safe if @profile.has_jrfll_experience? %>
