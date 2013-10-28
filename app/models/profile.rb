@@ -42,6 +42,10 @@ class Profile < ActiveRecord::Base
   validate :requires_primary_phone
   validate :alternate_phone_is_complete
 
+  def alternate_phone_type_label
+    enums(:alternate_phone_type).label(alternate_phone_type)
+  end
+
   def first_involvement
     involvement = []
     involvement << "Student" if is_student?
