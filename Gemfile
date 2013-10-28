@@ -31,12 +31,13 @@ gem 'carrierwave'
 
 gem 'devise'
 
-gem 'enumerated_attribute', github: 'jeffp/enumerated_attribute'
+gem 'enumerated_attribute', github: 'cattywampus/enumerated_attribute'
 
 gem 'figaro'
 gem 'geocoder'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'
+gem 'textacular'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

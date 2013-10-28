@@ -1,6 +1,10 @@
 class Admin::ProfilesController < Admin::BaseController
   def index
-    @profiles = Profile.sorted
+    if params[:query].present?
+      @profiles = Profile.fuzzy_search params[:query]
+    else
+      @profiles = Profile.sorted
+    end
   end
 
   def show
