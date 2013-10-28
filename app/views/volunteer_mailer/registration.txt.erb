@@ -4,7 +4,7 @@ Thank you for signing to up to volunteer with
 VirginiaFIRST. You've selected to support the following
 <%= "event".pluralize(@profile.volunteer_events.count) %>:
 
-<% @profile.volunteer_events.each do |event| %>
+<% @profile.volunteer_events.sorted.each do |event| %>
   <%= event.name %>
   <%= event.venue %>
   <%= event.street %>

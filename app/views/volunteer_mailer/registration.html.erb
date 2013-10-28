@@ -10,7 +10,7 @@
   <%= "event".pluralize(@profile.volunteer_events.count) %>:
 </p>
 
-<% @profile.volunteer_events.each do |event| %>
+<% @profile.volunteer_events.sorted.each do |event| %>
   <p>
     <span style="font-weight: bold; font-size: 1.1em;">
       <%= event.name %>

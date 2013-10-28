@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   has_many :volunteer_registrations, class_name: Volunteer::Registration
   has_many :volunteer_profiles, through: :volunteer_registrations
 
+  scope :sorted, ->(order='ASC') { order("starts_at #{order}") }
   scope :upcoming, -> { where("starts_at > ?", Date.today).order("starts_at ASC") }
 
   attr_accessible :name, :participant_limit, :program_id

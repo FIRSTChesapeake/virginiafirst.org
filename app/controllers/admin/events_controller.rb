@@ -4,9 +4,9 @@ class Admin::EventsController < Admin::BaseController
 
   def index
     if @program.present?
-      @events = @program.events
+      @events = @program.events.sorted
     else
-      @events = Event.all
+      @events = Event.sorted
     end
   end
 

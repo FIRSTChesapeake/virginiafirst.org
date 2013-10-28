@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to event.name, admin_event_path(@program, event) %></td>
-  <td><%= event.starts_at %></td>
+  <td><%= l event.starts_at %></td>
   <td>
     <% if can? :edit, event %>
       <%= link_to edit_admin_event_path(@program, event),
