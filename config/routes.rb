@@ -38,6 +38,7 @@ VirginiaFIRST::Application.routes.draw do
       resource :registrations, path: 'register', as: 'volunteer_registration', only: [:new, :create, :show]
       resources :events, only: [:index, :show]
     end
+    resources :assignments
   end
 
   # The priority is based upon order of creation:

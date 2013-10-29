@@ -1,0 +1,7 @@
+<span id="assignment_<%= assignment.id %>">
+  <%= assignment.registration.profile.full_name %>
+  <% if can? :delete, assignment %>
+    <%= link_to '<i class="icon-remove"></i>'.html_safe, assignment_path(assignment), method: :delete %>
+  <% end %>
+  <br>
+</span>

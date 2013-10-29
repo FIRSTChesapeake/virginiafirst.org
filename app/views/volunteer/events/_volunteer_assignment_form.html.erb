@@ -1,0 +1,8 @@
+<%= form_for object, url: assignments_path, html: {class: "form-inline"}, remote: true do |f| %>
+  <%= f.hidden_field :position_id %>
+  <%= f.select :registration_id,
+               options_from_collection_for_select(object.position.available_volunteers, 'id', 'profile'),
+               prompt: "Select a volunteer" %>
+  <%= f.submit "Add", class: "btn btn-info" %>
+  <%= link_to "Cancel", "#", class: "btn btn-danger cancel-form" %>
+<% end %>

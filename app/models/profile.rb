@@ -73,6 +73,10 @@ class Profile < ActiveRecord::Base
     skills
   end
 
+  def to_s
+    full_name
+  end
+
   before_validation :clean_up_phone_numbers
 
   private

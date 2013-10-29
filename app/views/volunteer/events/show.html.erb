@@ -1,15 +1,29 @@
 <h1><%= @event.name %></h1>
 
-<div class="span3">
-  <h3> Unassigned (<%= @event.unassigned_volunteers.count %>) </h3>
+<div class="row">
+  <div class="span5">
+    <h3>Key Positions</h3>
+    <%= render @event.key_positions %>
+  </div>
 
-  <p>
-    <% @event.unassigned_volunteers.each do |volunteer| %>
-      <% if volunteer.profile %>
+  <div class="span5">
+    <h3>Regular Positions</h3>
+    <%= render @event.regular_positions %>
+  </div>
+
+  <div class="span2">
+    <h3> Unassigned
+      (<span id="unassigned_count"><%= @event.unassigned_volunteers.count %></span>)
+    </h3>
+
+    <p>
+      <% @event.unassigned_volunteers.each do |volunteer| %>
+        <% if volunteer.profile %>
         <span id="unassigned_volunteer_<%= volunteer.id %>">
-          <%= volunteer.full_name %>
-        </span><br>
+          <%= volunteer.full_name %><br>
+        </span>
+        <% end %>
       <% end %>
-    <% end %>
-  </p>
+    </p>
+  </div>
 </div>

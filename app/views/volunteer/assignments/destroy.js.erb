@@ -1,0 +1,7 @@
+$('#assignment_<%= @assignment.id %>').fadeOut('slow');
+
+setTimeout(function () {
+  <% if @volunteer.assignments.empty? %>
+  $('#volunteer_<%= @volunteer.id %>').html('<%=j render 'volunteer/profiles/volunteer_assignment_form', volunteer: @volunteer %>').hide().fadeIn('slow');
+  <% end %>
+}, 600);

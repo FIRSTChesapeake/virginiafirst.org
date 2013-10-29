@@ -1,7 +1,8 @@
 class Event < ActiveRecord::Base
   belongs_to :game
-  has_many :positions, class_name: Volunteer::Position
+  has_many :positions, class_name: Volunteer::Position, include: :role, order: "volunteer_roles.title ASC"
   belongs_to :program, class_name: "FirstProgram"
+  has_many :roles, through: :positions, uniq: true
   has_many :volunteer_registrations, class_name: Volunteer::Registration
   has_many :volunteer_profiles, through: :volunteer_registrations
 
@@ -38,6 +39,14 @@ class Event < ActiveRecord::Base
     fields = [street, city, state, zip]
     fields.delete_if { |f| f.blank? }
     fields.join(", ")
+  end
+
+  def key_positions
+    positions.where({volunteer_roles: {key_position: true}})
+  end
+
+  def regular_positions
+    positions.where({volunteer_roles: {key_position: false}})
   end
 
   def total_filled_positions

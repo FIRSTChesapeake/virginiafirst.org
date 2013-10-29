@@ -1,0 +1,19 @@
+<% position_selector = "position_#{position.id}" %>
+<div id="<%= position_selector %>">
+  <strong><%= position.title %></strong>
+  <span class="fullfillment"><%= render "volunteer/positions/fullfillment_badge", position: position %></span>
+  <% assignment = Volunteer::Assignment.new position_id: position.id %>
+  <% if can? :create, assignment %>
+    <%= link_to_add_form "Assign", "volunteer_assignment", assignment, "##{position_selector} .assignments", {class: "add_form btn btn-info btn-mini"} %>
+  <% end %>
+
+  <div class="indent">
+    <p class="assignments">
+      <% if position.assignments.empty? %>
+        <span class="text-error">No one assigned</span>
+      <% else %>
+        <%= render position.assignments %>
+      <% end %>
+    </p>
+  </div>
+</div>

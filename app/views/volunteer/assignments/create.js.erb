@@ -1,0 +1,6 @@
+var position_selector = "#position_<%= @position.id %>";
+$('form', position_selector).remove();
+$('.assignments', position_selector).html('<%=j render @position.assignments %>');
+$('.fullfillment', position_selector).html('<%=j render "volunteer/positions/fullfillment_badge", position: @position %>');
+$('#unassigned_volunteer_<%= @assignment.registration_id %>').fadeOut('slow');
+$('#unassigned_count').html('<%= @assignment.registration.event.unassigned_volunteers.count %>')

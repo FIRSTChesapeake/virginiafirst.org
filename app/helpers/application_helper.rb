@@ -25,6 +25,28 @@ module ApplicationHelper
     number_to_phone(number, area_code: has_area_code)
   end
 
+
+  def link_to_add_form(*args, &block)
+    if block_given?
+      name = args[0]
+      object = args[1]
+      target = args[2]
+      html_options = args[3] || {}
+      link_to_add_form(capture(&block), name, object, target, html_options)
+    else
+      body = args[0]
+      name = args[1]
+      object = args[2]
+      target = args[3]
+      html_options = args[4]
+
+      form = render(name + "_form", object: object)
+      html_options[:data] = {} unless html_options[:data].present?
+      html_options[:data].merge!({target: target, form: form.gsub("\n", "")})
+      link_to body, '#', html_options
+    end
+  end
+
   def us_states
     [
         ['Alabama', 'AL'],
