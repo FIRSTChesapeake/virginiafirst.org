@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131028225526) do
+ActiveRecord::Schema.define(:version => 20131029060424) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20131028225526) do
     t.integer  "user_id"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "email"
     t.string   "street"
     t.string   "city"
     t.string   "state"
@@ -123,7 +124,6 @@ ActiveRecord::Schema.define(:version => 20131028225526) do
     t.boolean  "has_other_skill",        :default => false
     t.string   "other_skill"
     t.boolean  "is_volunteer"
-    t.string   "email"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
@@ -179,6 +179,18 @@ ActiveRecord::Schema.define(:version => 20131028225526) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "volunteer_assignments", :force => true do |t|
+    t.integer  "registration_id"
+    t.integer  "position_id"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "volunteer_assignments", ["position_id"], :name => "index_volunteer_assignments_on_position_id"
+  add_index "volunteer_assignments", ["registration_id"], :name => "index_volunteer_assignments_on_registration_id"
 
   create_table "volunteer_positions", :force => true do |t|
     t.integer  "event_id"

@@ -1,0 +1,15 @@
+<h1><%= @event.name %></h1>
+
+<div class="span3">
+  <h3> Unassigned (<%= @event.unassigned_volunteers.count %>) </h3>
+
+  <p>
+    <% @event.unassigned_volunteers.each do |volunteer| %>
+      <% if volunteer.profile %>
+        <span id="unassigned_volunteer_<%= volunteer.id %>">
+          <%= volunteer.full_name %>
+        </span><br>
+      <% end %>
+    <% end %>
+  </p>
+</div>

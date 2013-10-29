@@ -1,0 +1,31 @@
+<h2>
+  <%= image_tag @program.flag.thumb %>
+  Upcoming Events
+</h2>
+
+<% @events.upcoming.each do |event| %>
+  <h3>
+    <%= link_to event.name, event_path(@program, event) %>
+    <small><%= l event.starts_at, format: :date %></small>
+  </h3>
+  <div class="row">
+    <div class="span2">
+      <p>Volunteer fullfillment:</p>
+    </div>
+    <div class="span8">
+      <% fullfillment = event.fullfillment %>
+      <div class="progress progress-striped">
+        <div class="bar bar-success" style="width: <%= fullfillment * 100 %>%;"></div>
+        <div class="bar bar-danger" style="width: <%= event.unfullfillment * 100 %>%;"></div>
+        <span>
+          <%= event.total_filled_positions %> out of
+          <%= event.total_positions_required %> volunteer positions filled
+        </span>
+      </div>
+      <p class="center">
+        <%= event.unassigned_volunteers.count %> unassigned volunteers /
+        <%= event.volunteer_registrations.count %> total volunteers
+      </p>
+    </div>
+  </div>
+<% end %>

@@ -3,6 +3,7 @@ VirginiaFIRST::Application.routes.draw do
   scope module: 'volunteer' do
     scope path: '(/:program)' do
       resource :registrations, path: 'register', as: 'volunteer_registration', only: [:new, :create, :show]
+      resources :events, only: [:index, :show]
     end
   end
 

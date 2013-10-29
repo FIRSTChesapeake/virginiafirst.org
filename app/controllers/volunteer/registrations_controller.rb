@@ -1,6 +1,5 @@
-class Volunteer::RegistrationsController < ApplicationController
+class Volunteer::RegistrationsController < Volunteer::BaseController
   before_filter :authenticate_user!
-  before_filter :load_program
 
   def new
     session[:volunteer_params] ||= {}
@@ -46,14 +45,4 @@ class Volunteer::RegistrationsController < ApplicationController
     end
   end
 
-  private
-
-  def load_program
-    @program = FirstProgram.find_by_code params[:program] if params[:program].present?
-    if @program.present?
-      @programs = [@program]
-    else
-      @programs = FirstProgram.with_upcoming_events
-    end
-  end
 end

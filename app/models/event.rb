@@ -22,14 +22,56 @@ class Event < ActiveRecord::Base
   geocoded_by :full_address
   after_validation :geocode
 
+  def count_unfilled_positions
+    Volunteer::Position.
+        joins("LEFT OUTER JOIN volunteer_assignments ON volunteer_assignments.position_id = volunteer_positions.id").
+        group("volunteer_positions.id, volunteer_positions.event_id, volunteer_positions.needed_count").
+        select("volunteer_positions.id, needed_count as needed, count(volunteer_assignments.id) as assigned").
+        where({event_id: id}).having("count(volunteer_assignments.id) < needed_count")
+  end
+
+  def fullfillment
+    total_filled_positions.to_f / total_positions_required.to_f
+  end
+
   def full_address
     fields = [street, city, state, zip]
     fields.delete_if { |f| f.blank? }
     fields.join(", ")
   end
 
+  def total_filled_positions
+    total_positions_required - total_unfilled_positions
+  end
+
+  def total_positions_required
+    positions.sum(&:needed_count)
+  end
+
+  def total_unfilled_positions
+    counts = count_unfilled_positions
+    unfilled_assignments = 0
+    counts.each do |count|
+      needed = count.needed.to_i
+      assigned = count.assigned.to_i
+      unfilled_assignments += needed - assigned
+    end
+    unfilled_assignments
+  end
+
   def to_s
     name
+  end
+
+  def unassigned_volunteers
+    volunteer_registrations.
+        includes([:profile, :assignments]).
+        where(volunteer_assignments: { registration_id: nil }).
+        order("LOWER(profiles.last_name) ASC, LOWER(profiles.first_name) ASC")
+  end
+
+  def unfullfillment
+    1.0 - fullfillment
   end
 
   def unused_roles
