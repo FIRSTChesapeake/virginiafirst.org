@@ -28,6 +28,7 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def edit
+    @event = Event.includes(:positions => :role).find params[:id]
   end
 
   def update
