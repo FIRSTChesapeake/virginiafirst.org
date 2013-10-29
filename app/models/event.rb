@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :game
+  has_many :positions, class_name: Volunteer::Position
   belongs_to :program, class_name: "FirstProgram"
   has_many :volunteer_registrations, class_name: Volunteer::Registration
   has_many :volunteer_profiles, through: :volunteer_registrations
@@ -10,6 +11,9 @@ class Event < ActiveRecord::Base
   attr_accessible :name, :participant_limit, :program_id
   attr_accessible :setup_at, :starts_at, :teardown_at
   attr_accessible :city, :state, :street, :venue, :zip
+  attr_accessible :positions_attributes
+
+  accepts_nested_attributes_for :positions, allow_destroy: true
 
   validates_presence_of :name
   validates_presence_of :program
@@ -26,6 +30,14 @@ class Event < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def unused_roles
+    if positions.count > 0
+      Volunteer::Role.where("id NOT IN (?)", positions.map(&:role_id))
+    else
+      Volunteer::Role.all
+    end
   end
 
   private

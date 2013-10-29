@@ -5,8 +5,8 @@ describe 'admin/events/index.html.erb' do
 
   before(:each) do
     assign(:events, [
-        stub_model(Event, :name => "An Event"),
-        stub_model(Event, :name => "Some Game")
+        stub_model(Event, attributes_for(:event, name: "An Event")),
+        stub_model(Event, attributes_for(:event, name: "Some Game"))
     ])
   end
 

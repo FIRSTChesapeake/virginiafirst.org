@@ -1,5 +1,6 @@
 class Role < ActiveRecord::Base
   has_many :assignments
+  has_many :positions, class_name: Volunteer::Position
   has_many :users, through: :assignments
 
   attr_accessible :title

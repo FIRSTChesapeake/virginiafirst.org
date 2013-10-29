@@ -2,27 +2,68 @@
   <% unless @program.nil? %>
     <%= f.input :program_id, as: :hidden, input_html: {value: @program.id} %>
   <% end %>
-  <%= f.association :program unless @program %>
-  <%= f.input :name %>
-  <%= f.input :starts_at, as: :datetime_picker, placeholder: "dd/mm/yyyy hh:mm pp", input_html: { class: "input-medium" } %>
-  <%= f.input :venue %>
-  <%= f.input :address, required: true do %>
-    <div class="controls-row">
-      <%= f.input_field :street, placeholder: "Street", class: "span5" %>
-    </div>
-    <div class="controls-row">
-      <%= f.input_field :city, placeholder: "City", class: "span2" %>
-      <%= f.input_field :state, collection: us_states, class: "span2" %>
-      <%= f.input_field :zip, placeholder: "Zip", class: "span1" %>
-    </div>
-  <% end %>
 
-  <fieldset>
-    <legend>Logistics</legend>
-    <%= f.input :participant_limit, input_html: {class: "input-mini"} %>
-    <%= f.input :setup_at, as: :datetime_picker, placeholder: "dd/mm/yyyy hh:mm pp", input_html: { class: "input-medium" } %>
-    <%= f.input :teardown_at, as: :datetime_picker, placeholder: "dd/mm/yyyy hh:mm pp", input_html: { class: "input-medium" } %>
-  </fieldset>
+  <div class="tab-content">
+    <div class="tab-pane active" id="event_settings">
+      <%= f.association :program unless @program %>
+      <%= f.input :name %>
+      <%= f.input :starts_at, as: :datetime_picker, placeholder: "dd/mm/yyyy hh:mm pp", input_html: { class: "input-medium" } %>
+      <%= f.input :venue %>
+      <%= f.input :address, required: true do %>
+        <div class="controls-row">
+          <%= f.input_field :street, placeholder: "Street", class: "span5" %>
+        </div>
+        <div class="controls-row">
+          <%= f.input_field :city, placeholder: "City", class: "span2" %>
+          <%= f.input_field :state, collection: us_states, class: "span2" %>
+          <%= f.input_field :zip, placeholder: "Zip", class: "span1" %>
+        </div>
+      <% end %>
+
+      <fieldset>
+        <legend>Logistics</legend>
+        <%= f.input :participant_limit, input_html: {class: "input-mini"} %>
+        <%= f.input :setup_at, as: :datetime_picker, placeholder: "dd/mm/yyyy hh:mm pp", input_html: { class: "input-medium" } %>
+        <%= f.input :teardown_at, as: :datetime_picker, placeholder: "dd/mm/yyyy hh:mm pp", input_html: { class: "input-medium" } %>
+      </fieldset>
+    </div>
+    <div class="tab-pane" id="event_volunteer_settings">
+      <p>Todo, add volunteer positions form here</p>
+
+      <%= f.input :positions do %>
+        <div class="row">
+          <span class="span3"><strong>Title</strong></span>
+          <span class="span1"><strong>Needed</strong></span>
+        </div>
+        <div id="positions_list">
+          <%= f.simple_fields_for :positions do |p| %>
+            <%= render 'position_fields', f: p %>
+          <% end %>
+
+        </div>
+        <% if @event.unused_roles.count > 0 %>
+          <div class="row">
+            <div class="span3">
+              <%= select_tag "role",
+                             options_from_collection_for_select(
+                                     @event.unused_roles, 'id', 'title'),
+                             class: "span3" %>
+            </div>
+            <div class="span1">
+              <%= link_to_add_fields "Add",
+                                     :positions,
+                                     f,
+                                     "#positions_list",
+                                     admin_volunteer_role_path(":id:", format: :json),
+                                     "#role",
+                                     class: "btn btn-info btn-medium" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
 
   <div class="form-actions">
     <%= f.button :submit %>

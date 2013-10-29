@@ -7,10 +7,20 @@ class Admin::Volunteer::RolesController < Admin::BaseController
 
   def show
     @role = Volunteer::Role.find params[:id]
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @role }
+    end
   end
 
   def new
     @role = Volunteer::Role.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @role }
+    end
   end
 
   def create
