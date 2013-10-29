@@ -4,12 +4,13 @@
 
 .bar {
   z-index: 1;
-  position: absolute;
+  //position: absolute;
 }
 
 .progress span {
   position: absolute;
   top: 0;
+  left: 0;
   z-index: 2;
   color: white;
   text-align: center;
