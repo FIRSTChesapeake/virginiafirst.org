@@ -8,6 +8,6 @@ $ ->
     $(target).append($(this).data('form'))
     event.preventDefault()
 
-  $('.cancel-form').on 'click', (event) ->
+  $(document).on 'click', 'a.cancel-form', (event) ->
     $(this).closest('form').remove()
     event.preventDefault()
