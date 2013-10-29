@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     !!roles.where(title: title).first
   end
 
+  def is_superuser?
+    !!roles.where(title: [:admin, :virginia_first, :ftc_admin, :frc_admin]).first
+  end
+
   def password_required?
     super && providers.blank?
   end
