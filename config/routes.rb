@@ -23,14 +23,13 @@ VirginiaFIRST::Application.routes.draw do
     scope path: '(/:program)' do
       resources :events
       resources :games
+      scope module: 'volunteer', path: 'volunteer', as: 'volunteer' do
+        resources :roles
+      end
     end
 
     resources :skills
     resources :profiles, only: [:index, :show]
-
-    scope module: 'volunteer', path: 'volunteer', as: 'volunteer' do
-      resources :roles
-    end
   end
 
   scope module: 'volunteer' do

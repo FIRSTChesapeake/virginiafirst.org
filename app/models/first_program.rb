@@ -3,6 +3,7 @@ class FirstProgram < ActiveRecord::Base
 
   has_many :events, foreign_key: "program_id"
   has_many :games, foreign_key: "program_id"
+  has_many :volunteer_roles, class_name: Volunteer::Role, foreign_key: "program_id"
 
   mount_uploader :icon, IconUploader
   mount_uploader :flag, FlagUploader

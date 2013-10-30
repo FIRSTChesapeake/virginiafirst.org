@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131029060424) do
+ActiveRecord::Schema.define(:version => 20131030161845) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(:version => 20131029060424) do
     t.integer  "reports_to_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.integer  "program_id"
   end
 
   add_index "volunteer_roles", ["reports_to_id"], :name => "index_roles_on_reports_to_id"

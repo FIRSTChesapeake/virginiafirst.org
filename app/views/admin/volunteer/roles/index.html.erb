@@ -1,4 +1,6 @@
-<%= link_to "New Role", [:new, :admin, :volunteer, :role], class: "btn btn-primary pull-right" %>
+<%= link_to "New Role",
+            new_admin_volunteer_role_path(@program),
+            class: "btn btn-primary pull-right" %>
 
 <h1>Volunteer Roles</h1>
 
@@ -24,14 +26,18 @@
 
       <% if can? :edit, role %>
         <td class="action">
-          <%= link_to [:edit, :admin, role], class: "btn btn-small btn-success" do %>
+          <%= link_to edit_admin_volunteer_role_path(@program, role),
+                      class: "btn btn-small btn-success" do %>
             <i class="icon-pencil icon-white"></i> Edit
           <% end %>
         </td>
       <% end %>
       <% if can? :delete, role %>
         <td class="action">
-          <%= link_to [:admin, role], method: :delete, confirm: "Are you sure?", class: "btn btn-danger btn-small" do %>
+          <%= link_to admin_volunteer_role_path(@program, role),
+                      method: :delete,
+                      confirm: "Are you sure?",
+                      class: "btn btn-danger btn-small" do %>
             <i class="icon-trash icon-white"></i> Delete
           <% end %>
         </td>
