@@ -16,13 +16,22 @@ class AdminAbility
 
       if user.has_role?(:ftc_admin)
         can :manage, Event, program: {code: :ftc}
+        can :read, Event
         can :manage, Game, program: {code: :ftc}
         can :manage, Role
       end
 
       if user.has_role?(:frc_admin)
         can :manage, Event, program: {code: :frc}
+        can :read, Event
         can :manage, Game, program: {code: :frc}
+        can :manage, Role
+      end
+
+      if user.has_role?(:fll_admin)
+        can :manage, Event, program: {code: :fll}
+        can :read, Event
+        can :manage, Game, program: {code: :fll}
         can :manage, Role
       end
     end

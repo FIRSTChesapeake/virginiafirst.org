@@ -12,6 +12,7 @@ class Admin::EventsController < Admin::BaseController
 
   def new
     @event = Event.new
+    @event.program = @program if @program
   end
 
   def create

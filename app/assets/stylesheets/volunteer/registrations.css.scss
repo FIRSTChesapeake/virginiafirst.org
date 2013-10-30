@@ -48,4 +48,13 @@
       background-color: $yellowLight;
     }
   }
+
+  .fll {
+    background-color: transparent;
+
+    .event.selected {
+      border: 1px solid $redDeep;
+      background-color: $redLight;
+    }
+  }
 }
