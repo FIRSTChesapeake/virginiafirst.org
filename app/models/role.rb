@@ -7,6 +7,8 @@ class Role < ActiveRecord::Base
 
   validates_uniqueness_of :title
 
+  before_save :downcase_title
+
   def self.[](title)
     find_or_create_by_title format_title(title)
   end
@@ -18,6 +20,12 @@ class Role < ActiveRecord::Base
 
   def title=(value)
     write_attribute :title, Role.format_title(value)
+  end
+
+  private
+
+  def downcase_title
+    title.downcase!
   end
 
 end

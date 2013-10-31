@@ -16,16 +16,8 @@ class Volunteer::Role < ActiveRecord::Base
   validates_presence_of :default_starts_at
   validates_presence_of :default_ends_at
 
-  before_save :downcase_title
-
   def to_s
-    title
-  end
-
-  private
-
-  def downcase_title
-    title.downcase!
+    "#{program.try(:abbr) || 'No Program'}:#{title}"
   end
 
 end
