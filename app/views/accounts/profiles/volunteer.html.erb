@@ -12,7 +12,7 @@
 <%= simple_form_for @profile, url: volunteer_profile_path, html: { id: "edit_volunteer_profile", class: "form-horizontal" } do |f| %>
   <%= f.error_notification %>
 
-  <%= render 'volunteer_fields', f: f %>
+  <%= render 'volunteer_fields', f: f, programs: FirstProgram.with_volunteer_roles %>
 
   <div class="form-actions">
     <%= f.button :submit, class: "btn-primary" %>

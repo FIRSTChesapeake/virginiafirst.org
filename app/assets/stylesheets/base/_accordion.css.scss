@@ -1,0 +1,21 @@
+.accordion-heading {
+  &.frc {
+    background-color: transparent;
+    a { color: $blueDeep; }
+  }
+
+  &.ftc {
+    background-color: transparent;
+    a { color: $yellowDeep; }
+  }
+
+  &.fll {
+    background-color: transparent;
+    a { color: $redDeep; }
+  }
+
+  &.jrfll {
+    background-color: transparent;
+    a { color: $teal; }
+  }
+}

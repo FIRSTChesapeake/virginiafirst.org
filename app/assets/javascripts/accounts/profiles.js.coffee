@@ -13,3 +13,4 @@ $ ->
       parent = $(this).parents(".inline-team")
       $(parent).children(".team-input").toggle().focus()
 
+  $("#preferred_roles_accordion").collapse().height('auto');

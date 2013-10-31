@@ -30,6 +30,10 @@ class FirstProgram < ActiveRecord::Base
         order("events.starts_at ASC")
   end
 
+  def self.with_volunteer_roles
+    includes(:volunteer_roles).where("volunteer_roles.id is not null")
+  end
+
   def self.[](code)
     find_by_code code
   end

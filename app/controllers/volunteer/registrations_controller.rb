@@ -8,6 +8,7 @@ class Volunteer::RegistrationsController < Volunteer::BaseController
   end
 
   def show
+    @programs = @profile.present? ? [@profile] : FirstProgram.with_volunteer_roles
     if current_user.profile
       @profile = current_user.profile
       @events = @profile.volunteer_events

@@ -1,9 +1,45 @@
-<%= f.association :preferred_roles,
-                  as: :check_boxes,
-                  collection: Volunteer::Role.order(:title),
-                  wrapper_class: "checkbox-grid",
-                  label_method: lambda { |role| display_preferred_role(role) } %>
+<div class="check_boxes checkbox-grid optional" id="profile_preferred_roles">
+  <label class="check_boxes optional control-label">
+    Preferred roles<br>
+    <% unless @program %>
+      <em>Click a program to see available roles</em>
+    <% end %>
+  </label>
+  <div class="controls">
 
+    <div class="accordion" id="preferred_roles_accordion">
+      <% programs.each_with_index do |program, index| %>
+        <% expand = true if @program && @program.code == program.code %>
+        <div class="accordion-group">
+          <div class="accordion-heading <%= program.code %>">
+            <%= link_to program.name,
+                        "#collapse_#{program.code}_roles",
+                        class: "accordion-toggle",
+                        data: { toggle: "collapse", target: "#collapse_#{program.code}_roles" } %>
+          </div>
+          <div id="collapse_<%= program.code %>_roles" class="accordion-body collapse <%= "in" if expand %>">
+            <div class="accordion-inner">
+              <% program.volunteer_roles.order(:title).each do |role| %>
+                <%= label_tag dom_id(role), class: "checkbox" do %>
+                  <%= check_box_tag 'profile[preferred_role_ids][]',
+                                    role.id,
+                                    f.object.preferred_role_ids.include?(role.id),
+                                    id: dom_id(role) %>
+                  <%= display_preferred_role(role) %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      <% end %>
+    </div>
+
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="clearfix"></div>
 <%= f.input :footnotes, label: false do %>
   <ul class="footnotes">
     <li class="first">

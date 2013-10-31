@@ -1,7 +1,7 @@
 <h1>Volunteer Registration</h1>
 
 <%= simple_form_for @volunteer_form,
-                    url: volunteer_registration_path,
+                    url: volunteer_registration_path(@program),
                     html: { class: "form-horizontal", id: "volunteer_registration_form" } do |f| %>
   <%= f.error_notification %>
 
