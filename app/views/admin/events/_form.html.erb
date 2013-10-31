@@ -3,6 +3,11 @@
     <%= f.input :program_id, as: :hidden, input_html: {value: @program.id} %>
   <% end %>
 
+  <ul class="nav nav-tabs" id="event_form_tabs">
+    <li class="active"><%= link_to "Details", "#event_settings", data: { toggle: "tab" } %></li>
+    <li><%= link_to "Volunteer Options", "#event_volunteer_settings", data: { toggle: "tab" } %></li>
+  </ul>
+
   <div class="tab-content">
     <div class="tab-pane active" id="event_settings">
       <%= f.association :program unless @program %>
@@ -54,7 +59,7 @@
                                      :positions,
                                      f,
                                      "#positions_list",
-                                     admin_volunteer_role_path(":id:", format: :json),
+                                     admin_volunteer_role_path(@program, ":id:", format: :json),
                                      "#role",
                                      class: "btn btn-info btn-medium" %>
             </div>

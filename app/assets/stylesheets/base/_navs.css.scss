@@ -92,33 +92,33 @@
 }
 
 .frc {
-  .nav-tabs > .active > a,
-  .nav-tabs > .active > a:hover,
-  .nav-tabs > .active > a:focus {
+  .nav-stacked > .active > a,
+  .nav-stacked > .active > a:hover,
+  .nav-stacked > .active > a:focus {
     border-left: 7px solid $blueDeep;
   }
 }
 
 .ftc {
-  .nav-tabs > .active > a,
-  .nav-tabs > .active > a:hover,
-  .nav-tabs > .active > a:focus {
+  .nav-stacked > .active > a,
+  .nav-stacked > .active > a:hover,
+  .nav-stacked > .active > a:focus {
     border-left: 7px solid $yellowDeep;
   }
 }
 
 .fll {
-  .nav-tabs > .active > a,
-  .nav-tabs > .active > a:hover,
-  .nav-tabs > .active > a:focus {
+  .nav-stacked > .active > a,
+  .nav-stacked > .active > a:hover,
+  .nav-stacked > .active > a:focus {
     border-left: 7px solid $redDeep;
   }
 }
 
 .jrfll {
-  .nav-tabs > .active > a,
-  .nav-tabs > .active > a:hover,
-  .nav-tabs > .active > a:focus {
+  .nav-stacked > .active > a,
+  .nav-stacked > .active > a:hover,
+  .nav-stacked > .active > a:focus {
     border-left: 7px solid $teal;
   }
 }

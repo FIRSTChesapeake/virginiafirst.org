@@ -1,7 +1,7 @@
 <div id="position_<%= f.object.object_id %>" class="controls-row">
   <%= f.hidden_field :role_id %>
   <div class="row">
-    <span class="span3"><%= f.object.role %></span>
+    <span class="span3"><%= f.object.role.try(:title) %></span>
     <%= f.text_field :needed_count, class: "span1", style: "text-align: center;" %>
     <%= f.hidden_field :_destroy %>
     <%= link_to "#", class: "span2 remove-fields" do %>

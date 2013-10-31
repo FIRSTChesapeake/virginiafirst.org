@@ -1,8 +1,3 @@
 <h2>Edit Event</h2>
 
-<ul class="nav nav-tabs" id="event_form_tabs">
-  <li class="active"><%= link_to "Details", "#event_settings", data: { toggle: "tab" } %></li>
-  <li><%= link_to "Volunteer Options", "#event_volunteer_settings", data: { toggle: "tab" } %></li>
-</ul>
-
 <%= render 'form', event: @event, url: admin_event_path(@program, @event) %>

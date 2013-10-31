@@ -85,9 +85,9 @@ class Event < ActiveRecord::Base
 
   def unused_roles
     if positions.count > 0
-      Volunteer::Role.where("id NOT IN (?)", positions.map(&:role_id))
+      program.volunteer_roles.where("id NOT IN (?)", positions.map(&:role_id))
     else
-      Volunteer::Role.all
+      program.volunteer_roles
     end
   end
 
