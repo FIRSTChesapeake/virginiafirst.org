@@ -4,7 +4,7 @@ class Accounts::RegistrationsController < ApplicationController
 
   def index
     @profile = current_user.profile
-    @registrations = @profile.volunteer_registrations.includes(:event)
+    @registrations = @profile.volunteer_registrations.includes(:event).order("events.starts_at")
   end
 
   def destroy
