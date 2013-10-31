@@ -138,6 +138,7 @@ GEM
     net-ssh (2.6.8)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    newrelic_rpm (3.6.3.111)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
@@ -289,6 +290,7 @@ DEPENDENCIES
   guard-rspec
   jquery-rails
   meta_request
+  newrelic_rpm
   omniauth-google-oauth2
   omniauth-openid
   parallel_tests
