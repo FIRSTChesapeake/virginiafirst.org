@@ -1,4 +1,3 @@
-
 <div class="row">
   <div class="span4">
     <ul class="nav nav-tabs">
@@ -11,7 +10,7 @@
     </p>
 
     <div class="center">
-      <%= link_to user_omniauth_authorize_path(:google_oauth2, origin: volunteer_registration_path) do %>
+      <%= link_to user_omniauth_authorize_path(:google_oauth2, origin: session[:user_return_to]) do %>
         <%= image_tag "Red-signin_Long_base_44dp.png",
                       mouseover: "Red-signin_Long_hover_44dp.png",
                       alt: "Sign in with Google" %>

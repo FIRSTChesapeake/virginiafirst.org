@@ -1,31 +1,103 @@
 
-<div class="row">
-  <div class="span8">
-    <h1>Volunteer Today</h1>
-    <br>
-    <p class="lead">
-      <%= image_tag FirstProgram[:ftc].flag, alt: FirstProgram[:ftc].name, width: '200px', class: 'pull-left' %>
-      Volunteer registration is officially open for the 2013-2014 FTC season!
-    </p>
-    <br>
-    <p class="center">
-      <%= link_to "Register for an event", new_volunteer_registration_path(return_to: volunteer_registration_path), class: "btn btn-large btn-success" %>
-    </p>
-  </div>
+<h1>Volunteer Registration is open</h1>
 
-  <div class="offset1 span3">
+<p>
+  The new 2013-14 FLL and FTC seasons are in full swing and the 2014 FRC season
+  is just around the corner. <%= virginia_first %> needs your help to make
+  these competitions a success by volunteering to support our events.
+</p>
+
+<h3>Choose a program</h3>
+
+<div class="row">
+  <div class="span4 center">
+    <% frc = FirstProgram[:frc] %>
+    <%= link_to "https://my.usfirst.org/vims/" do %>
+      <%= image_tag frc.flag.medium, alt: frc.name %>
+    <% end %>
+
+  </div>
+  <div class="span4 center">
+    <% ftc = FirstProgram[:ftc] %>
+    <%= link_to new_volunteer_registration_path(ftc) do %>
+      <%= image_tag ftc.flag.medium, alt: ftc.name %>
+    <% end %>
+  </div>
+  <div class="span4 center">
+    <% fll = FirstProgram[:fll] %>
+    <%= link_to new_volunteer_registration_path(fll) do %>
+      <%= image_tag fll.flag.medium, alt: fll.name %>
+    <% end %>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="span7">
+    <div class="row section">
+      <div class="span3">
+        <h2 class="center">
+          <%= link_to volunteer_home_path do %>
+            Support<br>an event
+          <% end %>
+        </h2>
+      </div>
+      <div class="span4">
+        <p>
+          <%= virginia_first %> organizes events throughout the state of Virginia
+          to inspire young people, from workshops to competitions. None of which
+          would be successful without the support of our volunteers.
+        </p>
+        <p>
+          Volunteers come from a wide variety of backgrounds
+          and skills. You don't have to be a rocket science to help out.
+          <%= link_to "Learn more", volunteer_home_path %> about our volunteer
+          opportunities
+        </p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row section">
+      <div class="span4">
+        <p>
+          Mentors are the keystone of <%= first %> programs, using technical
+          and non-technical experience to inspire students.
+          <%= link_to "Learn more", mentor_home_path %> about mentoring a
+          <%= first %> team.
+        </p>
+        <p>
+          Looking for mentoring opportunities in Virginia? Sign up today and
+          <%= virginia_first %> will connect you with a team in need.
+        </p>
+      </div>
+      <div class="span3">
+        <h2 class="center">
+          <%= link_to mentor_home_path do %>
+            Mentor<br>a team
+          <% end %>
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class="offset1 span4">
     <% event = @upcoming_events.first %>
 
-    <% if event %>
-      <h2>Next event</h2>
+    <h2>Upcoming Events</h2>
+    <% if @upcoming_events.present? %>
+      <% @upcoming_events[0..1].each do |event| %>
       <div class="<%= event.program.code %>-border">
-        <h3><%= event.name %></h3>
+        <h4><%= event.name %></h4>
         <p>
           <%= event.program.name %><br>
           <%= l event.starts_at, format: :date %><br>
           <%= display_location event %>
         </p>
       </div>
+      <% end %>
+      <%= link_to "See all events", upcoming_events_path %>
     <% else %>
       <p class="lead"> There are no upcoming events. Check back later. </p>
 
@@ -36,57 +108,6 @@
     <% end %>
   </div>
 </div>
-
-<hr>
-
-<div class="row section">
-  <div class="span4">
-    <h2 class="center">
-      <%= link_to volunteer_home_path do %>
-        Support<br>an event
-      <% end %>
-    </h2>
-  </div>
-  <div class="span8">
-    <p>
-      <%= virginia_first %> organizes events throughout the state of Virginia
-      to inspire young people, from workshops to competitions. None of which
-      would be successful without the support of our volunteers.
-    </p>
-    <p>
-      Volunteers come from a wide variety of backgrounds
-      and skills. You don't have to be a rocket science to help out.
-      <%= link_to "Learn more", volunteer_home_path %> about our volunteer
-      opportunities
-    </p>
-  </div>
-</div>
-
-<hr>
-
-<div class="row section">
-  <div class="span8">
-    <p>
-      Mentors are the keystone of <%= first %> programs, using technical
-      and non-technical experience to inspire students.
-      <%= link_to "Learn more", mentor_home_path %> about mentoring a
-      <%= first %> team.
-    </p>
-    <p>
-      Looking for mentoring opportunities in Virginia? Sign up today and
-      <%= virginia_first %> will connect you with a team in need.
-    </p>
-  </div>
-  <div class="span4">
-    <h2 class="center">
-      <%= link_to mentor_home_path do %>
-        Mentor<br>a team
-      <% end %>
-    </h2>
-  </div>
-</div>
-
-<hr>
 
 <div class="section">
   <h2 class="center"><%= link_to "Sign up", volunteer_registration_path %> today to get started</h2>

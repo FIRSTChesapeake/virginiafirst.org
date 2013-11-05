@@ -13,7 +13,7 @@
     </p>
 
     <div class="center">
-      <%= link_to user_omniauth_authorize_path(:google_oauth2, origin: session[:return_to]) do %>
+      <%= link_to user_omniauth_authorize_path(:google_oauth2, origin: session[:user_return_to]) do %>
         <%= image_tag "Red-signin_Long_base_44dp.png",
                       mouseover: "Red-signin_Long_hover_44dp.png",
                       alt: "Sign in with Google" %>
