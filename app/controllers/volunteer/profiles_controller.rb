@@ -1,4 +1,5 @@
 class Volunteer::ProfilesController < ApplicationController
+  before_filter :authenticate_user!
   layout 'event'
 
   def index
