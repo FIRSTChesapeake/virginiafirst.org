@@ -8,5 +8,6 @@ class Volunteer::EventsController < Volunteer::BaseController
 
   def show
     @event = Event.find params[:id]
+    render layout: 'event'
   end
 end

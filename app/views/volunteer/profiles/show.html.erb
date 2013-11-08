@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="span4">
+    <%= render @profile %>
+  </div>
+
+  <div class="span5">
+    <h3>Volunteer Assignments</h3>
+    <% @profile.volunteer_registrations.includes([:event, :assignments]).each do |volunteer| %>
+      <h5><%= link_to volunteer.event.name, volunteer.event %></h5>
+
+      <div id="volunteer_<%= volunteer.id %>" class="indent">
+        <% if volunteer.assignments.empty?  %>
+          <% if can? :create, Volunteer::Assignment %>
+            <%= render 'volunteer_assignment_form', volunteer: volunteer %>
+          <% else %>
+            <em class="muted">Not Assigned</em>
+          <% end %>
+        <% else %>
+          <p>
+            <%= render partial: "assignment",
+                       collection: volunteer.assignments.includes({:position => :role}) %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= link_to "#" do %>
+      <i class="icon-plus"></i> Add another position
+    <% end %>
+  </div>
+
+  <div class="span3">
+    <h3>Preferred Roles</h3>
+    <ul>
+      <% @profile.preferred_roles.each do |role| %>
+        <li><%= role.title %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

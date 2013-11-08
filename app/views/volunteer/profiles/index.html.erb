@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="span8">
+    <h1>Registered Volunteers</h1>
+  </div>
+
+  <div class="span4">
+    <div class="pull-right">
+      <%# form_tag profiles_path, {method: :get, id: "search_form", class: "form-search"} do %>
+        <%# text_field_tag :query, params[:query], {placeholder: "Name", class: "input-medium search-query"} %>
+        <%# submit_tag "Search", class: "btn" %>
+      <%# end %>
+    </div>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>&nbsp;</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @profiles.each do |profile| %>
+    <tr id="profile_<%= profile.id %>">
+      <td><%= link_to profile.full_name, event_profile_path(@program, @event, profile) %></td>
+      <td><%= mail_to profile.email %></td>
+      <td>
+        <abbr title="<%= profile.primary_phone_type_label %>">
+          <%= profile.primary_phone_type_label[0] %></abbr>:
+        <%= display_phone profile.primary_phone_number %><br>
+      </td>
+      <td>
+        <span class="pull-right">
+          <% if can? :delete, Volunteer::Registration %>
+            <%= link_to event_profile_path(@program, @event, profile), class: "btn btn-small btn-danger", method: :delete, confirm: "Are you sure?", remote: true do %>
+              <i class="icon-trash"></i> Delete
+            <% end %>
+          <% end %>
+        </span>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

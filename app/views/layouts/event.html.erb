@@ -1,0 +1,16 @@
+<% content_for :content do %>
+  <h1><%= @event.name %></h1>
+
+  <ul class="nav nav-tabs">
+    <li class="<%= active_tab?('events') %>">
+      <%= link_to 'Assignments', event_path(@program, @event) %>
+    </li>
+    <li class="<%= active_tab?('profiles') %>">
+      <%= link_to 'Volunteers', event_profiles_path(@program, @event) %>
+    </li>
+  </ul>
+
+  <%= yield %>
+<% end %>
+
+<%= render file: 'layouts/application' %>

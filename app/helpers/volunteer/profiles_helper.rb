@@ -1,0 +1,2 @@
+module Volunteer::ProfilesHelper
+end

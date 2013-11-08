@@ -46,6 +46,10 @@ class Profile < ActiveRecord::Base
     enums(:alternate_phone_type).label(alternate_phone_type)
   end
 
+  def email
+    self.user.present? ? user.email : email
+  end
+
   def first_involvement
     involvement = []
     involvement << "Student" if is_student?
@@ -62,6 +66,10 @@ class Profile < ActiveRecord::Base
 
   def primary_phone_type_label
     enums(:primary_phone_type).label(primary_phone_type)
+  end
+
+  def shirt_size_label
+    enums(:shirt_size).label(shirt_size)
   end
 
   def skill_characteristics

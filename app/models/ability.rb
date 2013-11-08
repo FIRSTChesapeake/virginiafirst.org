@@ -27,6 +27,7 @@ class Ability
         can :read, Volunteer::Assignment
         can :read, Event
         can :read, Volunteer::Registration
+        can :read, Profile
       end
 
       if user.has_role?(:volunteer_coordinator)

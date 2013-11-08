@@ -1,0 +1,10 @@
+<% volunteer.assignments.build if volunteer.assignments.empty? %>
+<%= form_for volunteer, html: {class: 'form-inline'} do |f| %>
+  <%= f.fields_for :assignments do |a| %>
+    <%= a.select :position_id,
+                 options_from_collection_for_select(
+                         volunteer.event.positions, 'id', 'role'),
+                 prompt: "Select a position" %>
+  <% end %>
+  <%= f.submit "Save", class: 'btn btn-info' %>
+<% end %>

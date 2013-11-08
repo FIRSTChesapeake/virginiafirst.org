@@ -1,0 +1,57 @@
+<h2><%= profile.full_name %></h2>
+
+<p>
+  <%= mail_to profile.email %>
+</p>
+
+<address>
+  <%= profile.street %><br>
+  <%= "#{profile.city}, #{profile.state} #{profile.zip}" %><br>
+  <abbr title="<%= profile.primary_phone_type_label %>">
+    <%= profile.primary_phone_type_label[0] %></abbr>:
+  <%= display_phone profile.primary_phone_number %><br>
+  <% if profile.alternate_phone_number.present? %>
+    <abbr title="<%= profile.alternate_phone_type_label %>">
+      <%= profile.alternate_phone_type_label[0] %> </abbr>:
+    <%= display_phone profile.alternate_phone_number %>
+  <% end %>
+</address>
+
+<h5>Profession</h5>
+<p>
+  <% if profile.current_occupation.present? || profile.current_organization.present? %>
+    <%= profile.current_occupation %><br>
+    <%= profile.current_organization %>
+  <% else %>
+    Not Provided
+  <% end %>
+</p>
+
+<h5>FIRST Experience</h5>
+<p>
+  <% if profile.has_frc_experience? %>
+    <%= first %> Robotics Competition
+    <%= "- Team #{profile.frc_team_number}" if profile.frc_team_number.present? %>
+    <br>
+  <% end %>
+  <% if profile.has_ftc_experience? %>
+    <%= first %> Tech Challenge
+    <%= "- Team #{profile.ftc_team_number}" if profile.ftc_team_number.present? %>
+    <br>
+  <% end %>
+  <%= "#{first} Lego League<br>".html_safe if profile.has_fll_experience? %>
+  <%= "Jr. #{first} Lego League".html_safe if profile.has_jrfll_experience? %>
+</p>
+
+<h5>Skills</h5>
+<p>
+  <%= "Administrative" if profile.is_administrative? %>
+  <%= "Interpersonal" if profile.is_interpersonal? %>
+  <%= "Mechanical" if profile.is_mechanical? %>
+  <%= "Technical" if profile.is_technical? %>
+</p>
+
+<div class="clearfix"></div>
+
+<h5>Shirt Size</h5>
+<%= profile.shirt_size_label || "Not Provided" %>

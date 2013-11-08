@@ -1,5 +1,9 @@
 VirginiaFIRST::Application.routes.draw do
 
+  get "profiles/index"
+
+  get "profiles/show"
+
   resource :account, controller: "accounts", only: [:show, :edit, :update, :destroy], path_names: {edit: "settings"}
 
   scope module: 'accounts', path: 'account' do
@@ -35,7 +39,9 @@ VirginiaFIRST::Application.routes.draw do
   scope module: 'volunteer' do
     scope path: '(/:program)' do
       resource :registrations, path: 'register', as: 'volunteer_registration', only: [:new, :create, :show]
-      resources :events, only: [:index, :show]
+      resources :events, only: [:index, :show] do
+        resources :profiles, only: [:index, :show]
+      end
     end
     resources :assignments
   end

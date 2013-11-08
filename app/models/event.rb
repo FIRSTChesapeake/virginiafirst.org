@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   belongs_to :program, class_name: "FirstProgram"
   has_many :roles, class_name: Volunteer::Role, through: :positions, uniq: true
   has_many :volunteer_registrations, class_name: Volunteer::Registration
-  has_many :volunteer_profiles, through: :volunteer_registrations
+  has_many :volunteer_profiles, through: :volunteer_registrations, source: :profile
 
   scope :sorted, ->(order='ASC') { order("starts_at #{order}") }
   scope :upcoming, -> { where("starts_at > ?", Date.today).order("starts_at ASC") }

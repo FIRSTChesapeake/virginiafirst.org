@@ -3,6 +3,10 @@ module ApplicationHelper
     controller_name == name ? "active" : ""
   end
 
+  def active_tab?(name)
+    controller_name == name || controller_path.starts_with?(name) ? "active" : ""
+  end
+
   def display_address(address)
     buffer = ActiveSupport::SafeBuffer.new
     content_tag :address do
