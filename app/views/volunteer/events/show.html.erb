@@ -18,7 +18,7 @@
       <% @event.unassigned_volunteers.each do |volunteer| %>
         <% if volunteer.profile %>
         <span id="unassigned_volunteer_<%= volunteer.id %>">
-          <%= link_to_if can?(:read, volunteer), volunteer.full_name, event_profile_path(@program, @event, volunteer.profile) %><br>
+          <%= link_to_if can?(:read, volunteer), volunteer.full_name, volunteer.profile %><br>
         </span>
         <% end %>
       <% end %>

@@ -19,13 +19,13 @@
     <th>Name</th>
     <th>Email</th>
     <th>Phone</th>
-    <th>&nbsp;</th>
+    <th>Organization</th>
   </tr>
   </thead>
   <tbody>
   <% @profiles.each do |profile| %>
     <tr id="profile_<%= profile.id %>">
-      <td><%= link_to profile.full_name, event_profile_path(@program, @event, profile) %></td>
+      <td><%= link_to profile.full_name, profile_path(profile) %></td>
       <td><%= mail_to profile.email %></td>
       <td>
         <abbr title="<%= profile.primary_phone_type_label %>">
@@ -33,13 +33,7 @@
         <%= display_phone profile.primary_phone_number %><br>
       </td>
       <td>
-        <span class="pull-right">
-          <% if can? :delete, Volunteer::Registration %>
-            <%= link_to event_profile_path(@program, @event, profile), class: "btn btn-small btn-danger", method: :delete, confirm: "Are you sure?", remote: true do %>
-              <i class="icon-trash"></i> Delete
-            <% end %>
-          <% end %>
-        </span>
+        <%= profile.current_organization %>
       </td>
     </tr>
   <% end %>

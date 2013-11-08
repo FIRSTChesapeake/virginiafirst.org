@@ -1,6 +1,6 @@
 <span id="assignment_<%= assignment.id %>">
   <% profile = assignment.registration.profile %>
-  <%= link_to_if can?(:read, profile), profile.full_name, event_profile_path(@program, @event, profile) %>
+  <%= link_to_if can?(:read, profile), profile.full_name, profile %>
   <% if can? :delete, assignment %>
     <%= link_to '<i class="icon-remove"></i>'.html_safe, assignment_path(assignment), method: :delete %>
   <% end %>
