@@ -1,0 +1,42 @@
+<h2>
+  Volunteer Crew Breakdown<br>
+  <small><%= @event.name %></small>
+</h2>
+
+<% @key_positions.each_with_index do |position, index| %>
+  <% if position.responsible_for.count > 0 %>
+    <div class="row leader-summary">
+      <div class="span3">
+        <h4><%= position.title %></h4>
+        <% position.volunteers.each do |leader| %>
+          <span><%= leader.full_name %></span><br>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="span5">
+          <% position.responsible_for.each do |position| %>
+            <h5>
+              <%= position.title %>
+              <small>
+                <%= l position.role.default_starts_at, format: :time12hr %> to
+                <%= l position.role.default_ends_at, format: :time12hr %>
+              </small>
+            </h5>
+
+            <ul class="unstyled">
+              <% position.volunteers.each do |volunteer| %>
+                <li class="underline"><%= volunteer.full_name %></li>
+              <% end %>
+              <% unfilled_count = [position.needed_count - position.volunteers.count, 0].max %>
+              <% unfilled_count.times do %>
+                <li class="underline">&nbsp;</li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+      <%= content_tag :hr unless (index+1) == @key_positions.size %>
+    </div>
+  <% end %>
+<% end %>
+

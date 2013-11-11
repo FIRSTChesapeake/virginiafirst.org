@@ -1,0 +1,11 @@
+// Place all the styles related to the volunteer::reports::crew_break_down controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "base/variables";
+
+.crew_break_down {
+  .underline {
+    border-bottom: 1px solid #aaaaaa;
+  }
+}

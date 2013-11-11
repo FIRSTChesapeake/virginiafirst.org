@@ -14,4 +14,5 @@
  *= require_directory ./accounts
  *= require_directory ./admin
  *= require_directory ./volunteer
+ *= require_directory ./volunteer/reports
  */

@@ -8,6 +8,16 @@
     <li class="<%= active_tab?('profiles') %>">
       <%= link_to 'Volunteers', event_profiles_path(@program, @event) %>
     </li>
+    <li class="dropdown <%= active_tab?('volunteer/reports') %>">
+      <%= link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do %>
+        Reports <b class="caret"></b>
+      <% end %>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to 'Volunteer Breakdown', event_crew_break_down_report_path(@program, @event) %>
+        </li>
+      </ul>
+    </li>
   </ul>
 
   <%= yield %>

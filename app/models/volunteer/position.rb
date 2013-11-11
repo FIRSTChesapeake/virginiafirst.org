@@ -1,5 +1,6 @@
 class Volunteer::Position < ActiveRecord::Base
   has_many :assignments, dependent: :destroy
+  has_many :volunteers, through: :assignments, class_name: Volunteer::Registration, source: :registration
   belongs_to :event
   belongs_to :role
 
@@ -21,5 +22,10 @@ class Volunteer::Position < ActiveRecord::Base
 
   def fullfillment
     assignments.count.to_f / needed_count.to_f
+  end
+
+  def responsible_for
+    subordinate_roles = role.subordinates.map(&:id)
+    event.positions.where("volunteer_roles.id IN (?)", subordinate_roles)
   end
 end

@@ -37,6 +37,9 @@ VirginiaFIRST::Application.routes.draw do
       resource :registrations, path: 'register', as: 'volunteer_registration', only: [:new, :create, :show]
       resources :events, only: [:index, :show] do
         get 'profiles' => 'profiles#index'
+        scope module: 'reports' do
+          get 'crew' => 'crew_break_down#show', as: 'crew_break_down_report'
+        end
       end
     end
     resources :assignments
