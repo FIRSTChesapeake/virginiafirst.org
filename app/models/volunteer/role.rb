@@ -5,8 +5,6 @@ class Volunteer::Role < ActiveRecord::Base
   has_many :supporting_roles, class_name: "Role", foreign_key: "reports_to_id"
   has_many :subordinates, class_name: Volunteer::Role, foreign_key: "reports_to_id", uniq: true
 
-  scope :key_positions, where(key_position: true)
-
   attr_accessible :title, :description, :key_position, :reports_to_id
   attr_accessible :default_checkin_at, :default_ends_at, :default_starts_at
   attr_accessible :program_id
@@ -16,6 +14,12 @@ class Volunteer::Role < ActiveRecord::Base
   validates_presence_of :default_checkin_at
   validates_presence_of :default_starts_at
   validates_presence_of :default_ends_at
+
+  def self.key_positions(program=nil)
+    query = where(key_position: true)
+    query = query.where(program_id: program.id) if program.present?
+    query
+  end
 
   def to_s
     "#{program.try(:abbr) || 'No Program'}:#{title}"
