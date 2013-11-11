@@ -4,6 +4,8 @@ class Volunteer::Role < ActiveRecord::Base
   has_and_belongs_to_many :preferred_by, class_name: "Profile"
   has_many :supporting_roles, class_name: "Role", foreign_key: "reports_to_id"
   has_many :subordinates, class_name: Volunteer::Role, foreign_key: "reports_to_id", uniq: true
+  has_many :positions, class_name: Volunteer::Position
+  has_many :events, through: :positions
 
   attr_accessible :title, :description, :key_position, :reports_to_id
   attr_accessible :default_checkin_at, :default_ends_at, :default_starts_at

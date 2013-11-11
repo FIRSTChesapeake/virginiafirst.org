@@ -34,11 +34,17 @@
       <% end %>
       <% if can? :delete, role %>
         <td class="action">
-          <%= link_to admin_volunteer_role_path(@program, role),
-                      method: :delete,
-                      confirm: "Are you sure?",
-                      class: "btn btn-danger btn-small" do %>
-            <i class="icon-trash icon-white"></i> Delete
+          <% if role.events.size > 0 %>
+            <%= content_tag :button, disabled: true, class: 'btn btn-danger btn-small' do %>
+              <i class="icon-trash icon-white"></i> Delete
+            <% end %>
+          <% else %>
+            <%= link_to admin_volunteer_role_path(@program, role),
+                        method: :delete,
+                        confirm: "Are you sure?",
+                        class: "btn btn-danger btn-small" do %>
+              <i class="icon-trash icon-white"></i> Delete
+            <% end %>
           <% end %>
         </td>
       <% end %>
