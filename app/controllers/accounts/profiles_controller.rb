@@ -14,7 +14,7 @@ class Accounts::ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to edit_profile_path, notice: "#{profile_description} successfully created." }
+        format.html { redirect_to edit_personal_profile_path, notice: "#{profile_description} successfully created." }
       else
         format.html { render profile_section }
       end
@@ -48,7 +48,7 @@ class Accounts::ProfilesController < ApplicationController
   def profile_route
     case profile_path
       when "personal"
-        :profile
+        :personal_profile
       when "background"
         :background_profile
       when "volunteer"
@@ -56,7 +56,7 @@ class Accounts::ProfilesController < ApplicationController
       when "experience"
         :experience_profile
       else
-        :profile
+        :personal_profile
     end
   end
 

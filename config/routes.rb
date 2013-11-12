@@ -3,7 +3,7 @@ VirginiaFIRST::Application.routes.draw do
   resource :account, controller: "accounts", only: [:show, :edit, :update, :destroy], path_names: {edit: "settings"}
 
   scope module: 'accounts', path: 'account' do
-    resource :profile, controller: "profiles", path: "personal", only: [:edit, :create, :update]
+    resource :profile, controller: "profiles", path: "personal", only: [:edit, :create, :update], as: "personal_profile"
     resource :background, controller: "profiles", only: [:edit, :create, :update], as: "background_profile"
     resource :volunteer, controller: "profiles", only: [:show, :edit, :update], as: "volunteer_profile"
     resource :experience, controller: "profiles", only: [:edit, :update], as: "experience_profile"
