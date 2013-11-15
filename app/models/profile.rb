@@ -28,7 +28,7 @@ class Profile < ActiveRecord::Base
   attr_accessible :has_fll_experience, :has_jrfll_experience
   attr_accessible :volunteer_event_ids
   attr_accessible :volunteer_registrations_attributes
-  attr_accessible :wants_to_mentor, :mentor_locations_attributes
+  attr_accessible :wants_to_mentor, :mentor_locations_attributes, :mentor_program_ids
 
   accepts_nested_attributes_for :volunteer_registrations,
                                 allow_destroy: true,
