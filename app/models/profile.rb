@@ -2,8 +2,13 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :preferred_roles, class_name: Volunteer::Role
+  has_and_belongs_to_many :mentor_programs,
+                          join_table: :volunteer_mentor_programs,
+                          association_foreign_key: :program_id,
+                          class_name: FirstProgram
   has_many :volunteer_registrations, class_name: Volunteer::Registration
   has_many :volunteer_events, through: :volunteer_registrations, source: :event
+  has_many :mentor_locations, class_name: Volunteer::MentorLocation, dependent: :destroy
 
   scope :sorted, order("lower(last_name) ASC, lower(first_name) ASC")
 
@@ -23,10 +28,14 @@ class Profile < ActiveRecord::Base
   attr_accessible :has_fll_experience, :has_jrfll_experience
   attr_accessible :volunteer_event_ids
   attr_accessible :volunteer_registrations_attributes
+  attr_accessible :wants_to_mentor, :mentor_locations_attributes
 
   accepts_nested_attributes_for :volunteer_registrations,
                                 allow_destroy: true,
                                 reject_if: proc { |attr| attr['event_id'].blank? }
+  accepts_nested_attributes_for :mentor_locations,
+                                allow_destroy: true,
+                                reject_if: :all_blank
 
   enum_attr :age, %w(13-18 19-24 25-34 35-44 45-54 55+)
   enum_attr :primary_phone_type, %w(home mobile work other)

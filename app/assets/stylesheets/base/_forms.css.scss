@@ -23,3 +23,9 @@ label.disabled {
     width: 210px;
   }
 }
+
+.form-inline {
+  > label {
+    margin: 5px;
+  }
+}

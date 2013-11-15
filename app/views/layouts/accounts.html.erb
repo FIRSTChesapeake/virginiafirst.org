@@ -23,6 +23,9 @@
             <li class="<%= active_profile_section?("volunteer") %>">
               <%= link_to "Volunteer Preferences", edit_volunteer_profile_path %>
             </li>
+            <li class="<%= active_profile_section?("mentor") %>">
+              <%= link_to "Mentor Preferences", edit_mentor_profile_path %>
+            </li>
           </ul>
         </li>
         <li class="<%= active_class?("registrations") %>">

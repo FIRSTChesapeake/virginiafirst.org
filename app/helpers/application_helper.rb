@@ -29,7 +29,6 @@ module ApplicationHelper
     number_to_phone(number, area_code: has_area_code)
   end
 
-
   def link_to_add_form(*args, &block)
     if block_given?
       name = args[0]

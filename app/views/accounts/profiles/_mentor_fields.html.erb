@@ -1,0 +1,26 @@
+<%= f.input :wants_to_mentor, label: false, inline_label: "I would like to be contacted about mentoring opportunities" %>
+
+<div id="mentor_locations">
+  <%= f.input :preferred_locations, hint: "Provide the location where you would like to mentor a #{first} team" do %>
+    <%= f.simple_fields_for :mentor_locations do |builder| %>
+      <%= render 'mentor_location_fields', f: builder %>
+    <% end %>
+    <div class="links">
+      <%= text_field_tag :location_name %>
+      <%= link_to_add_association 'Add Location', f, :mentor_locations, class: "btn btn-info", id: "add_mentor_location_button" %>
+    </div>
+  <% end %>
+</div>
+
+<%= f.input :first_programs, hint: "Choose which #{first} programs you are interested in mentoring" do %>
+  <%= hidden_field_tag "profile[mentor_program_ids][]", nil %>
+  <% FirstProgram.all.each do |program| %>
+    <%= label_tag dom_id(program), class: 'checkbox' do %>
+      <%= check_box_tag "profile[mentor_program_ids][]",
+                        program.id,
+                        @profile.mentor_program_ids.include?(program.id),
+                        id: dom_id(program) %>
+      <%= program.name %>
+    <% end %>
+  <% end %>
+<% end %>

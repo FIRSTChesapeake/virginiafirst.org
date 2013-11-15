@@ -14,3 +14,14 @@ $ ->
       $(parent).children(".team-input").toggle().focus()
 
   $("#preferred_roles_accordion").collapse().height('auto');
+
+$ ->
+  $("#location_name").on 'keypress', (e) ->
+    if e.which == 13
+      e.preventDefault()
+      $("#add_mentor_location_button").click()
+
+  $("#mentor_locations").on 'cocoon:after-insert', (e, item) ->
+    $(item).find("label").text $("#location_name").val()
+    $(item).find(".name-field").val $("#location_name").val()
+    $("#location_name").val("")

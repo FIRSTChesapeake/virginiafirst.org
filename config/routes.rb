@@ -6,6 +6,7 @@ VirginiaFIRST::Application.routes.draw do
     resource :profile, controller: "profiles", path: "personal", only: [:edit, :create, :update], as: "personal_profile"
     resource :background, controller: "profiles", only: [:edit, :create, :update], as: "background_profile"
     resource :volunteer, controller: "profiles", only: [:show, :edit, :update], as: "volunteer_profile"
+    resource :mentor, controller: "profiles", only: [:show, :edit, :update], as: "mentor_profile"
     resource :experience, controller: "profiles", only: [:edit, :update], as: "experience_profile"
     get 'events' => 'registrations#index', as: 'my_events'
     delete 'events/:id' => 'registrations#destroy', as: 'delete_my_event'

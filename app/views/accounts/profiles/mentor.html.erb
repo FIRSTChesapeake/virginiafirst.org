@@ -1,0 +1,11 @@
+<h1>Mentor Preferences</h1>
+
+<%= simple_form_for @profile, url: mentor_profile_path, html: { class: "form-horizontal" } do |f| %>
+  <%= f.error_notification %>
+
+  <%= render 'mentor_fields', f: f %>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>

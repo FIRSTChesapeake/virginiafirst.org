@@ -28,11 +28,9 @@ gem 'cancan'
 gem 'jquery-rails'
 
 gem 'carrierwave'
-
+gem 'cocoon'
 gem 'devise'
-
 gem 'enumerated_attribute', github: 'cattywampus/enumerated_attribute'
-
 gem 'figaro'
 gem 'geocoder'
 gem 'newrelic_rpm'

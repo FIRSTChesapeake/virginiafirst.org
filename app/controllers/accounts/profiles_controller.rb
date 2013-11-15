@@ -55,6 +55,8 @@ class Accounts::ProfilesController < ApplicationController
         :volunteer_profile
       when "experience"
         :experience_profile
+      when "mentor"
+        :mentor_profile
       else
         :personal_profile
     end
