@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap-datetimepicker.min
+ *= require morris
  *= require_self
  *= require_directory .
  *= require_directory ./accounts

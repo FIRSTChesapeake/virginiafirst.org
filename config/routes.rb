@@ -41,6 +41,7 @@ VirginiaFIRST::Application.routes.draw do
         scope module: 'reports' do
           get 'crew' => 'crew_break_down#show', as: 'crew_break_down_report'
         end
+        get 'reports/shirts' => 'reports#shirts', as: 'volunteer_shirt_report'
       end
     end
     resources :assignments

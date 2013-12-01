@@ -16,6 +16,8 @@
 //= require bootstrap-datetimepicker
 //= require cocoon
 //= require moment.min
+//= require raphael
+//= require morris
 //= require_tree .
 
 $(document).ready(function() {

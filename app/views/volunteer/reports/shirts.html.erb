@@ -1,0 +1,25 @@
+<h2>Shirts Needed</h2>
+
+<div class="row">
+  <div class="span8">
+    <div id="shirts_graph" data-shirts="<%= @shirt_data.to_json %>"></div>
+  </div>
+  <div class="span4">
+    <table class="table">
+      <tr>
+        <th>Size</th>
+        <th>Count</th>
+      </tr>
+      <% @shirt_data.each do |record| %>
+        <tr>
+          <td><%= record[:size] %></td>
+          <td><%= record[:count] %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<br>
+<br>
+

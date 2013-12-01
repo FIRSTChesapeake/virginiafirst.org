@@ -49,6 +49,18 @@ class Event < ActiveRecord::Base
     positions.where({volunteer_roles: {key_position: false}})
   end
 
+  def shirts_needed
+    shirts = Volunteer::Registration.joins(:profile).where(event_id: id).group(:shirt_size).count
+    sizes = Profile.new.enums(:shirt_size).hash
+    sorted = ActiveSupport::OrderedHash.new
+    sizes.each do |key, label|
+      sorted[label] = shirts[key.to_s] || 0
+      shirts.delete(key.to_s)
+    end
+
+    sorted.merge(shirts)
+  end
+
   def total_filled_positions
     total_positions_required - total_unfilled_positions
   end
