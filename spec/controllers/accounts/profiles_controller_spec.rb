@@ -26,7 +26,7 @@ describe Accounts::ProfilesController do
         let(:valid_attributes) { attributes_for :profile }
         before(:each) { post :create, { profile: valid_attributes } }
 
-        it { expect(response).to redirect_to edit_profile_path }
+        it { expect(response).to redirect_to edit_personal_profile_path }
       end
 
       context "with invalid profile" do
@@ -46,7 +46,7 @@ describe Accounts::ProfilesController do
         let(:valid_attributes) { { first_name: "John" } }
         before(:each) { put :update, { profile: valid_attributes } }
 
-        it { expect(response).to redirect_to edit_profile_path }
+        it { expect(response).to redirect_to edit_personal_profile_path }
       end
 
       context "with invalid profile" do

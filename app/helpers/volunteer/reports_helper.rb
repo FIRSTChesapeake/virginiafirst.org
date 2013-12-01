@@ -1,0 +1,2 @@
+module Volunteer::ReportsHelper
+end

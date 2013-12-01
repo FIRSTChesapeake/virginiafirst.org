@@ -45,6 +45,9 @@ GEM
     bootstrap-sass (2.3.2.1)
       sass (~> 3.2)
     builder (3.0.4)
+    byebug (2.3.1)
+      columnize (~> 0.3.6)
+      debugger-linecache (~> 1.2.0)
     callsite (0.0.11)
     cancan (1.6.10)
     capistrano (2.15.5)
@@ -71,8 +74,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    columnize (0.3.6)
     database_cleaner (1.1.1)
     debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
     devise (3.0.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -277,6 +282,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  byebug
   cancan
   capistrano
   capybara

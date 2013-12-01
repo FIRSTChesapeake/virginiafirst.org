@@ -9,5 +9,9 @@ FactoryGirl.define do
     factory :admin do
       roles { [Role[:admin]] }
     end
+
+    factory :volunteer_coordinator do
+      roles { [Role[:volunteer_coordinator]] }
+    end
   end
 end

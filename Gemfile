@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "1.9.3"
+ruby '2.0.0'
 
 gem 'rails', '3.2.13'
 
@@ -67,6 +67,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'byebug'
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
