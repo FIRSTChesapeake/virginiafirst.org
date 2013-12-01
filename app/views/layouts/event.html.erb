@@ -14,7 +14,10 @@
       <% end %>
       <ul class="dropdown-menu">
         <li>
-          <%= link_to 'Volunteer Breakdown', event_crew_break_down_report_path(@program, @event) %>
+          <%= link_to 'Volunteer Breakdown', event_volunteer_break_down_report_path(@program, @event) %>
+        </li>
+        <li>
+          <%= link_to 'Volunteer Shirts', event_volunteer_shirts_report_path(@program, @event) %>
         </li>
       </ul>
     </li>
