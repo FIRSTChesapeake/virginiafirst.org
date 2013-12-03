@@ -1,0 +1,25 @@
+<h2>Volunteer Check-In</h2>
+
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Tasks</th>
+    <th class="center">Checked In?</th>
+    <th class="center">Shirt Size</th>
+  </tr>
+
+  <% @registrations.each do |volunteer| %>
+    <tr class="<%= 'not-attending' if volunteer.not_attending? %>">
+      <td><%= volunteer.profile.full_name %></td>
+      <td><%= volunteer.assignments.map { |a| a.position.title }.join(', ') %></td>
+      <td class="indicator">
+        <% if volunteer.status_is_checked_in? %>
+          <i class="icon-check"></i>
+        <% end %>
+      </td>
+      <td class="indicator">
+        <%= volunteer.profile.shirt_size_label %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -6,4 +6,15 @@
     text-align: center;
     width: 75px;
   }
+
+  th.center, td.center {
+    text-align: center;
+  }
+
+  th.indicator, td.indicator {
+    width: 75px;
+    max-width: 100px;
+    word-wrap: break-word;
+    text-align: center;
+  }
 }

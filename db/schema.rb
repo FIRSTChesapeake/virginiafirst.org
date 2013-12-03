@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131115073428) do
+ActiveRecord::Schema.define(:version => 20131203230404) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -225,8 +225,12 @@ ActiveRecord::Schema.define(:version => 20131115073428) do
     t.integer  "event_id"
     t.boolean  "will_setup"
     t.boolean  "will_teardown"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "status"
+    t.boolean  "received_event_info"
+    t.boolean  "received_assignment"
+    t.boolean  "received_followup"
   end
 
   add_index "volunteer_registrations", ["event_id"], :name => "index_volunteer_registrations_on_event_id"

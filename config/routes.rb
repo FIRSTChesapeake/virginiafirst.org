@@ -41,6 +41,7 @@ VirginiaFIRST::Application.routes.draw do
         get 'reports/crew_break_down' => 'reports#crew_break_down', as: 'volunteer_break_down_report'
         get 'reports/shirts' => 'reports#shirts', as: 'volunteer_shirts_report'
         get 'email_blast' => 'email_blast#show', as: 'email_blast'
+        resources :check_in
       end
     end
     resources :assignments
