@@ -16,4 +16,5 @@
  *= require_directory ./accounts
  *= require_directory ./admin
  *= require_directory ./volunteer
+ *= stub print
  */

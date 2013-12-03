@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>VirginiaFIRST</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "print", :media => "print" %>
   <script type="text/javascript"
           src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_BROWSER_KEY"] %>&sensor=false">
   </script>
