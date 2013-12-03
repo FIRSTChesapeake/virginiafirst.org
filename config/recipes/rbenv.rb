@@ -1,4 +1,4 @@
-set_default :ruby_version, "1.9.3-p429"
+set_default :ruby_version, "2.0.0-p247"
 set_default :rbenv_bootstrap, "bootstrap-ubuntu-12-04"
 set_default(:rbenv_password) { Capistrano::CLI.password_prompt "Password: " }
 
