@@ -18,6 +18,7 @@
 //= require moment.min
 //= require raphael
 //= require morris
+//= require select2
 //= require_tree .
 
 $(document).ready(function() {

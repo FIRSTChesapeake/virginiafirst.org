@@ -36,6 +36,7 @@ gem 'geocoder'
 gem 'newrelic_rpm'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'
+gem 'select2-rails'
 gem 'textacular'
 
 # To use ActiveModel has_secure_password

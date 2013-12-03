@@ -1,0 +1,44 @@
+<h2>Email Blaster</h2>
+
+<div class="row">
+  <div class="span4">
+    <h3>Filters</h3>
+
+    <br>
+
+    <%= form_tag event_email_blast_path(@program, @event), method: :get do %>
+
+      <% [['Everyone', 'everyone'], ['Key volunteers', true], ['General Volunteers', false]].each do |label, value| %>
+        <%= label_tag "key_volunteer_#{value}", class: "radio" do %>
+          <%= radio_button_tag :key_volunteer, value, params[:key_volunteer] == value.to_s %> <%= label %>
+        <% end %>
+      <% end %>
+
+      <br>
+
+      <%= label_tag 'roles', 'Roles' %>
+      <%= select_tag 'roles', options_from_collection_for_select(@event.roles.order(:title), 'id', 'title', params[:roles]), multiple: true, class: 'input-block-level' %>
+
+      <br><br>
+
+      <%= submit_tag 'Update Recipients', class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="span8">
+    <h3>
+      Recipients
+      <small>(<%= @recipients.length %>)</small>
+    </h3>
+
+    <p>
+      Copy and paste these email addresses into the BCC field of your message.
+    </p>
+
+    <textarea rows="10" class="span8"><%= @recipients.join('; ') %></textarea>
+
+    <p>
+      Coming soon: Send your email messages right from here!
+    </p>
+  </div>
+</div>

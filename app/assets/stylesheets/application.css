@@ -10,10 +10,10 @@
  *
  *= require bootstrap-datetimepicker.min
  *= require morris
+ *= require select2
  *= require_self
  *= require_directory .
  *= require_directory ./accounts
  *= require_directory ./admin
  *= require_directory ./volunteer
- *= require_directory ./volunteer/reports
  */
