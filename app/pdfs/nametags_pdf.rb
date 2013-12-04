@@ -28,7 +28,7 @@ class NametagsPdf < Prawn::Document
       display_logo
       display_event_name
       move_down 20
-      display_volunteer_name
+      display_volunteer_name(volunteer)
     end
   end
 
@@ -46,7 +46,7 @@ class NametagsPdf < Prawn::Document
     end
   end
 
-  def display_volunteer_name
+  def display_volunteer_name(volunteer)
     font "Helvetica", size: 28, style: :bold do
       text volunteer.first_name, align: :center
     end
