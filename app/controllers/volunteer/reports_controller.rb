@@ -9,6 +9,22 @@ class Volunteer::ReportsController < ApplicationController
     authorize! :read, @event
   end
 
+  def nametags
+    @event = Event.includes([:game, :program]).find params[:event_id]
+    @volunteers = @event.volunteer_registrations.active
+
+    respond_to do |format|
+      format.pdf do
+        pdf = NametagsPdf.new @event, @volunteers, view_context
+        filename = "#{@event.program.code}_#{@event.code.downcase}_nametags.pdf"
+        send_data pdf.render,
+                  filename: filename,
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+    end
+  end
+
   def shirts
     @event = Event.find params[:event_id]
     @shirt_data = @event.shirts_needed.map { |k, v| {size: k.nil? ? "Unknown" : k, count: v} }

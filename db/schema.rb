@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131203230404) do
+ActiveRecord::Schema.define(:version => 20131204180829) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20131203230404) do
     t.integer  "game_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "code"
   end
 
   add_index "events", ["game_id"], :name => "index_events_on_game_id"

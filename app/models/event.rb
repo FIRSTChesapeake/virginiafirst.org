@@ -9,15 +9,15 @@ class Event < ActiveRecord::Base
   scope :sorted, ->(order='ASC') { order("starts_at #{order}") }
   scope :upcoming, -> { where("starts_at > ?", Date.today).order("starts_at ASC") }
 
-  attr_accessible :name, :participant_limit, :program_id
+  attr_accessible :name, :participant_limit, :program_id, :code
   attr_accessible :setup_at, :starts_at, :teardown_at
   attr_accessible :city, :state, :street, :venue, :zip
   attr_accessible :positions_attributes
 
   accepts_nested_attributes_for :positions, allow_destroy: true
 
-  validates_presence_of :name
-  validates_presence_of :program
+  validates_presence_of :name, :program, :code
+  validates :code, length: { minimum: 2, maximum: 10 }
   validate :address_is_provided
 
   geocoded_by :full_address

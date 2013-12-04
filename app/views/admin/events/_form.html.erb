@@ -12,6 +12,7 @@
     <div class="tab-pane active" id="event_settings">
       <%= f.association :program unless @program %>
       <%= f.input :name %>
+      <%= f.input :code, input_html: { class: "span1" } %>
       <%= f.input :starts_at, as: :datetime_picker, placeholder: "dd/mm/yyyy hh:mm pp", input_html: { class: "input-medium" } %>
       <%= f.input :venue %>
       <%= f.input :address, required: true do %>

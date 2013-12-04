@@ -39,6 +39,7 @@ VirginiaFIRST::Application.routes.draw do
       resources :events, only: [:index, :show] do
         get 'profiles' => 'profiles#index'
         get 'reports/crew_break_down' => 'reports#crew_break_down', as: 'volunteer_break_down_report'
+        get 'reports/nametags' => 'reports#nametags', as: 'volunteer_nametags_report'
         get 'reports/shirts' => 'reports#shirts', as: 'volunteer_shirts_report'
         get 'email_blast' => 'email_blast#show', as: 'email_blast'
         resources :check_in

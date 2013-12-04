@@ -36,6 +36,7 @@ gem 'geocoder'
 gem 'newrelic_rpm'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'
+gem 'prawn', '1.0.0.rc2'
 gem 'select2-rails'
 gem 'textacular'
 

@@ -9,7 +9,7 @@ class Volunteer::Registration < ActiveRecord::Base
   validates_presence_of :event
   #validates_presence_of :profile
 
-  delegate :full_name, to: :profile
+  delegate :first_name, :last_name, :full_name, to: :profile
 
   enum_attr :status, %w(^registered withdrew no_show checked_in)
 
@@ -18,6 +18,6 @@ class Volunteer::Registration < ActiveRecord::Base
   end
 
   def self.active
-    joins(:profile).where({status: [:registered, :checked_in]}).order("profiles.first_name ASC, profiles.last_name ASC")
+    includes(:profile).where({status: [:registered, :checked_in]}).order("profiles.first_name ASC, profiles.last_name ASC")
   end
 end

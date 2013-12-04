@@ -23,6 +23,9 @@
           <%= link_to 'Volunteer Breakdown', event_volunteer_break_down_report_path(@program, @event) %>
         </li>
         <li>
+          <%= link_to 'Volunteer Nametags', event_volunteer_nametags_report_path(@program, @event, format: :pdf) %>
+        </li>
+        <li>
           <%= link_to 'Volunteer Shirts', event_volunteer_shirts_report_path(@program, @event) %>
         </li>
       </ul>
