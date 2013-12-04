@@ -4,7 +4,7 @@ class Volunteer::CheckInController < Volunteer::BaseController
 
   def index
     @event = Event.find params[:event_id]
-    @registrations = @event.volunteer_registrations.includes({:assignments => {:position => :role}})
+    @registrations = @event.volunteer_registrations.includes([:profile, {:assignments => {:position => :role}}]).order("profiles.first_name, profiles.last_name")
 
     authorize! :read, @event
   end
