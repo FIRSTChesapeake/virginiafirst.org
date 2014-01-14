@@ -1,6 +1,6 @@
 class CheckInPdf < Prawn::Document
   def initialize(event, registrations)
-    super()
+    super(page_layout: :landscape)
     @event = event
     @registrations = registrations
 
@@ -18,19 +18,22 @@ class CheckInPdf < Prawn::Document
 
   def check_in_table
     move_down 20
-    table registration_rows do
+    table registration_rows, width: bounds.width do
       row(0).font_style = :bold
-      columns(2..3).align = :center
+      columns(3..4).align = :center
+      column(3).width = 70;
+      column(4).width = 70;
       self.row_colors = ["DDDDDD", "FFFFFF"]
       self.header = true
     end
   end
 
   def registration_rows
-    [['Name', 'Assignment(s)', 'Shirt Size', 'Checked in?']] +
+    [['Name', 'Assignment(s)', 'Reports To', 'Shirt Size', 'Checked in?']] +
         @registrations.map do |registration|
           [registration.full_name,
-           registration.assignments.map { |a| a.position.title }.join(', '),
+           registration.positions.map { |p| p.title }.join(', '),
+           registration.reports_to.map(&:full_name).join(', '),
            registration.profile.shirt_size_label,
            '']
         end
