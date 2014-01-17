@@ -24,8 +24,24 @@ class Volunteer::Position < ActiveRecord::Base
     assignments.count.to_f / needed_count.to_f
   end
 
+  def reports_to
+    Volunteer::Position.joins(:role).includes(:event, :role)
+      .where(event_id: event_id)
+      .where(volunteer_roles: { id: role.reports_to }).first
+  end
+
   def responsible_for
     subordinate_roles = role.subordinates.map(&:id)
     event.positions.where("volunteer_roles.id IN (?)", subordinate_roles)
+  end
+
+  def supervisors
+    Volunteer::Registration.joins(:profile, :roles).includes(:profile, :roles)
+      .where(event_id: event_id)
+      .where(volunteer_roles: {id: role.reports_to_id})
+  end
+
+  def supervisor_names
+    supervisors.map(&:full_name)
   end
 end
