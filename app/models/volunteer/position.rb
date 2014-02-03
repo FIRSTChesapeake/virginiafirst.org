@@ -8,6 +8,7 @@ class Volunteer::Position < ActiveRecord::Base
 
   delegate :title, to: :role
 
+  validates :needed_count, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
   def available_volunteers
     assigned_volunteers = assignments.map(&:registration_id)
