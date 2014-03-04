@@ -11,6 +11,7 @@ FactoryGirl.define do
     city "Metropolis"
     state "VA"
     zip "12345"
+    code "VA"
     participant_limit 20
     association :program, factory: :frc_program
   end
