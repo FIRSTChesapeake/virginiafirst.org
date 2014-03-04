@@ -1,0 +1,2 @@
+module Ambassador::RegistrationsHelper
+end
