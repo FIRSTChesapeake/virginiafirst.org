@@ -6,6 +6,7 @@ class Profile < ActiveRecord::Base
                           join_table: :volunteer_mentor_programs,
                           association_foreign_key: :program_id,
                           class_name: FirstProgram
+  has_many :ambassadors
   has_many :volunteer_registrations, class_name: Volunteer::Registration
   has_many :volunteer_events, through: :volunteer_registrations, source: :event
   has_many :mentor_locations, class_name: Volunteer::MentorLocation, dependent: :destroy

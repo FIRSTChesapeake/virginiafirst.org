@@ -1,7 +1,8 @@
 class Event < ActiveRecord::Base
   belongs_to :game
-  has_many :positions, class_name: Volunteer::Position, include: :role, order: "volunteer_roles.title ASC"
   belongs_to :program, class_name: "FirstProgram"
+  has_many :ambassadors
+  has_many :positions, class_name: Volunteer::Position, include: :role, order: "volunteer_roles.title ASC"
   has_many :roles, class_name: Volunteer::Role, through: :positions, uniq: true
   has_many :volunteer_registrations, class_name: Volunteer::Registration
   has_many :volunteer_profiles, through: :volunteer_registrations, source: :profile
