@@ -35,3 +35,6 @@
 
 # Ignore Operating system temp files
 .DS_Store
+
+rails_best_practices_output.html
+
