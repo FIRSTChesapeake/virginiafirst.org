@@ -12,6 +12,10 @@ VirginiaFIRST::Application.routes.draw do
     delete 'events/:id' => 'registrations#destroy', as: 'delete_my_event'
   end
 
+  namespace :ambassador do
+    resource :registrations, path: 'register', only: [:new, :create, :show]
+  end
+
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   get 'home/events', as: 'upcoming_events'

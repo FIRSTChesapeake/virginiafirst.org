@@ -1,0 +1,17 @@
+<h1>Student Ambassador Registration</h1>
+
+<p>
+  Sign up by providing your contact information and choosing a time slot when
+  you are available to volunteer as an ambassador
+</p>
+
+<%= simple_form_for @ambassador_form, url: ambassador_registrations_path, html: { class: 'form-horizontal', id: 'ambassador_registration_form' } do |f| %>
+  <%= f.error_notification %>
+
+  <%= render 'form', f: f %>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Register', class: 'btn-primary' %>
+  </div>
+<% end %>
+
