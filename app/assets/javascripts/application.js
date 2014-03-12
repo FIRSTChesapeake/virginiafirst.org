@@ -19,6 +19,7 @@
 //= require raphael
 //= require morris
 //= require select2
+//= require dhtmlxscheduler
 //= require_tree .
 
 $(document).ready(function() {

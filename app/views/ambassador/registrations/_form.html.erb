@@ -1,13 +1,41 @@
 <fieldset>
   <legend>Create an account</legend>
 
-  <%= f.input :email, required: true, autofocus: true %>
+  <div class="row">
+    <div class="span5 right-border">
+      <p>
+      Create a new account using your email address and password so you can come back
+      and updated your preferences anytime.
+      </p>
+      <%= f.input :email, required: true, autofocus: true %>
+
+      <% if f.object.user.password_required? %>
+        <%= f.input :password %>
+        <%= f.input :password_confirmation %>
+      <% end %>
+    </div>
+
+    <div class="span6">
+      <p>
+      <strong>Or...</strong> you can sign in using an existing account you already have
+      from one of these services. Its easy and secure.
+      </p>
+      <div class="center">
+        <%= link_to user_omniauth_authorize_path(:google_oauth2, origin: session[:user_return_to]) do %>
+          <%= image_tag "Red-signin_Long_base_44dp.png",
+            mouseover: "Red-signin_Long_hover_44dp.png",
+            alt: "Sign in with Google" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
 
 </fieldset>
 
 
 <fieldset>
-  <legend>Your contact information</legend>
+  <legend>Provide your contact information</legend>
 
   <% profile = f.object.profile %>
 
@@ -31,5 +59,23 @@
       <%= f.input_field :alternate_phone_number, placeholder: '(555) 123-9876', value: display_phone(f.object.alternate_phone_number), class: 'input-medium' %>
     </div>
   <% end %>
+</fieldset>
+
+<fieldset>
+  <legend>Choose your availability</legend>
+  <div id="scheduler_here" class="dhx_cal_container">
+    <div class="dhx_cal_navline">
+      <!--
+      <div class="dhx_cal_prev_button">&nbsp;</div>
+      <div class="dhx_cal_next_button">&nbsp;</div>
+      <div class="dhx_cal_today_button"></div> -->
+      <div class="dhx_cal_date"></div>
+      <!-- <div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
+      <div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
+      <div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div> -->
+    </div>
+    <div class="dhx_cal_header"></div>
+    <div class="dhx_cal_data"></div>       
+  </div>
 </fieldset>
 
