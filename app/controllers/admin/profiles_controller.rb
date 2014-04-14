@@ -5,6 +5,11 @@ class Admin::ProfilesController < Admin::BaseController
     else
       @profiles = Profile.sorted
     end
+    respond_to do |format|
+      format.html
+      format.csv { send_data @profiles.to_csv }
+      format.xls
+    end
   end
 
   def show

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">First Name</Data></Cell>
+        <Cell><Data ss:Type="String">Last Name</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Address</Data></Cell>
+        <Cell><Data ss:Type="String">City</Data></Cell>
+        <Cell><Data ss:Type="String">State</Data></Cell>
+        <Cell><Data ss:Type="String">Zip</Data></Cell>
+        <Cell><Data ss:Type="String">Age</Data></Cell>
+        <Cell><Data ss:Type="String">Primary Phone Type</Data></Cell>
+        <Cell><Data ss:Type="String">Primary Phone Number</Data></Cell>
+        <Cell><Data ss:Type="String">Organization</Data></Cell>
+        <Cell><Data ss:Type="String">Occupation</Data></Cell>
+        <Cell><Data ss:Type="String">Shirt Size</Data></Cell>
+        <Cell><Data ss:Type="String">Special Needs</Data></Cell>
+        <Cell><Data ss:Type="String">Volunteer Experience</Data></Cell>
+        <Cell><Data ss:Type="String">Is FIRST Almnus?</Data></Cell>
+        <Cell><Data ss:Type="String">Is VirginiaFIRST Alumnus?</Data></Cell>
+      </Row>
+    <% @profiles.each do |profile| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= profile.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.first_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.last_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.user.email if profile.user %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.street %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.city %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.state %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.zip %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.age %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.primary_phone_type_label %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= number_to_phone profile.primary_phone_number, area_code: true %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.current_organization %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.current_occupation %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.shirt_size_label %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.special_needs %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= profile.volunteer_experience %></Data></Cell>
+        <Cell><Data ss:Type="Boolean"><%= profile.first_alumnus unless profile.first_alumnus.nil? %></Data></Cell>
+        <Cell><Data ss:Type="Boolean"><%= profile.virginiafirst_alumnus unless profile.virginiafirst_alumnus.nil? %></Data></Cell>
+      </Row> 
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

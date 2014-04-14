@@ -1,7 +1,14 @@
-<%= form_tag admin_profiles_path, method: :get, class: "search-query pull-right" do %>
-  <%= text_field_tag :query, params[:query], class: "input-medium search-query" %>
-  <%= submit_tag :search, class: "btn" %>
-<% end %>
+<div class="pull-right">
+  <%= form_tag admin_profiles_path, method: :get, class: "search-query pull-right" do %>
+    <%= text_field_tag :query, params[:query], class: "input-medium search-query" %>
+    <%= submit_tag :search, class: "btn" %>
+  <% end %>
+  <p>
+    Download: 
+    <%= link_to "CSV", admin_profiles_path(format: :csv) %> |
+    <%= link_to "Excel", admin_profiles_path(format: :xls) %>
+  </p>
+</div>
 
 <h1>Profiles</h1>
 
