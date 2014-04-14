@@ -1,6 +1,7 @@
 <div class="pull-right">
-  <%= form_tag admin_profiles_path, method: :get, class: "search-query pull-right" do %>
+  <%= form_tag admin_profiles_path, method: :get, class: "search-query form-inline pull-right" do %>
     <%= text_field_tag :query, params[:query], class: "input-medium search-query" %>
+    <%= select_tag :first_program, options_from_collection_for_select(FirstProgram.all, :code, :abbr, params[:first_program]), prompt: 'All', class: 'input-small' %>
     <%= submit_tag :search, class: "btn" %>
   <% end %>
   <p>

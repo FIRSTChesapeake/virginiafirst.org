@@ -1,10 +1,10 @@
 class Admin::ProfilesController < Admin::BaseController
   def index
-    if params[:query].present?
-      @profiles = Profile.fuzzy_search params[:query]
-    else
-      @profiles = Profile.sorted
-    end
+    @profiles = Profile.includes(:user)
+      .search_by_name(params[:query])
+      .search_by_program(params[:first_program])
+      .sorted
+
     respond_to do |format|
       format.html
       format.csv { send_data @profiles.to_csv }

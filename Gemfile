@@ -38,7 +38,6 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'
 gem 'prawn', '1.0.0.rc2'
 gem 'select2-rails'
-gem 'textacular'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

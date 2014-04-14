@@ -1,4 +1,8 @@
 class Profile < ActiveRecord::Base
+  #include PgSearch
+  #pg_search_scope :search_by_name_or_job, 
+  #  :against => [:first_name, :last_name, :current_organization, :current_occupation]
+
   belongs_to :user
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :preferred_roles, class_name: Volunteer::Role
@@ -8,6 +12,7 @@ class Profile < ActiveRecord::Base
                           class_name: FirstProgram
   has_many :volunteer_registrations, class_name: Volunteer::Registration
   has_many :volunteer_events, through: :volunteer_registrations, source: :event
+  has_many :volunteer_programs, through: :volunteer_events, source: :program
   has_many :mentor_locations, class_name: Volunteer::MentorLocation, dependent: :destroy
 
   scope :sorted, order("lower(last_name) ASC, lower(first_name) ASC")
@@ -160,6 +165,22 @@ class Profile < ActiveRecord::Base
       all.each do |profile|
         csv << profile.attributes.values_at(column_names)
       end
+    end
+  end
+
+  def self.search_by_name(query)
+    if query.present?
+      where("to_tsvector('english', first_name) @@ to_tsquery('english', :q) or to_tsvector('english', last_name) @@ to_tsquery('english', :q)", q: query)
+    else
+      scoped
+    end
+  end
+
+  def self.search_by_program(program)
+    if program.present?
+      includes(:volunteer_events => :program).where(first_programs: {code: program})
+    else
+      scoped
     end
   end
 end
