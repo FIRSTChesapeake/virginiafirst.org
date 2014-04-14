@@ -6,8 +6,8 @@
   <% end %>
   <p>
     Download: 
-    <%= link_to "CSV", admin_profiles_path(format: :csv) %> |
-    <%= link_to "Excel", admin_profiles_path(format: :xls) %>
+    <%= link_to "CSV", admin_profiles_path(format: :csv, first_program: params[:first_program], query: params[:query]) %> |
+    <%= link_to "Excel", admin_profiles_path(format: :xls, first_program: params[:first_program], query: params[:query]) %>
   </p>
 </div>
 
