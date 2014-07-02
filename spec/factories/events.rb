@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :event, aliases: [:frc_event] do
     name "A Factory FRC Event"
+    code "FRC"
     starts_at "2013-08-25 18:02:24"
     setup_at "2013-08-25 18:02:24"
     teardown_at "2013-08-25 18:02:24"
