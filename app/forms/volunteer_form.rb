@@ -7,7 +7,7 @@ class VolunteerForm
 
   attr_writer :current_step
 
-  create_reflection :has_many, :preferred_roles, {}, Profile.new
+  create_reflection :has_many, :preferred_roles, :default, {}, Profile.new
 
   delegate :preferred_roles, to: :profile
 

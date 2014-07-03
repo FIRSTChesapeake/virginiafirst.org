@@ -33,7 +33,7 @@ describe Accounts::ProfilesController do
         let(:invalid_attributes) { {} }
         before(:each) { post :create, { profile: invalid_attributes } }
 
-        it { expect(response).to render_template :profile }
+        it { expect(response).to render_template :personal }
       end
     end
   end
@@ -53,7 +53,7 @@ describe Accounts::ProfilesController do
         let(:invalid_attributes) { { first_name: "" } }
         before(:each) { put :update, { profile: invalid_attributes } }
 
-        it { expect(response).to render_template :profile }
+        it { expect(response).to render_template :personal }
       end
     end
   end

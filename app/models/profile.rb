@@ -1,11 +1,11 @@
 class Profile < ActiveRecord::Base
   #include PgSearch
-  #pg_search_scope :search_by_name_or_job, 
+  #pg_search_scope :search_by_name_or_job,
   #  :against => [:first_name, :last_name, :current_organization, :current_occupation]
 
   belongs_to :user
   has_and_belongs_to_many :skills
-  has_and_belongs_to_many :preferred_roles, class_name: Volunteer::Role
+  has_and_belongs_to_many :preferred_roles, class_name: Volunteer::Role, join_table: :profiles_roles
   has_and_belongs_to_many :mentor_programs,
                           join_table: :volunteer_mentor_programs,
                           association_foreign_key: :program_id,

@@ -1,7 +1,7 @@
 class Volunteer::Role < ActiveRecord::Base
   belongs_to :program, class_name: FirstProgram
   belongs_to :reports_to, class_name: "Role", conditions: {key_position: true}
-  has_and_belongs_to_many :preferred_by, class_name: "Profile"
+  has_and_belongs_to_many :preferred_by, class_name: "Profile", join_table: :profiles_roles
   has_many :supporting_roles, class_name: "Role", foreign_key: "reports_to_id"
   has_many :subordinates, class_name: Volunteer::Role, foreign_key: "reports_to_id", uniq: true
   has_many :positions, class_name: Volunteer::Position
