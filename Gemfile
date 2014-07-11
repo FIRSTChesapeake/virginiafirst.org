@@ -12,7 +12,7 @@ gem 'pg'
 gem 'sass-rails',   '~> 4.0.3'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'uglifier', '>= 1.0.3'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 2.3.2'
 gem 'jquery-rails'
 
 gem 'cancan'
@@ -40,7 +40,7 @@ gem 'select2-rails'
 gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano'
+gem 'capistrano', '~> 2.15'
 gem 'rmagick', :require => 'RMagick'
 
 # To use debugger
@@ -61,7 +61,7 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.14.2'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
