@@ -41,7 +41,7 @@
           <% else %>
             <%= link_to admin_volunteer_role_path(@program, role),
                         method: :delete,
-                        confirm: "Are you sure?",
+                        data: { confirm: 'Are you sure?' },
                         class: "btn btn-danger btn-small" do %>
               <i class="icon-trash icon-white"></i> Delete
             <% end %>

@@ -10,7 +10,7 @@ class Role < ActiveRecord::Base
   before_save :downcase_title
 
   def self.[](title)
-    find_or_create_by_title format_title(title)
+    find_or_create_by title: format_title(title)
   end
 
   def self.format_title(value)

@@ -9,7 +9,7 @@ FactoryGirl.define do
     abbr 'FRC'
     icon { fixture_file_upload(Rails.root.join(*%w[app assets images FRCicon_RGB.jpg]), 'image/jpeg') }
     flag { fixture_file_upload(Rails.root.join(*%w[app assets images FRC_FlagColor_RGB.jpg]), 'image/jpeg') }
-    initialize_with { FirstProgram.find_or_create_by_code code }
+    initialize_with { FirstProgram.find_or_create_by code: code }
 
     factory :frc_program_with_roles do
       after(:create) do |program|
@@ -24,6 +24,6 @@ FactoryGirl.define do
     abbr 'FTC'
     icon { fixture_file_upload(Rails.root.join(*%w[app assets images FTCicon_RGB.jpg]), 'image/jpeg') }
     flag { fixture_file_upload(Rails.root.join(*%w[app assets images FTC_FlagColor_RGB.jpg]), 'image/jpeg') }
-    initialize_with { FirstProgram.find_or_create_by_code code }
+    initialize_with { FirstProgram.find_or_create_by code: code }
   end
 end

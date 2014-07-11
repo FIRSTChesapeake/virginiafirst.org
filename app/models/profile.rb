@@ -15,7 +15,7 @@ class Profile < ActiveRecord::Base
   has_many :volunteer_programs, through: :volunteer_events, source: :program
   has_many :mentor_locations, class_name: Volunteer::MentorLocation, dependent: :destroy
 
-  scope :sorted, order("lower(last_name) ASC, lower(first_name) ASC")
+  scope :sorted, -> { order("lower(last_name) ASC, lower(first_name) ASC") }
 
   attr_accessible :first_name, :last_name, :age, :shirt_size
   attr_accessible :city, :state, :street, :zip
@@ -172,7 +172,7 @@ class Profile < ActiveRecord::Base
     if query.present?
       where("to_tsvector('english', first_name) @@ to_tsquery('english', :q) or to_tsvector('english', last_name) @@ to_tsquery('english', :q)", q: query)
     else
-      scoped
+      where(nil)
     end
   end
 
@@ -180,7 +180,7 @@ class Profile < ActiveRecord::Base
     if program.present?
       includes(:volunteer_events => :program).where(first_programs: {code: program})
     else
-      scoped
+      where(nil)
     end
   end
 end

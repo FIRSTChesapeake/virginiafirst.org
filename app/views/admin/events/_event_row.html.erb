@@ -11,7 +11,7 @@
     <% if can? :delete, event %>
       <%= link_to admin_event_path(@program, event),
                   method: :delete,
-                  confirm: "Are you sure?",
+                  data: { confirm: 'Are you sure?' }, 
                   class: "btn btn-small btn-danger" do %>
         <i class="icon-trash icon-white"></i> Delete
       <% end %>

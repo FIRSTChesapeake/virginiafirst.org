@@ -27,7 +27,7 @@
       <% end %>
       <% if can? :delete, game %>
         <td>
-          <%= link_to admin_game_path(@program, game), method: :delete, confirm: "Are you sure?", class: "btn btn-small btn-danger" do %>
+          <%= link_to admin_game_path(@program, game), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-danger" do %>
             <i class="icon-trash icon-white"></i> Delete
           <% end %>
         </td>

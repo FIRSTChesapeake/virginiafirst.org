@@ -31,7 +31,7 @@ class FirstProgram < ActiveRecord::Base
   end
 
   def self.with_volunteer_roles
-    includes(:volunteer_roles).where("volunteer_roles.id is not null")
+    includes(:volunteer_roles).where("volunteer_roles.id is not null").references(:volunteer_roles)
   end
 
   def self.[](code)

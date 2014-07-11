@@ -63,7 +63,7 @@ skills = [
 ]
 
 skills.each do |attributes|
-  Skill.find_or_create_by_name attributes[:name] do |skill|
+  Skill.find_or_create_by name: attributes[:name] do |skill|
     skill.is_administrative = attributes[:is_administrative]
     skill.is_mechanical = attributes[:is_mechanical]
     skill.is_technical = attributes[:is_technical]
