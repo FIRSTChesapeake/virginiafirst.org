@@ -1,10 +1,18 @@
 class Volunteer::RegistrationsController < Volunteer::BaseController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:new]
 
   def new
-    session[:volunteer_params] ||= {}
-    @volunteer_form = VolunteerForm.new current_user
-    @volunteer_form.current_step = session[:volunteer_step]
+    case params[:program]
+    when 'frc', 'ftc'
+      redirect_to 'https://my.usfirst.org/vims/'
+    when 'fll'
+      authenticate_user!
+      session[:volunteer_params] ||= {}
+      @volunteer_form = VolunteerForm.new current_user
+      @volunteer_form.current_step = session[:volunteer_step]
+    else
+      redirect_to root_path
+    end
   end
 
   def show
